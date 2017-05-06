@@ -7,18 +7,20 @@ void GameScreen::init() {
 	_shape = sf::CircleShape(100.f);
 	_shape.setFillColor(sf::Color::Green);
 
-	lua_State* L = luaL_newstate();
-	luaL_openlibs(L);
+	//lua_State* L = luaL_newstate();
+	sol::state lua;
+	lua.open_libraries();
 
-	luah::loadScript(L, "Data/ghost.lua");
-	luah::loadGetKeysFunction(L);
+	//luaL_openlibs(L);
 
-	auto e = Entity::loadEntity(L, "ghost");
+	luah::loadScript(lua, "Data/ghost.lua");
+
+	auto e = Entity::loadEntity(lua, "ghost");
+
 	auto npcc = e->get<NpcComponent>();
 	printf("%s says: %s", e->getType().c_str(), npcc->getPhrase().c_str());
 
-	lua_close(L);
-
+	//lua_close(L);
 }
 
 bool GameScreen::update(const sf::Time& dTime) {

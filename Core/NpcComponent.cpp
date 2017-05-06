@@ -4,7 +4,7 @@
 
 NpcComponent::NpcComponent(sol::table& NpcTable) {
 	auto phraseRef = NpcTable["phrase"];
-	if (true) {//phraseRef.isString()) {
+	if (phraseRef.valid()) {
 		phrase = phraseRef;
 	}
 	else {

@@ -10,13 +10,15 @@
 #include "GraphicsComponent.h"
 #include "NpcComponent.h"
 
+// Forward declaration
 class Component;
 
+// Main Entity
 class Entity {
 public:
 
 	~Entity();
-	static Entity* loadEntity(lua_State* L, const std::string& type);
+	static Entity* loadEntity(const sol::state& lua, const std::string& type);
 
 	void addComp(std::type_index type, Component* c);
 
@@ -46,5 +48,17 @@ template <typename T>
 static void addComponent(Entity* e, sol::table& componentTable) {
 	e->addComp(std::type_index(typeid(T)), new T(componentTable));
 }
+
+
+// For interaction with lua
+class LuaEntityHandle {
+public:
+	// Lua bindings
+	void setPhrase(const std::string& phrase);
+	void printPhrase();
+
+private:
+	Entity* e;
+};
 
 #endif
