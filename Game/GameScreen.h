@@ -3,6 +3,9 @@
 
 #include "..\Core\Screen.h"
 
+#include "..\Core\Scripts.h"
+#include "..\Core\Entity.h"
+
 class GameScreen : public Screen {
 public:
 	GameScreen(sf::RenderWindow*);
