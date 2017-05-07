@@ -36,6 +36,9 @@
     <ClCompile Include="Core\NpcComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Core\EntityList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Game.h">
@@ -62,8 +65,12 @@
     <ClInclude Include="Core\NpcComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Core\EntityList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\ghost.lua" />
+    <None Include="Data\makeGhost.lua" />
   </ItemGroup>
 </Project>

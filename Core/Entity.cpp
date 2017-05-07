@@ -15,30 +15,6 @@ void Entity::addComp(std::type_index type, Component* c) {
 	components[type] = c;
 }
 
-Entity* Entity::loadEntity(const sol::state& lua, const std::string& type) {
-
-	auto e = new Entity;
-	e->setType(type);
-
-	sol::table entityTable = lua[type];
-
-	for (auto key_value_pair : entityTable) {
-		std::string componentName = key_value_pair.first.as<std::string>();
-		sol::object& value = key_value_pair.second;
-		if (componentName == "GraphicsComponent") {
-			sol::table gcTable = value.as<sol::table>();
-			addComponent<GraphicsComponent>(e, gcTable);
-		}
-		else if (componentName == "NpcComponent") {
-			sol::table npccTable = value.as<sol::table>();
-			addComponent<NpcComponent>(e, npccTable);
-		}
-
-		printf("Added %s to %s.\n", componentName.c_str(), type.c_str());
-	}
-	return e;
-}
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // LuaHandle Functions
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

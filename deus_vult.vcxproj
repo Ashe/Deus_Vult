@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Entity.cpp" />
+    <ClCompile Include="Core\EntityList.cpp" />
     <ClCompile Include="Core\GraphicsComponent.cpp" />
     <ClCompile Include="Core\main.cpp" />
     <ClCompile Include="Core\Game.cpp" />
@@ -30,6 +31,7 @@
   <ItemGroup>
     <ClInclude Include="Core\Component.h" />
     <ClInclude Include="Core\Entity.h" />
+    <ClInclude Include="Core\EntityList.h" />
     <ClInclude Include="Core\Game.h" />
     <ClInclude Include="Core\GraphicsComponent.h" />
     <ClInclude Include="Core\Screen.h" />
@@ -39,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\ghost.lua" />
+    <None Include="Data\makeGhost.lua" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BF4003C0-9EEB-403D-8A5C-7119DCE78786}</ProjectGuid>

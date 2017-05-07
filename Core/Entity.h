@@ -18,7 +18,6 @@ class Entity {
 public:
 
 	~Entity();
-	static Entity* loadEntity(const sol::state& lua, const std::string& type);
 
 	void addComp(std::type_index type, Component* c);
 

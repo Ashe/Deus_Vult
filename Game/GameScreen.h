@@ -4,7 +4,7 @@
 #include "..\Core\Screen.h"
 
 #include "..\Core\Scripts.h"
-#include "..\Core\Entity.h"
+#include "..\Core\EntityList.h"
 
 class GameScreen : public Screen {
 public:
@@ -16,6 +16,7 @@ public:
 
 private:
 	sf::RenderWindow* _window;
+	EntityList entities;
 
 	sf::CircleShape _shape;
 
