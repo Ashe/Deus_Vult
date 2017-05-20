@@ -38,6 +38,9 @@ public:
 		return type;
 	}
 
+	void update(float);
+	void render(sf::RenderWindow*, const sf::Time&);
+
 private:
 	std::string type;
 	std::map<std::type_index, Component*> components;
@@ -47,17 +50,4 @@ template <typename T>
 static void addComponent(Entity* e, sol::table& componentTable) {
 	e->addComp(std::type_index(typeid(T)), new T(componentTable));
 }
-
-
-// For interaction with lua
-class LuaEntityHandle {
-public:
-	// Lua bindings
-	void setPhrase(const std::string& phrase);
-	void printPhrase();
-
-private:
-	Entity* e;
-};
-
 #endif

@@ -10,10 +10,10 @@ void GameScreen::init() {
 	sol::state lua;
 	lua.open_libraries();
 
-	lua.set_function("loadEntity",&EntityList::loadEntity, entities);
-	luah::loadScript(lua, "Data/ghost.lua");
+	lua.set_function("loadEntity",&EntityList::loadEntity, &entities);
+	luah::loadScript(lua, "ghost.lua");
 
-	luah::loadScript(lua, "Data/makeGhost.lua");
+	luah::loadScript(lua, "makeGhost.lua");
 
 	Entity* e = lua["obj"];
 
@@ -27,6 +27,7 @@ bool GameScreen::update(const sf::Time& dTime) {
 
 void GameScreen::render(const sf::Time& dTime) {
 	_window->draw(_shape);
+	entities.render(_window, dTime);
 }
 
 void GameScreen::quit() {

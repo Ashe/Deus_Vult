@@ -27,5 +27,12 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 	//auto returnPtr = e.get();
 	//entities.push_back(std::move(e));
 	entities.push_back(e);
+	test = true;
 	return e;
+}
+
+void EntityList::render(sf::RenderWindow* window, const sf::Time& dTime) {
+	for (Entity* entity : entities) {
+		entity->render(window, dTime);
+	}
 }

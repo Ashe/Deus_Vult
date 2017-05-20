@@ -6,7 +6,7 @@ void luah::printError(const std::string & variableName, const std::string & reas
 }
 
 bool luah::loadScript(sol::state& lua, const std::string & filename){
-	sol::protected_function_result result = lua.script_file(filename, sol::simple_on_error);
+	sol::protected_function_result result = lua.script_file("Data/" + filename, sol::simple_on_error);
 	if (!result.valid()) {
 		sol::error err = result;
 		sol::call_status status = result.status();
