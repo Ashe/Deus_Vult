@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Core\AnimatedSprite.cpp" />
+    <ClCompile Include="Core\Animation.cpp" />
     <ClCompile Include="Core\Entity.cpp" />
     <ClCompile Include="Core\EntityList.cpp" />
     <ClCompile Include="Core\GraphicsComponent.cpp" />
@@ -29,6 +31,9 @@
     <ClCompile Include="Game\GameScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core\AnimatedSprite.hpp" />
+    <ClInclude Include="Core\Animation.hpp" />
+    <ClInclude Include="Core\AnimWrapper.hpp" />
     <ClInclude Include="Core\Component.h" />
     <ClInclude Include="Core\Entity.h" />
     <ClInclude Include="Core\EntityList.h" />
@@ -40,8 +45,8 @@
     <ClInclude Include="Core\NpcComponent.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\ghost.lua" />
-    <None Include="Data\makeGhost.lua" />
+    <None Include="Data\knight.lua" />
+    <None Include="Data\makeKnight.lua" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BF4003C0-9EEB-403D-8A5C-7119DCE78786}</ProjectGuid>
@@ -104,7 +109,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Lua\5.1\include;C:\Program Files %28x86%29\sol2-develop;C:\Program Files %28x86%29\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Thor-master\extlibs\aurora\include;C:\Program Files %28x86%29\Thor-master\include;C:\Program Files %28x86%29\Lua\5.1\include;C:\Program Files %28x86%29\sol2-develop;C:\Program Files %28x86%29\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Lua\5.1\lib;C:\Program Files %28x86%29\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -125,7 +130,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Lua\5.1\include;C:\Program Files %28x86%29\sol2-develop;C:\Program Files %28x86%29\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Thor-master\extlibs\aurora\include;C:\Program Files %28x86%29\Thor-master\include;C:\Program Files %28x86%29\Lua\5.1\include;C:\Program Files %28x86%29\sol2-develop;C:\Program Files %28x86%29\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

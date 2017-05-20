@@ -39,6 +39,12 @@
     <ClCompile Include="Core\EntityList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\AnimatedSprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Game.h">
@@ -68,9 +74,18 @@
     <ClInclude Include="Core\EntityList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Animation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\AnimatedSprite.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\AnimWrapper.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\ghost.lua" />
-    <None Include="Data\makeGhost.lua" />
+    <None Include="Data\knight.lua" />
+    <None Include="Data\makeKnight.lua" />
   </ItemGroup>
 </Project>

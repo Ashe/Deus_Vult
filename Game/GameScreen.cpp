@@ -11,9 +11,9 @@ void GameScreen::init() {
 	lua.open_libraries();
 
 	lua.set_function("loadEntity",&EntityList::loadEntity, &entities);
-	luah::loadScript(lua, "ghost.lua");
+	luah::loadScript(lua, "knight.lua");
 
-	luah::loadScript(lua, "makeGhost.lua");
+	luah::loadScript(lua, "makeKnight.lua");
 
 	Entity* e = lua["obj"];
 
