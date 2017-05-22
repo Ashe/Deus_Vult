@@ -26,6 +26,10 @@ void Game::render(const sf::Time& dTime) {
 	_currentScreen->render(dTime);
 }
 
+void Game::handleEvent(const sf::Event& e) {
+	_currentScreen->handleEvent(e);
+}
+
 void Game::quit() {
 	_game.quit();
 }

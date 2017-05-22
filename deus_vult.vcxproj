@@ -24,6 +24,7 @@
     <ClCompile Include="Core\Entity.cpp" />
     <ClCompile Include="Core\EntityList.cpp" />
     <ClCompile Include="Core\GraphicsComponent.cpp" />
+    <ClCompile Include="Core\InputManager.cpp" />
     <ClCompile Include="Core\main.cpp" />
     <ClCompile Include="Core\Game.cpp" />
     <ClCompile Include="Core\NpcComponent.cpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="Core\EntityList.h" />
     <ClInclude Include="Core\Game.h" />
     <ClInclude Include="Core\GraphicsComponent.h" />
+    <ClInclude Include="Core\InputManager.h" />
     <ClInclude Include="Core\PositionComponent.h" />
     <ClInclude Include="Core\Screen.h" />
     <ClInclude Include="Core\Scripts.h" />

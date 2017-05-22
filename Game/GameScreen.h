@@ -5,6 +5,7 @@
 
 #include "..\Core\Scripts.h"
 #include "..\Core\EntityList.h"
+#include "..\Core\InputManager.h"
 
 class GameScreen : public Screen {
 public:
@@ -12,13 +13,13 @@ public:
 	void init();
 	bool update(const sf::Time&);
 	void render(const sf::Time&);
+	void handleEvent(const sf::Event&);
 	void quit();
 
 private:
 	sf::RenderWindow* _window;
-	EntityList entities;
-
-	sf::CircleShape _shape;
+	InputManager _input;
+	EntityList _entities;
 
 };
 

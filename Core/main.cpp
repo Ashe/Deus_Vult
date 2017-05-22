@@ -17,6 +17,12 @@ int main()
 		while (window.pollEvent(event))
 		{
 			switch (event.type) {
+			case sf::Event::KeyPressed:
+			case sf::Event::KeyReleased:
+			case sf::Event::MouseButtonPressed:
+			case sf::Event::MouseButtonReleased:
+				game.handleEvent(event);
+				break;
 			case sf::Event::Closed:
 				window.close();
 				break;

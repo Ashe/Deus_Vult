@@ -10,6 +10,7 @@ public:
 	void init();
 	bool update(const sf::Time&);
 	void render(const sf::Time&);
+	void handleEvent(const sf::Event&);
 
 	void windowResized();
 	void quit();

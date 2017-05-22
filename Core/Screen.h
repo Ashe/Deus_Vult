@@ -9,6 +9,7 @@ public:
 	virtual bool update(const sf::Time&) = 0;
 	virtual void render(const sf::Time&) = 0;
 	virtual void quit() = 0;
+	virtual void handleEvent(const sf::Event&) = 0;
 };
 
 #endif
