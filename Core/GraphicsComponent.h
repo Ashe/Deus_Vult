@@ -14,20 +14,20 @@ public:
 
 	void setImageFilename(const std::string& filename) {
 		this->_filename = filename;
+		setTexture();
 	}
 
 	std::string getImageFilename() const {
 		return _filename;
 	}
 
-	void render(sf::RenderWindow*, const sf::Time&);
+	void render(sf::RenderWindow*, const sf::Time&, const sf::Vector2f&);
 
 	void changeAnimation(const std::string&);
 
 private:
 	std::string _filename;
 	sf::Texture _texture;
-	sf::Sprite _sprite;
 
 	int _frameTime = 0;
 	AnimatedSprite _animatedSprite;

@@ -20,6 +20,9 @@ knight = {
 		}
 
     },
+	PositionComponent = {
+		100, 100
+	},
     NpcComponent = {
         phrase = "I'm a knight! GRR!"
     }

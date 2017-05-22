@@ -8,6 +8,7 @@
 #include "Scripts.h"
 
 #include "GraphicsComponent.h"
+#include "PositionComponent.h"
 #include "NpcComponent.h"
 
 // Forward declaration

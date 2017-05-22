@@ -21,7 +21,7 @@ void Entity::update(float) {
 
 void Entity::render(sf::RenderWindow* window, const sf::Time& dTime) {
 	auto graphics = get<GraphicsComponent>();
-	if (graphics) {
-		graphics->render(window, dTime);
-	}
+	auto position = get<PositionComponent>();
+	if (graphics && position)
+		graphics->render(window, dTime, position->_position);
 }

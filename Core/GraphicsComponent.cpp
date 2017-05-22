@@ -21,23 +21,33 @@ GraphicsComponent::GraphicsComponent(sol::table& componentTable) {
 			auto animRef = componentTable["defaultAnim"];
 			if (animRef.valid())
 				changeAnimation(animRef);
-			else
-				printf("%s is not a valid string!", animRef);
+			else {
+				printf("No valid default animation, using %s.\n", _animationList[0].name.c_str());
+				changeAnimation(_animationList[0].name);
+			}
 		}
+		else {
+			_frameTime = 0;
+			Animation animation;
+			animation.setSpriteSheet(_texture);
+			animation.addFrame(sf::IntRect(0, 0, _spriteWidth, _spriteHeight));
+			_animationList.push_back(AnimWrapper("default", animation));
+			changeAnimation("default");
+		}
+
 	}
 	else {
 		printf("Error, GraphicsComponent.filename is not a string!\n");
 	}
 }
 
-void GraphicsComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
+void GraphicsComponent::render(sf::RenderWindow* window, const sf::Time& dTime, const sf::Vector2f& pos) {
 	if (_frameTime > 0) {
 		_animatedSprite.update(dTime);
-		window->draw(_animatedSprite);
-		return;
 	}
-
-	window->draw(_sprite);
+	_animatedSprite.setPosition(pos);
+	window->draw(_animatedSprite);
+	return;
 }
 
 void GraphicsComponent::changeAnimation(const std::string& animName) {
@@ -50,7 +60,7 @@ void GraphicsComponent::changeAnimation(const std::string& animName) {
 		}
 	}
 
-	printf("No animations with %s found.", animName.c_str());
+	printf("No animations with %s found.\n", animName.c_str());
 }
 
 void GraphicsComponent::setAnimations(sol::table & animationTable) {
@@ -75,7 +85,6 @@ void GraphicsComponent::setAnimations(sol::table & animationTable) {
 
 bool GraphicsComponent::setTexture(){
 	if (_texture.loadFromFile(_filename)){
-		_sprite.setTexture(_texture);
 		return true;
 	}
 
