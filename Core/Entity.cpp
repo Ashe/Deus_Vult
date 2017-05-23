@@ -6,13 +6,13 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Entity::~Entity() {
-	for (auto& c : components) {
+	for (auto& c : _components) {
 		delete c.second;
 	}
 }
 
 void Entity::addComp(std::type_index type, Component* c) {
-	components[type] = c;
+	_components[type] = c;
 }
 
 void Entity::update(float) {

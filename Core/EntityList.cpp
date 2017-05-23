@@ -12,6 +12,8 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 	printf("-----------------------------\nLoading entity %s.\n-----------------------------\n", type.c_str());
 
 
+
+
 	for (auto key_value_pair : entityTable) {
 		std::string componentName = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;

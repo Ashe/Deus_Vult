@@ -10,14 +10,14 @@ public:
 	NpcComponent(sol::table& componentTable);
 
 	void setPhrase(const std::string& phrase) {
-		this->phrase = phrase;
+		this->_phrase = phrase;
 	}
 
 	std::string getPhrase() const {
-		return phrase;
+		return _phrase;
 	}
 private:
-	std::string phrase;
+	std::string _phrase;
 };
 
 #endif 

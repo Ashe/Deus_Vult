@@ -24,27 +24,27 @@ public:
 
 	template <typename T>
 	T* get() {
-		auto it = components.find(std::type_index(typeid(T)));
-		if (it != components.end()) {
+		auto it = _components.find(std::type_index(typeid(T)));
+		if (it != _components.end()) {
 			return dynamic_cast<T*>(it->second);
 		}
 		return nullptr;
 	}
 
 	void setType(const std::string& type) {
-		this->type = type;
+		this->_type = type;
 	}
 
 	std::string getType() const {
-		return type;
+		return _type;
 	}
 
 	void update(float);
 	void render(sf::RenderWindow*, const sf::Time&);
 
 private:
-	std::string type;
-	std::map<std::type_index, Component*> components;
+	std::string _type;
+	std::map<std::type_index, Component*> _components;
 };
 
 template <typename T>
