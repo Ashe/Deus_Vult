@@ -10,6 +10,7 @@
 #include "GraphicsComponent.h"
 #include "PositionComponent.h"
 #include "NpcComponent.h"
+#include "ControllerComponent.h"
 
 // Forward declaration
 class Component;

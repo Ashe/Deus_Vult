@@ -8,15 +8,15 @@ void GameScreen::init() {
 	lua.open_libraries();
 
 	lua.set_function("loadEntity",&EntityList::loadEntity, &_entities);
-	luah::loadScript(lua, "knight.lua");
+	luah::loadScript(lua, "player.lua");
 
-	luah::loadScript(lua, "makeKnight.lua");
+	luah::loadScript(lua, "makePlayer.lua");
 	Entity* e = lua["obj"];
 
 	auto npcc = e->get<NpcComponent>();
 	printf("%s says: %s\n", e->getType().c_str(), npcc->getPhrase().c_str());
 
-	_input.loadGameControls();
+	_controller.initialise(&_input);
 }
 
 bool GameScreen::update(const sf::Time& dTime) {

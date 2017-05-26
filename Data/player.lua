@@ -1,4 +1,5 @@
-knight = {
+player = {
+	ControllerComponent = {},
     GraphicsComponent = {
         filename = "img/BlackKnight.png",
 		size = {32, 32},
@@ -18,7 +19,6 @@ knight = {
 				{288, 64}
 			}
 		}
-
     },
 	PositionComponent = {
 		100, 100

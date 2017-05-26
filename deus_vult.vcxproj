@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Core\AnimatedSprite.cpp" />
     <ClCompile Include="Core\Animation.cpp" />
+    <ClCompile Include="Core\ControllerComponent.cpp" />
     <ClCompile Include="Core\Entity.cpp" />
     <ClCompile Include="Core\EntityList.cpp" />
     <ClCompile Include="Core\GraphicsComponent.cpp" />
@@ -30,6 +31,7 @@
     <ClCompile Include="Core\NpcComponent.cpp" />
     <ClCompile Include="Core\PositionComponent.cpp" />
     <ClCompile Include="Core\Scripts.cpp" />
+    <ClCompile Include="Game\Controller.cpp" />
     <ClCompile Include="Game\GameScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -37,6 +39,7 @@
     <ClInclude Include="Core\Animation.hpp" />
     <ClInclude Include="Core\AnimWrapper.hpp" />
     <ClInclude Include="Core\Component.h" />
+    <ClInclude Include="Core\ControllerComponent.h" />
     <ClInclude Include="Core\Entity.h" />
     <ClInclude Include="Core\EntityList.h" />
     <ClInclude Include="Core\Game.h" />
@@ -45,12 +48,14 @@
     <ClInclude Include="Core\PositionComponent.h" />
     <ClInclude Include="Core\Screen.h" />
     <ClInclude Include="Core\Scripts.h" />
+    <ClInclude Include="Game\Controller.h" />
+    <ClInclude Include="Game\EntityExtra.h" />
     <ClInclude Include="Game\GameScreen.h" />
     <ClInclude Include="Core\NpcComponent.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\knight.lua" />
-    <None Include="Data\makeKnight.lua" />
+    <None Include="Data\player.lua" />
+    <None Include="Data\makePlayer.lua" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BF4003C0-9EEB-403D-8A5C-7119DCE78786}</ProjectGuid>

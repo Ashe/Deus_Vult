@@ -1,20 +1,18 @@
 #ifndef INPUTMANAGER_H
 #define INPUTMANAGER_H
 
+#include <functional>
 #include "SFML\Graphics.hpp"
 
-
 class InputManager {
-
 public:
-	typedef void(*voidFunction)();
 	struct FunctionPair {
 		FunctionPair() {}
-		FunctionPair(voidFunction kd, voidFunction kr)
+		FunctionPair(std::function<void()> kd, std::function<void()> kr)
 			: _keyDown(kd), _keyRelease(kr) {}
 
-		voidFunction _keyDown = NULL;
-		voidFunction _keyRelease = NULL;
+		std::function<void()> _keyDown = NULL;
+		std::function<void()> _keyRelease = NULL;
 	};
 
 	std::map<sf::Keyboard::Key, std::string> _keys;
@@ -23,12 +21,10 @@ public:
 
 	void handleEvent(const sf::Event&);
 
-	void loadGameControls();
-
 	void bindKeyToAction(const sf::Keyboard::Key&, const std::string&);
 
 	void bindActionToFunction(const std::string&, FunctionPair);
-	void bindActionToFunction(const std::string&, voidFunction, voidFunction);
+	void bindActionToFunction(const std::string&, std::function<void()>, std::function<void()>);
 
 private:
 
