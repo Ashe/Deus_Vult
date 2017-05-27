@@ -46,7 +46,7 @@ void MovementComponent::update(const sf::Time& dTime) {
 
 				if (_acceleration > 0) {
 					_currentSpeed += mod * _acceleration * dTime.asSeconds();
-					if (abs(_currentSpeed) < _speedMod)
+					if (abs(_currentSpeed) < 0.01)
 						_currentSpeed = 0;
 				}
 				else
