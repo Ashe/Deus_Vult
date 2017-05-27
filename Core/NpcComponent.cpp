@@ -1,13 +1,12 @@
 #include "NpcComponent.h"
-#include <iostream>
 #include <sol.hpp>
 
-NpcComponent::NpcComponent(sol::table& NpcTable) {
+NpcComponent::NpcComponent(Entity* e, sol::table& NpcTable) : Component(e) {
 	auto phraseRef = NpcTable["phrase"];
 	if (phraseRef.valid()) {
 		_phrase = phraseRef;
 	}
 	else {
-		std::cout << "Error, NpcComponent.phrase is not a string!" << std::endl;
+		printf("Error, NpcComponent.phrase is not a string!\n");
 	}
 }

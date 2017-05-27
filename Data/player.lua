@@ -23,6 +23,10 @@ player = {
 	PositionComponent = {
 		100, 100
 	},
+	MovementComponent = {
+		maxspeed = 1,
+		acceleration = 5
+	},
     NpcComponent = {
         phrase = "I'm a knight! GRR!"
     }

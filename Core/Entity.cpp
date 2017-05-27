@@ -15,8 +15,10 @@ void Entity::addComp(std::type_index type, Component* c) {
 	_components[type] = c;
 }
 
-void Entity::update(float) {
-
+void Entity::update(const sf::Time& dTime) {
+	auto movement = get<MovementComponent>();
+	if (movement)
+		movement->update(dTime);
 }
 
 void Entity::render(sf::RenderWindow* window, const sf::Time& dTime) {

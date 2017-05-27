@@ -20,6 +20,8 @@ void GameScreen::init() {
 }
 
 bool GameScreen::update(const sf::Time& dTime) {
+
+	_entities.update(dTime);
 	return false;
 }
 

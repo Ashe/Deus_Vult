@@ -57,6 +57,9 @@
     <ClCompile Include="Core\ControllerComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Core\MovementComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Game.h">
@@ -108,6 +111,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game\EntityExtra.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MovementComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

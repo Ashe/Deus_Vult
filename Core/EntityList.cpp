@@ -26,6 +26,10 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 			sol::table pcTable = value.as<sol::table>();
 			addComponent<PositionComponent>(e, pcTable);
 		}
+		else if (componentName == "MovementComponent") {
+			sol::table pcTable = value.as<sol::table>();
+			addComponent<MovementComponent>(e, pcTable);
+		}
 		else if (componentName == "NpcComponent") {
 			sol::table npccTable = value.as<sol::table>();
 			addComponent<NpcComponent>(e, npccTable);
@@ -45,6 +49,12 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 	entities.push_back(e);
 	test = true;
 	return e;
+}
+
+void EntityList::update(const sf::Time & dTime) {
+	for (Entity* entity : entities) {
+		entity->update(dTime);
+	}
 }
 
 void EntityList::render(sf::RenderWindow* window, const sf::Time& dTime) {

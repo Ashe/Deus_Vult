@@ -5,11 +5,13 @@
 #include "Scripts.h"
 #include "Component.h"
 
+#include "MovementComponent.h"
+
 class ControllerComponent : public Component {
 public:
-	ControllerComponent(sol::table& componentTable);
+	ControllerComponent(Entity* e, sol::table& componentTable);
 
-	int _direction = 0;
+	MovementComponent* _movementComponent;
 
 	void addDirLeft();
 	void addDirRight();

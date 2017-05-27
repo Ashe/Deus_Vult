@@ -9,6 +9,7 @@
 
 #include "GraphicsComponent.h"
 #include "PositionComponent.h"
+#include "MovementComponent.h"
 #include "NpcComponent.h"
 #include "ControllerComponent.h"
 
@@ -40,7 +41,7 @@ public:
 		return _type;
 	}
 
-	void update(float);
+	void update(const sf::Time&);
 	void render(sf::RenderWindow*, const sf::Time&);
 
 private:
@@ -50,6 +51,6 @@ private:
 
 template <typename T>
 static void addComponent(Entity* e, sol::table& componentTable) {
-	e->addComp(std::type_index(typeid(T)), new T(componentTable));
+	e->addComp(std::type_index(typeid(T)), new T(e, componentTable));
 }
 #endif

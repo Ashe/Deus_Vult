@@ -7,7 +7,7 @@
 
 class NpcComponent : public Component {
 public:
-	NpcComponent(sol::table& componentTable);
+	NpcComponent(Entity* e, sol::table& componentTable);
 
 	void setPhrase(const std::string& phrase) {
 		this->_phrase = phrase;

@@ -9,7 +9,7 @@
 
 class PositionComponent : public Component {
 public:
-	PositionComponent(sol::table& componentTable);
+	PositionComponent(Entity* e, sol::table& componentTable);
 
 	sf::Vector2f _position;
 

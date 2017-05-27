@@ -10,7 +10,7 @@
 
 class GraphicsComponent : public Component {
 public:
-	GraphicsComponent(sol::table& componentTable);
+	GraphicsComponent(Entity* e, sol::table& componentTable);
 
 	void setImageFilename(const std::string& filename) {
 		this->_filename = filename;

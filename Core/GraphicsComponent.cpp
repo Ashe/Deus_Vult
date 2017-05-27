@@ -1,7 +1,7 @@
 #include "GraphicsComponent.h"
 #include <sol.hpp>
 
-GraphicsComponent::GraphicsComponent(sol::table& componentTable) {
+GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Component(e) {
 	auto filenameRef = componentTable["filename"];
 	if (filenameRef.valid()) {
 		_filename = filenameRef;
