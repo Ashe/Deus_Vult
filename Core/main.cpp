@@ -23,11 +23,11 @@ int main()
 			case sf::Event::MouseButtonReleased:
 				game.handleEvent(event);
 				break;
-			case sf::Event::Closed:
-				window.close();
-				break;
 			case sf::Event::Resized:
 				game.windowResized();
+				break;
+			case sf::Event::Closed:
+				window.close();
 				break;
 			}
 		}

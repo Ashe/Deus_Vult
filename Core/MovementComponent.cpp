@@ -13,17 +13,17 @@ MovementComponent::MovementComponent(Entity* e, sol::table& mcTable) : Component
 	_maxspeed *= _speedMod;
 	_acceleration *= _speedMod;
 
-	_position = _owner->get<PositionComponent>();
+	_transform = _owner->get<TransformComponent>();
 	_graphics = _owner->get<GraphicsComponent>();
 }
 
 void MovementComponent::update(const sf::Time& dTime) {
-	if (_position && _graphics) {
+	if (_transform) {
 		switch (_direction) {
 		case -1:
 		case 1:
 
-			_graphics->_flipX = (_direction < 0);
+			_transform->_flipX = (_direction < 0);
 			_graphics->changeAnimation("walk");
 
 			// If moving in a direction, accelerate
@@ -44,8 +44,11 @@ void MovementComponent::update(const sf::Time& dTime) {
 			if (_currentSpeed != 0) {
 				int mod = (_currentSpeed < 0) * 2 - 1;
 
-				if (_acceleration > 0)
+				if (_acceleration > 0) {
 					_currentSpeed += mod * _acceleration * dTime.asSeconds();
+					if (abs(_currentSpeed) < _speedMod)
+						_currentSpeed = 0;
+				}
 				else
 					_currentSpeed = 0;
 			}
@@ -55,11 +58,11 @@ void MovementComponent::update(const sf::Time& dTime) {
 			printf("Direction %d is not valid!", _direction);
 		}
 
-		_position->_position.x += _currentSpeed;
+		_transform->_position.x += _currentSpeed;
 		return;
 	}
 
 	// If there's no position component or graphics
-	_position = _owner->get<PositionComponent>();
+	_transform = _owner->get<TransformComponent>();
 	_graphics = _owner->get<GraphicsComponent>();
 }

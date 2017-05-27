@@ -23,7 +23,7 @@ void Entity::update(const sf::Time& dTime) {
 
 void Entity::render(sf::RenderWindow* window, const sf::Time& dTime) {
 	auto graphics = get<GraphicsComponent>();
-	auto position = get<PositionComponent>();
+	auto position = get<TransformComponent>();
 	if (graphics && position)
-		graphics->render(window, dTime, position->_position);
+		graphics->render(window, dTime);
 }

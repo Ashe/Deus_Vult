@@ -8,7 +8,7 @@
 #include "Scripts.h"
 
 #include "GraphicsComponent.h"
-#include "PositionComponent.h"
+#include "TransformComponent.h"
 #include "MovementComponent.h"
 #include "NpcComponent.h"
 #include "ControllerComponent.h"

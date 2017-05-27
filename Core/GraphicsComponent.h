@@ -7,6 +7,7 @@
 #include "SFML\Graphics.hpp"
 
 #include "AnimatedSprite.hpp"
+#include "TransformComponent.h"
 
 class GraphicsComponent : public Component {
 public:
@@ -20,13 +21,13 @@ public:
 	std::string getImageFilename() const {
 		return _filename;
 	}
-	bool _flipX = false;
-
-	void render(sf::RenderWindow*, const sf::Time&, const sf::Vector2f&);
+	void render(sf::RenderWindow*, const sf::Time&);
 
 	void changeAnimation(const std::string&);
 
 private:
+	TransformComponent* _transform;
+
 	std::string _filename;
 	sf::Texture _texture;
 
@@ -36,8 +37,8 @@ private:
 	Animation& _currentAnimation = Animation();
 	std::map<std::string, Animation> _animationList;
 
-	int _spriteWidth;
-	int _spriteHeight;
+	int _spriteWidth = 32;
+	int _spriteHeight = 32;
 
 	bool setTexture();
 	void setAnimations(sol::table&);

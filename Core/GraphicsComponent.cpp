@@ -1,14 +1,22 @@
 #include "GraphicsComponent.h"
 #include <sol.hpp>
 
+#include "Entity.h"
+
 GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Component(e) {
+	_transform = _owner->get<TransformComponent>();
+
 	auto filenameRef = componentTable["filename"];
 	if (filenameRef.valid()) {
 		_filename = filenameRef;
 		_filename = "Data/" + _filename;
 
-		_spriteWidth = componentTable["size"][1];
-		_spriteHeight = componentTable["size"][2];
+		if (componentTable["size"][1])
+			_spriteWidth = componentTable["size"][1];
+
+		if (componentTable["size"][2])
+			_spriteHeight = componentTable["size"][2];
+
 		_animatedSprite.setOrigin(_spriteWidth / 2, 0);
 
 		if (!setTexture())
@@ -42,14 +50,19 @@ GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Co
 	}
 }
 
-void GraphicsComponent::render(sf::RenderWindow* window, const sf::Time& dTime, const sf::Vector2f& pos) {
-	if (_frameTime > 0) {
-		_animatedSprite.update(dTime);
+void GraphicsComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
+	if (_transform) {
+		if (_frameTime > 0) {
+			_animatedSprite.update(dTime);
+		}
+		_animatedSprite.setPosition(_transform->_position);
+		_animatedSprite.setScale((!_transform->_flipX * 2 - 1) * _transform->_scale.x, (!_transform->_flipY * 2 - 1) * _transform->_scale.y);
+		window->draw(_animatedSprite);
+		return;
 	}
-	_animatedSprite.setPosition(pos);
-	_animatedSprite.setScale((!_flipX * 2 - 1) * 5, 5);
-	window->draw(_animatedSprite);
-	return;
+
+	// if there's no transform component, try again
+	_transform = _owner->get<TransformComponent>();
 }
 
 void GraphicsComponent::changeAnimation(const std::string& animName) {

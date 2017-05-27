@@ -5,7 +5,7 @@
 #include "Scripts.h"
 #include "Component.h"
 
-#include "PositionComponent.h"
+#include "TransformComponent.h"
 #include "GraphicsComponent.h"
 
 #include "SFML\Graphics.hpp"
@@ -18,15 +18,14 @@ public:
 	void update(const sf::Time& dTime);
 
 private:
-	PositionComponent* _position;
+	TransformComponent* _transform;
+	GraphicsComponent* _graphics;
 	float _maxspeed = 0;
 	float _acceleration = 0;
 	float _currentSpeed = 0;
 
 	// Default modifier
 	float _speedMod = 0.05;
-
-	GraphicsComponent* _graphics;
 };
 
 #endif

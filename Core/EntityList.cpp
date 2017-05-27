@@ -22,9 +22,9 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 			sol::table gcTable = value.as<sol::table>();
 			addComponent<GraphicsComponent>(e, gcTable);
 		}
-		else if (componentName == "PositionComponent") {
+		else if (componentName == "TransformComponent") {
 			sol::table pcTable = value.as<sol::table>();
-			addComponent<PositionComponent>(e, pcTable);
+			addComponent<TransformComponent>(e, pcTable);
 		}
 		else if (componentName == "MovementComponent") {
 			sol::table pcTable = value.as<sol::table>();

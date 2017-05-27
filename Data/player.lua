@@ -37,8 +37,14 @@ player = {
 			}
 		}
     },
-	PositionComponent = {
-		100, 100
+	TransformComponent = {
+		position = {
+			100, 100
+		},
+		scale = {
+			5, 5
+		}, 
+		rotation = 0
 	},
 	MovementComponent = {
 		maxspeed = 1,
