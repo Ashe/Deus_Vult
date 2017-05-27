@@ -6,7 +6,7 @@
 #include "Component.h"
 #include "SFML\Graphics.hpp"
 
-#include "AnimWrapper.hpp"
+#include "AnimatedSprite.hpp"
 
 class GraphicsComponent : public Component {
 public:
@@ -20,6 +20,7 @@ public:
 	std::string getImageFilename() const {
 		return _filename;
 	}
+	bool _flipX = false;
 
 	void render(sf::RenderWindow*, const sf::Time&, const sf::Vector2f&);
 
@@ -30,9 +31,10 @@ private:
 	sf::Texture _texture;
 
 	int _frameTime = 0;
+
 	AnimatedSprite _animatedSprite;
 	Animation& _currentAnimation = Animation();
-	std::vector<AnimWrapper> _animationList;
+	std::map<std::string, Animation> _animationList;
 
 	int _spriteWidth;
 	int _spriteHeight;
@@ -43,4 +45,3 @@ private:
 };
 
 #endif
-

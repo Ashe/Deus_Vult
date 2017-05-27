@@ -95,9 +95,6 @@
     <ClInclude Include="Core\AnimatedSprite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\AnimWrapper.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Core\PositionComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>

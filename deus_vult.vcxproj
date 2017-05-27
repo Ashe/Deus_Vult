@@ -38,7 +38,6 @@
   <ItemGroup>
     <ClInclude Include="Core\AnimatedSprite.hpp" />
     <ClInclude Include="Core\Animation.hpp" />
-    <ClInclude Include="Core\AnimWrapper.hpp" />
     <ClInclude Include="Core\Component.h" />
     <ClInclude Include="Core\ControllerComponent.h" />
     <ClInclude Include="Core\Entity.h" />

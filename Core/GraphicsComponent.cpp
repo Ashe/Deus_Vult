@@ -9,6 +9,7 @@ GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Co
 
 		_spriteWidth = componentTable["size"][1];
 		_spriteHeight = componentTable["size"][2];
+		_animatedSprite.setOrigin(_spriteWidth / 2, 0);
 
 		if (!setTexture())
 			return;
@@ -18,12 +19,12 @@ GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Co
 			setAnimations(animations);
 			_frameTime = componentTable["frameTime"];
 
+			changeAnimation(_animationList.begin()->first);
 			auto animRef = componentTable["defaultAnim"];
 			if (animRef.valid())
 				changeAnimation(animRef);
 			else {
-				printf("No valid default animation, using %s.\n", _animationList[0].name.c_str());
-				changeAnimation(_animationList[0].name);
+				printf("No valid default animation, using %s.\n", _animationList.begin()->first.c_str());
 			}
 		}
 		else {
@@ -31,7 +32,7 @@ GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Co
 			Animation animation;
 			animation.setSpriteSheet(_texture);
 			animation.addFrame(sf::IntRect(0, 0, _spriteWidth, _spriteHeight));
-			_animationList.push_back(AnimWrapper("default", animation));
+			_animationList["default"] = animation;
 			changeAnimation("default");
 		}
 
@@ -46,18 +47,18 @@ void GraphicsComponent::render(sf::RenderWindow* window, const sf::Time& dTime, 
 		_animatedSprite.update(dTime);
 	}
 	_animatedSprite.setPosition(pos);
+	_animatedSprite.setScale((!_flipX * 2 - 1) * 5, 5);
 	window->draw(_animatedSprite);
 	return;
 }
 
 void GraphicsComponent::changeAnimation(const std::string& animName) {
-	for (AnimWrapper animation : _animationList) {
-		if (animation.name == animName) {
-			_currentAnimation = animation.anim;
-			_animatedSprite.setFrameTime(sf::milliseconds(_frameTime));
-			_animatedSprite.play(_currentAnimation);
-			return;
-		}
+	if (_animationList.count(animName)) {
+		_currentAnimation = _animationList[animName];
+		_frameTime = _currentAnimation._frameTime;
+		_animatedSprite.setFrameTime(sf::milliseconds(_frameTime));
+		_animatedSprite.play(_currentAnimation);
+		return;
 	}
 
 	printf("No animations with %s found.\n", animName.c_str());
@@ -67,19 +68,27 @@ void GraphicsComponent::setAnimations(sol::table & animationTable) {
 	for (auto key_value_pair : animationTable) {
 		std::string animationName = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;
-		sol::table frameTable = value.as<sol::table>();
+		sol::table detailsTable = value.as<sol::table>();
 
-		Animation animation;
+		float frameTime = 0;
+
+		if (detailsTable["frameTime"])
+			frameTime = detailsTable["frameTime"];
+
+		sol::table frameTable = detailsTable["animation"];
+
+		Animation animation = Animation(frameTime);
 		animation.setSpriteSheet(_texture);
 
-		for (auto table : frameTable) {
+		for (int i = frameTable.size(); i > 0; i--) {
+			std::pair<sol::object, sol::object> table = frameTable[i];
 			sf::IntRect frame;
 			sol::table position = table.second.as<sol::table>();
 			frame = sf::IntRect( position[1], position[2], _spriteWidth, _spriteHeight);
 			animation.addFrame(frame);
 		}
 
-		_animationList.push_back(AnimWrapper(animationName, animation));
+		_animationList[animationName] = animation;
 	}
 }
 

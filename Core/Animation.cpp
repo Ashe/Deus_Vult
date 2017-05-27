@@ -23,10 +23,7 @@
 
 #include "Animation.hpp"
 
-Animation::Animation() : m_texture(NULL)
-{
-
-}
+Animation::Animation(float frameTime) :_frameTime(frameTime), m_texture(NULL) {}
 
 void Animation::addFrame(sf::IntRect rect)
 {

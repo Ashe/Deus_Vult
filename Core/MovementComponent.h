@@ -6,6 +6,7 @@
 #include "Component.h"
 
 #include "PositionComponent.h"
+#include "GraphicsComponent.h"
 
 #include "SFML\Graphics.hpp"
 
@@ -25,6 +26,7 @@ private:
 	// Default modifier
 	float _speedMod = 0.05;
 
+	GraphicsComponent* _graphics;
 };
 
 #endif

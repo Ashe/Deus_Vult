@@ -14,13 +14,18 @@ MovementComponent::MovementComponent(Entity* e, sol::table& mcTable) : Component
 	_acceleration *= _speedMod;
 
 	_position = _owner->get<PositionComponent>();
+	_graphics = _owner->get<GraphicsComponent>();
 }
 
 void MovementComponent::update(const sf::Time& dTime) {
-	if (_position) {
+	if (_position && _graphics) {
 		switch (_direction) {
 		case -1:
 		case 1:
+
+			_graphics->_flipX = (_direction < 0);
+			_graphics->changeAnimation("walk");
+
 			// If moving in a direction, accelerate
 			// If there's no acceleration, go at max speed
 			// If there's no max speed, accelerate with no cap
@@ -32,6 +37,9 @@ void MovementComponent::update(const sf::Time& dTime) {
 
 			break;
 		case 0:
+
+			_graphics->changeAnimation("idle");
+
 			// If 0, then you are slowing down to 0
 			if (_currentSpeed != 0) {
 				int mod = (_currentSpeed < 0) * 2 - 1;
@@ -51,6 +59,7 @@ void MovementComponent::update(const sf::Time& dTime) {
 		return;
 	}
 
-	// If there's no position component
+	// If there's no position component or graphics
 	_position = _owner->get<PositionComponent>();
+	_graphics = _owner->get<GraphicsComponent>();
 }
