@@ -10,10 +10,6 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 	sol::table entityTable = _lua[type];
 
 	printf("-----------------------------\nLoading entity %s.\n-----------------------------\n", type.c_str());
-
-
-
-
 	for (auto key_value_pair : entityTable) {
 		std::string componentName = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;
@@ -38,20 +34,24 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 			sol::table ccTable = value.as<sol::table>();
 			addComponent<ControllerComponent>(e, ccTable);
 		}
-
 		printf("Added %s to %s.\n", componentName.c_str(), type.c_str());
 	}
-
 	printf("-----------------------------\n%s entity loaded.\n-----------------------------\n", type.c_str());
 
 	//auto returnPtr = e.get();
 	//entities.push_back(std::move(e));
-	entities.push_back(e);
-	test = true;
+
+	if (type != "player")
+		entities.push_back(e);
+	else
+		_playerRef = e;
+
 	return e;
 }
 
-void EntityList::update(const sf::Time & dTime) {
+void EntityList::update(const sf::Time& dTime) {
+	_playerRef->update(dTime);
+
 	for (Entity* entity : entities) {
 		entity->update(dTime);
 	}
@@ -61,11 +61,15 @@ void EntityList::render(sf::RenderWindow* window, const sf::Time& dTime) {
 	for (Entity* entity : entities) {
 		entity->render(window, dTime);
 	}
+
+	_playerRef->render(window, dTime);
 }
 
 Entity* EntityList::getPlayer() const {
-	for (Entity* entity : entities) {
-		if (entity->getType() == "player")
-			return entity;
-	}
+	//for (Entity* entity : entities) {
+	//	if (entity->getType() == "player")
+	//		return entity;
+	//}
+
+	return _playerRef;
 }

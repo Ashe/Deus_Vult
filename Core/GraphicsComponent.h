@@ -26,19 +26,22 @@ public:
 	void changeAnimation(const std::string&);
 
 private:
-	TransformComponent* _transform;
-
+	// Sprite details
 	std::string _filename;
 	sf::Texture _texture;
+	int _spriteWidth = 32;
+	int _spriteHeight = 32;
 
-	int _frameTime = 0;
-
+	// Animations
 	AnimatedSprite _animatedSprite;
 	Animation _currentAnimation = Animation();
 	std::map<std::string, Animation> _animationList;
+	int _frameTime = 0;
 
-	int _spriteWidth = 32;
-	int _spriteHeight = 32;
+	sf::Color _outline;
+	float _outlineThickness;
+
+	TransformComponent* _transform;
 
 	bool setTexture();
 	void setAnimations(sol::table&);

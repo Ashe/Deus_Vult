@@ -1,12 +1,12 @@
 player = {
 	ControllerComponent = {},
     GraphicsComponent = {
-        filename = "img/BlackKnight.png",
+        filename = "img/warrior.png",
 		size = {32, 32},
 		defaultAnim = "idle",
 		animations = {
 			idle = {
-				frameTime = 70,
+				frameTime =100,
 				animation = {
 					{0, 0},
 					{32, 0},

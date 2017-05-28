@@ -15,10 +15,9 @@ public:
 	Entity* getPlayer() const;
 private:
 	std::vector<Entity*> entities;
+	Entity* _playerRef;
 	//sol::state _lua;
 	//std::vector<std::unique_ptr<Entity>> entities;
-
-	bool test = false;
 };
 
 #endif

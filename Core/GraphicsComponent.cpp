@@ -17,7 +17,7 @@ GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Co
 		if (componentTable["size"][2])
 			_spriteHeight = componentTable["size"][2];
 
-		_animatedSprite.setOrigin(_spriteWidth / 2, 0);
+		_animatedSprite.setOrigin(_spriteWidth / 2, _spriteHeight / 2);
 
 		if (!setTexture())
 			return;
@@ -54,9 +54,32 @@ void GraphicsComponent::render(sf::RenderWindow* window, const sf::Time& dTime) 
 		if (_frameTime > 0) {
 			_animatedSprite.update(dTime);
 		}
-		_animatedSprite.setPosition(_transform->_position);
+
 		_animatedSprite.setScale((!_transform->_flipX * 2 - 1) * _transform->_scale.x, (!_transform->_flipY * 2 - 1) * _transform->_scale.y);
+
+		_outline = sf::Color(255, 0, 0, 100);
+		_outlineThickness = 5;
+
+		if (_outlineThickness > 0 && _outline.a > 0) {
+			_animatedSprite.setColor(sf::Color(255, 0, 0, 100));
+
+			_animatedSprite.setPosition(_transform->_position.x + _outlineThickness, _transform->_position.y);
+			window->draw(_animatedSprite);
+
+			_animatedSprite.setPosition(_transform->_position.x - _outlineThickness, _transform->_position.y);
+			window->draw(_animatedSprite);
+
+			_animatedSprite.setPosition(_transform->_position.x, _transform->_position.y + _outlineThickness);
+			window->draw(_animatedSprite);
+
+			_animatedSprite.setPosition(_transform->_position.x, _transform->_position.y - _outlineThickness);
+			window->draw(_animatedSprite);
+		}
+
+		_animatedSprite.setColor(sf::Color(255, 255, 255, 255));
+		_animatedSprite.setPosition(_transform->_position);
 		window->draw(_animatedSprite);
+
 		return;
 	}
 
