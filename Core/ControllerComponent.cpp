@@ -18,7 +18,7 @@ void ControllerComponent::addDirLeft() {
 	// If there's no movementComponent, try again
 	_movementComponent = _owner->get<MovementComponent>();
 	_movementComponent->_direction -= 1;
-	printf("No MovementComponent found on moveLeft. Trying again..\n");
+	//printf("No MovementComponent found on moveLeft. Trying again..\n");
 	//addDirLeft();
 }
 
@@ -33,6 +33,6 @@ void ControllerComponent::addDirRight() {
 	// If there's no movementComponent, try again
 	_movementComponent = _owner->get<MovementComponent>();
 	_movementComponent->_direction += 1;
-	printf("No MovementComponent found on moveRight. Trying again..\n");
+	//printf("No MovementComponent found on moveRight. Trying again..\n");
 	//addDirRight();
 }

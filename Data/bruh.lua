@@ -52,7 +52,7 @@ bruh = {
 	OutlineComponent = {
 		thickness = 8,
 		colour = {255, 0, 0, 200},
-		distanceStrong = 50,
-		distanceWeak = 300
+		distanceStrong = 150,
+		distanceWeak = 350
     }
 }
