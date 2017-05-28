@@ -30,6 +30,7 @@
     <ClCompile Include="Core\Game.cpp" />
     <ClCompile Include="Core\MovementComponent.cpp" />
     <ClCompile Include="Core\NpcComponent.cpp" />
+    <ClCompile Include="Core\OutlineComponent.cpp" />
     <ClCompile Include="Core\TransformComponent.cpp" />
     <ClCompile Include="Core\Scripts.cpp" />
     <ClCompile Include="Game\Controller.cpp" />
@@ -46,6 +47,7 @@
     <ClInclude Include="Core\GraphicsComponent.h" />
     <ClInclude Include="Core\InputManager.h" />
     <ClInclude Include="Core\MovementComponent.h" />
+    <ClInclude Include="Core\OutlineComponent.h" />
     <ClInclude Include="Core\TransformComponent.h" />
     <ClInclude Include="Core\Screen.h" />
     <ClInclude Include="Core\Scripts.h" />

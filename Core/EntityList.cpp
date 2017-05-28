@@ -1,5 +1,7 @@
 #include "EntityList.h"
 
+Entity* EntityList::_playerRef = NULL;
+
 Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& type) {
 	sol::state_view _lua(ts);
 
@@ -17,6 +19,10 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 		if (componentName == "GraphicsComponent") {
 			sol::table gcTable = value.as<sol::table>();
 			addComponent<GraphicsComponent>(e, gcTable);
+		}
+		else if (componentName == "OutlineComponent") {
+			sol::table pcTable = value.as<sol::table>();
+			addComponent<OutlineComponent>(e, pcTable);
 		}
 		else if (componentName == "TransformComponent") {
 			sol::table pcTable = value.as<sol::table>();
@@ -63,13 +69,4 @@ void EntityList::render(sf::RenderWindow* window, const sf::Time& dTime) {
 	}
 
 	_playerRef->render(window, dTime);
-}
-
-Entity* EntityList::getPlayer() const {
-	//for (Entity* entity : entities) {
-	//	if (entity->getType() == "player")
-	//		return entity;
-	//}
-
-	return _playerRef;
 }

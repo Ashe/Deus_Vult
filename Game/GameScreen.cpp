@@ -23,6 +23,8 @@ bool GameScreen::update(const sf::Time& dTime) {
 }
 
 void GameScreen::render(const sf::Time& dTime) {
+	sf::Vector2f pos = _entities.getPlayer()->get<TransformComponent>()->_position;
+	_window->setView(sf::View(pos, _window->getView().getSize()));
 	_entities.render(_window, dTime);
 }
 

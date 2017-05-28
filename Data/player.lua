@@ -37,6 +37,10 @@ player = {
 			}
 		}
     },
+	OutlineComponent = {
+		thickness = 5,
+		colour = {100, 100, 255, 200},
+    },
 	TransformComponent = {
 		position = {
 			100, 300

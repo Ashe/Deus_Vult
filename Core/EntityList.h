@@ -12,10 +12,10 @@ public:
 	void update(const sf::Time& dTime);
 	void render(sf::RenderWindow*, const sf::Time& dTime);
 
-	Entity* getPlayer() const;
+	static Entity* getPlayer() { return _playerRef; }
 private:
+	static Entity* _playerRef;
 	std::vector<Entity*> entities;
-	Entity* _playerRef;
 	//sol::state _lua;
 	//std::vector<std::unique_ptr<Entity>> entities;
 };

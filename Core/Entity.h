@@ -8,6 +8,7 @@
 #include "Scripts.h"
 
 #include "GraphicsComponent.h"
+#include "OutlineComponent.h"
 #include "TransformComponent.h"
 #include "MovementComponent.h"
 #include "NpcComponent.h"

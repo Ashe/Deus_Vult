@@ -6,8 +6,9 @@
 #include "Component.h"
 #include "SFML\Graphics.hpp"
 
-#include "AnimatedSprite.hpp"
+#include "OutlineComponent.h"
 #include "TransformComponent.h"
+#include "AnimatedSprite.hpp"
 
 class GraphicsComponent : public Component {
 public:
@@ -31,6 +32,7 @@ private:
 	sf::Texture _texture;
 	int _spriteWidth = 32;
 	int _spriteHeight = 32;
+	sf::Color _spriteColour;
 
 	// Animations
 	AnimatedSprite _animatedSprite;
@@ -38,14 +40,15 @@ private:
 	std::map<std::string, Animation> _animationList;
 	int _frameTime = 0;
 
-	sf::Color _outline;
-	float _outlineThickness;
-
+	// Component links
 	TransformComponent* _transform;
+	OutlineComponent* _outline;
+	float _outlineThickness;
+	bool _noOutline;
 
 	bool setTexture();
 	void setAnimations(sol::table&);
-
+	void drawOutline(sf::RenderWindow*);
 };
 
 #endif

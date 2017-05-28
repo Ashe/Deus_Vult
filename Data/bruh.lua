@@ -47,6 +47,12 @@ bruh = {
 		rotation = 0
 	},
     NpcComponent = {
-        phrase = "Bruh."
+        phrase = "Bruh.",
+	},
+	OutlineComponent = {
+		thickness = 8,
+		colour = {255, 0, 0, 200},
+		distanceStrong = 50,
+		distanceWeak = 300
     }
 }
