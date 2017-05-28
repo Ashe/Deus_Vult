@@ -34,7 +34,7 @@ private:
 	int _frameTime = 0;
 
 	AnimatedSprite _animatedSprite;
-	Animation& _currentAnimation = Animation();
+	Animation _currentAnimation = Animation();
 	std::map<std::string, Animation> _animationList;
 
 	int _spriteWidth = 32;

@@ -1,5 +1,4 @@
-player = {
-	ControllerComponent = {},
+bruh = {
     GraphicsComponent = {
         filename = "img/BlackKnight.png",
 		size = {32, 32},
@@ -39,18 +38,15 @@ player = {
     },
 	TransformComponent = {
 		position = {
-			100, 300
+			500, 300
 		},
+		flipX = true,
 		scale = {
 			5, 5
 		}, 
 		rotation = 0
 	},
-	MovementComponent = {
-		maxspeed = 1,
-		acceleration = 5
-	},
     NpcComponent = {
-        phrase = "I'm a knight! GRR!"
+        phrase = "Bruh."
     }
 }

@@ -117,5 +117,6 @@
   <ItemGroup>
     <None Include="Data\makePlayer.lua" />
     <None Include="Data\player.lua" />
+    <None Include="Data\bruh.lua" />
   </ItemGroup>
 </Project>

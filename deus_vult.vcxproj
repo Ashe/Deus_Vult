@@ -55,6 +55,7 @@
     <ClInclude Include="Core\NpcComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\bruh.lua" />
     <None Include="Data\player.lua" />
     <None Include="Data\makePlayer.lua" />
   </ItemGroup>

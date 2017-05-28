@@ -25,7 +25,6 @@ GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Co
 		sol::table animations = componentTable["animations"];
 		if (animations) {
 			setAnimations(animations);
-			_frameTime = componentTable["frameTime"];
 
 			changeAnimation(_animationList.begin()->first);
 			auto animRef = componentTable["defaultAnim"];
@@ -67,10 +66,15 @@ void GraphicsComponent::render(sf::RenderWindow* window, const sf::Time& dTime) 
 
 void GraphicsComponent::changeAnimation(const std::string& animName) {
 	if (_animationList.count(animName)) {
-		_currentAnimation = _animationList[animName];
-		_frameTime = _currentAnimation._frameTime;
-		_animatedSprite.setFrameTime(sf::milliseconds(_frameTime));
-		_animatedSprite.play(_currentAnimation);
+		if (_animationList[animName] != _currentAnimation) {
+			// If the animation is new, restart it (so attacks and jumps aren't screwed)
+			_currentAnimation = _animationList[animName];
+			_frameTime = _currentAnimation._frameTime;
+			_animatedSprite.setFrameTime(sf::milliseconds(_frameTime));
+			_animatedSprite.stop();
+			_animatedSprite.play(_currentAnimation);
+			//printf("%s: Animation changed to: %s.\n", _owner->getType().c_str(), animName.c_str());
+		}
 		return;
 	}
 
@@ -91,6 +95,7 @@ void GraphicsComponent::setAnimations(sol::table & animationTable) {
 		sol::table frameTable = detailsTable["animation"];
 
 		Animation animation = Animation(frameTime);
+		animation._name = animationName;
 		animation.setSpriteSheet(_texture);
 
 		for (int i = frameTable.size(); i > 0; i--) {

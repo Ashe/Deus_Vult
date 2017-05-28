@@ -28,4 +28,14 @@ TransformComponent::TransformComponent(Entity* e, sol::table& componentTable) : 
 		_rotation = componentTable["rotation"];
 	else
 		_rotation = 0;
+
+	if (componentTable["flipX"])
+		_flipX = componentTable["flipX"];
+	else
+		_flipX = false;
+
+	if (componentTable["flipY"])
+		_flipY = componentTable["flipY"];
+	else
+		_flipY = false;
 }

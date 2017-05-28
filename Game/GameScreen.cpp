@@ -9,12 +9,9 @@ void GameScreen::init() {
 
 	lua.set_function("loadEntity",&EntityList::loadEntity, &_entities);
 	luah::loadScript(lua, "player.lua");
+	luah::loadScript(lua, "bruh.lua");
 
 	luah::loadScript(lua, "makePlayer.lua");
-	Entity* e = lua["obj"];
-
-	auto npcc = e->get<NpcComponent>();
-	printf("%s says: %s\n", e->getType().c_str(), npcc->getPhrase().c_str());
 
 	_controller.initialise(&_input);
 }

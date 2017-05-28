@@ -8,6 +8,7 @@ ControllerComponent::ControllerComponent(Entity* e, sol::table & componentTable)
 }
 
 void ControllerComponent::addDirLeft() {
+
 	if (_movementComponent) {
 		_movementComponent->_direction -= 1;
 		//printf("\tMove Left,  direction: %d\n", _movementComponent->_direction);
@@ -22,6 +23,7 @@ void ControllerComponent::addDirLeft() {
 }
 
 void ControllerComponent::addDirRight() {
+
 	if (_movementComponent) {
 		_movementComponent->_direction += 1;
 		//printf("\tMove Right, direction: %d\n", _movementComponent->_direction);

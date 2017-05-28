@@ -39,8 +39,15 @@ public:
 	std::size_t getSize() const;
 	const sf::IntRect& getFrame(std::size_t n) const;
 
-	bool _flipX;
+	std::string _name;
 	float _frameTime;
+
+	bool operator==(const Animation& other) {
+		return other._name == _name;
+	}
+	bool operator!=(const Animation& other) {
+		return other._name != _name;
+	}
 
 private:
 	std::vector<sf::IntRect> m_frames;

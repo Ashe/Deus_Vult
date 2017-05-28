@@ -22,8 +22,8 @@ void MovementComponent::update(const sf::Time& dTime) {
 		switch (_direction) {
 		case -1:
 		case 1:
-
 			_transform->_flipX = (_direction < 0);
+
 			_graphics->changeAnimation("walk");
 
 			// If moving in a direction, accelerate
@@ -37,7 +37,6 @@ void MovementComponent::update(const sf::Time& dTime) {
 
 			break;
 		case 0:
-
 			_graphics->changeAnimation("idle");
 
 			// If 0, then you are slowing down to 0
