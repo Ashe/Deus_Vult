@@ -135,8 +135,9 @@ void GraphicsComponent::setAnimations(sol::table & animationTable) {
 		animation._name = animationName;
 		animation.setSpriteSheet(_texture);
 
-		for (int i = frameTable.size(); i > 0; i--) {
-			std::pair<sol::object, sol::object> table = frameTable[i];
+		for (auto table : frameTable) {
+		/*for (int i = frameTable.size(); i > 0; i--) {
+			std::pair<sol::object, sol::object> table = frameTable[i];*/
 			sf::IntRect frame;
 			sol::table position = table.second.as<sol::table>();
 			frame = sf::IntRect( position[1], position[2], _spriteWidth, _spriteHeight);
