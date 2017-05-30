@@ -1,5 +1,5 @@
 #include "MovementComponent.h"
-#include "Entity.h"
+#include "..\Common\Entity.h"
 
 #include <sol.hpp>
 

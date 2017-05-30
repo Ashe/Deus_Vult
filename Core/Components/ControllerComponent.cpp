@@ -1,6 +1,6 @@
 #include "ControllerComponent.h"
 
-#include "Entity.h"
+#include "..\Common\Entity.h"
 
 ControllerComponent::ControllerComponent(Entity* e, sol::table & componentTable) : Component(e) {
 	_movementComponent = _owner->get<MovementComponent>();

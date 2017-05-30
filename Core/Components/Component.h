@@ -3,6 +3,8 @@
 
 class Entity;
 
+#include <assert.h>
+
 class Component {
 public:
 	Component(Entity* owner) : _owner(owner) {

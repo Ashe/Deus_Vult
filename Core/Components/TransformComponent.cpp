@@ -1,4 +1,5 @@
 #include "TransformComponent.h"
+#include "sol.hpp"
 
 TransformComponent::TransformComponent(Entity* e, sol::table& componentTable) : Component(e) {
 	if (componentTable["position"]) {

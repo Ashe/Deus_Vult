@@ -5,14 +5,14 @@
 #include <string>
 #include <typeindex>
 
-#include "Scripts.h"
+#include "..\Common\Scripts.h"
 
-#include "GraphicsComponent.h"
-#include "OutlineComponent.h"
-#include "TransformComponent.h"
-#include "MovementComponent.h"
-#include "NpcComponent.h"
-#include "ControllerComponent.h"
+#include "..\Components\GraphicsComponent.h"
+#include "..\Components\OutlineComponent.h"
+#include "..\Components\TransformComponent.h"
+#include "..\Components\MovementComponent.h"
+#include "..\Components\NpcComponent.h"
+#include "..\Components\ControllerComponent.h"
 
 // Forward declaration
 class Component;

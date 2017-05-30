@@ -1,7 +1,7 @@
 #ifndef ENTITYLIST_H
 #define ENTITYLIST_H
 
-#include "Entity.h"
+#include "..\Common\Entity.h"
 #include <vector>
 
 class EntityList {

@@ -1,4 +1,5 @@
 #include "GameScreen.h"
+#include "../Core/ResourceManagers/ResourceManager.h"
 
 GameScreen::GameScreen(sf::RenderWindow* window)
 	:_window(window) {}
@@ -14,6 +15,8 @@ void GameScreen::init() {
 	luah::loadScript(lua, "makePlayer.lua");
 
 	_controller.initialise(&_input);
+
+	//VisualManager::releaseData();
 }
 
 bool GameScreen::update(const sf::Time& dTime) {

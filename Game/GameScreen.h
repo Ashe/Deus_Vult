@@ -1,11 +1,11 @@
 #ifndef GAMESCREEN_H
 #define GAMESCREEN_H
 
-#include "..\Core\Screen.h"
+#include "..\Core\Common\Screen.h"
 
-#include "..\Core\Scripts.h"
-#include "..\Core\EntityList.h"
-#include "..\Core\InputManager.h"
+#include "..\Core\Common\Scripts.h"
+#include "..\Core\ResourceManagers\EntityList.h"
+#include "..\Core\ResourceManagers\InputManager.h"
 
 #include "Controller.h"
 

@@ -2,10 +2,10 @@
 #define TRANSFORMCOMPONENT_H
 
 #include <string>
-#include "Scripts.h"
 #include "Component.h"
 
 #include "SFML\Graphics.hpp"
+#include "sol.hpp"
 
 class TransformComponent : public Component {
 public:

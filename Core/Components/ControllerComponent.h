@@ -2,7 +2,7 @@
 #define CONTROLLERCOMPONENT_H
 
 #include <string>
-#include "Scripts.h"
+#include "..\Common\Scripts.h"
 #include "Component.h"
 
 #include "MovementComponent.h"

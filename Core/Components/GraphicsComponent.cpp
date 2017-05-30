@@ -1,7 +1,9 @@
 #include "GraphicsComponent.h"
 #include <sol.hpp>
 
-#include "Entity.h"
+#include "..\Common\Entity.h"
+
+#include "..\ResourceManagers\ResourceManager.h"
 
 GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Component(e) {
 	_transform = _owner->get<TransformComponent>();
@@ -59,7 +61,7 @@ GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Co
 		else {
 			_frameTime = 0;
 			Animation animation;
-			animation.setSpriteSheet(_texture);
+			animation.setSpriteSheet(*_texture);
 			animation.addFrame(sf::IntRect(0, 0, _spriteWidth, _spriteHeight));
 			_animationList["default"] = animation;
 			changeAnimation("default");
@@ -133,7 +135,7 @@ void GraphicsComponent::setAnimations(sol::table & animationTable) {
 
 		Animation animation = Animation(frameTime);
 		animation._name = animationName;
-		animation.setSpriteSheet(_texture);
+		animation.setSpriteSheet(*_texture);
 
 		for (auto table : frameTable) {
 		/*for (int i = frameTable.size(); i > 0; i--) {
@@ -149,9 +151,9 @@ void GraphicsComponent::setAnimations(sol::table & animationTable) {
 }
 
 bool GraphicsComponent::setTexture(){
-	if (_texture.loadFromFile(_filename)){
+	_texture = ResourceManager::getTex(_filename);
+	if (_texture)
 		return true;
-	}
 
 	printf("Error, could not load %s!\n", _filename.c_str());
 	return false;

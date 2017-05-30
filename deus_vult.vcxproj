@@ -19,42 +19,44 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Core\AnimatedSprite.cpp" />
-    <ClCompile Include="Core\Animation.cpp" />
-    <ClCompile Include="Core\ControllerComponent.cpp" />
-    <ClCompile Include="Core\Entity.cpp" />
-    <ClCompile Include="Core\EntityList.cpp" />
-    <ClCompile Include="Core\GraphicsComponent.cpp" />
-    <ClCompile Include="Core\InputManager.cpp" />
-    <ClCompile Include="Core\main.cpp" />
-    <ClCompile Include="Core\Game.cpp" />
-    <ClCompile Include="Core\MovementComponent.cpp" />
-    <ClCompile Include="Core\NpcComponent.cpp" />
-    <ClCompile Include="Core\OutlineComponent.cpp" />
-    <ClCompile Include="Core\TransformComponent.cpp" />
-    <ClCompile Include="Core\Scripts.cpp" />
+    <ClCompile Include="Core\Animation\AnimatedSprite.cpp" />
+    <ClCompile Include="Core\Animation\Animation.cpp" />
+    <ClCompile Include="Core\Components\ControllerComponent.cpp" />
+    <ClCompile Include="Core\Components\GraphicsComponent.cpp" />
+    <ClCompile Include="Core\Components\MovementComponent.cpp" />
+    <ClCompile Include="Core\Components\NpcComponent.cpp" />
+    <ClCompile Include="Core\Components\OutlineComponent.cpp" />
+    <ClCompile Include="Core\Components\TransformComponent.cpp" />
+    <ClCompile Include="Core\Common\Entity.cpp" />
+    <ClCompile Include="Core\ResourceManagers\EntityList.cpp" />
+    <ClCompile Include="Core\ResourceManagers\InputManager.cpp" />
+    <ClCompile Include="Core\Common\main.cpp" />
+    <ClCompile Include="Core\Common\Game.cpp" />
+    <ClCompile Include="Core\ResourceManagers\ResourceManager.cpp" />
+    <ClCompile Include="Core\Common\Scripts.cpp" />
     <ClCompile Include="Game\Controller.cpp" />
     <ClCompile Include="Game\GameScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\AnimatedSprite.hpp" />
-    <ClInclude Include="Core\Animation.hpp" />
-    <ClInclude Include="Core\Component.h" />
-    <ClInclude Include="Core\ControllerComponent.h" />
-    <ClInclude Include="Core\Entity.h" />
-    <ClInclude Include="Core\EntityList.h" />
-    <ClInclude Include="Core\Game.h" />
-    <ClInclude Include="Core\GraphicsComponent.h" />
-    <ClInclude Include="Core\InputManager.h" />
-    <ClInclude Include="Core\MovementComponent.h" />
-    <ClInclude Include="Core\OutlineComponent.h" />
-    <ClInclude Include="Core\TransformComponent.h" />
-    <ClInclude Include="Core\Screen.h" />
-    <ClInclude Include="Core\Scripts.h" />
+    <ClInclude Include="Core\Animation\AnimatedSprite.hpp" />
+    <ClInclude Include="Core\Animation\Animation.hpp" />
+    <ClInclude Include="Core\Components\Component.h" />
+    <ClInclude Include="Core\Components\ControllerComponent.h" />
+    <ClInclude Include="Core\Components\GraphicsComponent.h" />
+    <ClInclude Include="Core\Components\MovementComponent.h" />
+    <ClInclude Include="Core\Components\NpcComponent.h" />
+    <ClInclude Include="Core\Components\OutlineComponent.h" />
+    <ClInclude Include="Core\Components\TransformComponent.h" />
+    <ClInclude Include="Core\Common\Entity.h" />
+    <ClInclude Include="Core\ResourceManagers\EntityList.h" />
+    <ClInclude Include="Core\Common\Game.h" />
+    <ClInclude Include="Core\ResourceManagers\InputManager.h" />
+    <ClInclude Include="Core\ResourceManagers\ResourceManager.h" />
+    <ClInclude Include="Core\Common\Screen.h" />
+    <ClInclude Include="Core\Common\Scripts.h" />
     <ClInclude Include="Game\Controller.h" />
     <ClInclude Include="Game\EntityExtra.h" />
     <ClInclude Include="Game\GameScreen.h" />
-    <ClInclude Include="Core\NpcComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\bruh.lua" />

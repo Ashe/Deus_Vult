@@ -1,4 +1,4 @@
-#include "..\Core\Entity.h"
+#include "..\Core\Common\Entity.h"
 
 // Entity Interaction Functions
 namespace EntInt {

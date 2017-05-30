@@ -2,13 +2,13 @@
 #define GRAPHICSCOMPONENT_H
 
 #include <string>
-#include "Scripts.h"
+#include "..\Common\Scripts.h"
 #include "Component.h"
 #include "SFML\Graphics.hpp"
 
 #include "OutlineComponent.h"
 #include "TransformComponent.h"
-#include "AnimatedSprite.hpp"
+#include "..\Animation\AnimatedSprite.hpp"
 
 class GraphicsComponent : public Component {
 public:
@@ -29,7 +29,7 @@ public:
 private:
 	// Sprite details
 	std::string _filename;
-	sf::Texture _texture;
+	sf::Texture* _texture;
 	int _spriteWidth = 32;
 	int _spriteHeight = 32;
 	sf::Color _spriteColour;

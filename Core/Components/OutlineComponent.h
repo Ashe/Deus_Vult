@@ -2,7 +2,7 @@
 #define OUTLINECOMPONENT_H
 
 #include <string>
-#include "Scripts.h" 
+#include "..\Common\Scripts.h" 
 #include "Component.h"
 
 #include "SFML\Graphics.hpp"

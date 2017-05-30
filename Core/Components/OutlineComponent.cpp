@@ -1,6 +1,6 @@
 #include "OutlineComponent.h"
 
-#include "EntityList.h"
+#include "..\ResourceManagers\EntityList.h"
 
 OutlineComponent::OutlineComponent(Entity * e, sol::table & componentTable) : Component(e) {
 	// Set outline thickness
