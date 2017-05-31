@@ -4,18 +4,22 @@
 #include "..\Common\Entity.h"
 #include <vector>
 
-class EntityList {
+static class EntityList {
 public:
 	//EntityList(sol::state& lua) : _lua(lua) {}
-	Entity* loadEntity(const sol::this_state& ts, const std::string& type);
+	static Entity* loadEntity(const sol::this_state& ts, const std::string& type);
 
-	void update(const sf::Time& dTime);
-	void render(sf::RenderWindow*, const sf::Time& dTime);
+	static void update(const sf::Time& dTime);
+	static void render(sf::RenderWindow*, const sf::Time& dTime);
 
 	static Entity* getPlayer() { return _playerRef; }
+	static Entity* getClosestInteractive();
+	static void interactWithClosest();
 private:
 	static Entity* _playerRef;
-	std::vector<Entity*> entities;
+	static std::vector<Entity*> _entities;
+
+	static std::vector<Entity*> _interactiveEntities;
 	//sol::state _lua;
 	//std::vector<std::unique_ptr<Entity>> entities;
 };

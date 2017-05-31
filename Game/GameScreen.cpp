@@ -8,7 +8,7 @@ void GameScreen::init() {
 	sol::state lua;
 	lua.open_libraries();
 
-	lua.set_function("loadEntity",&EntityList::loadEntity, &_entities);
+	lua.set_function("loadEntity", &EntityList::loadEntity);
 	luah::loadScript(lua, "player.lua");
 	luah::loadScript(lua, "bruh.lua");
 
@@ -25,15 +25,15 @@ void GameScreen::init() {
 
 bool GameScreen::update(const sf::Time& dTime) {
 
-	_entities.update(dTime);
+	EntityList::update(dTime);
 	return false;
 }
 
 void GameScreen::render(const sf::Time& dTime) {
-	sf::Vector2f pos = _entities.getPlayer()->get<TransformComponent>()->_position;
+	sf::Vector2f pos = EntityList::getPlayer()->get<TransformComponent>()->_position;
 	_window->setView(sf::View(pos, _window->getView().getSize()));
 
-	_entities.render(_window, dTime);
+	EntityList:: render(_window, dTime);
 
 	_window->draw(text);
 }

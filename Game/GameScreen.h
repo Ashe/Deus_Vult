@@ -22,8 +22,7 @@ private:
 	sf::RenderWindow* _window;
 	InputManager _input;
 
-	EntityList _entities;
-	Controller _controller = Controller(&_entities);
+	Controller _controller;
 
 	sf::Font font;
 	sf::Text text;

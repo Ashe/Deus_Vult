@@ -17,11 +17,23 @@ NpcComponent::NpcComponent(Entity* e, sol::table& NpcTable) : Component(e) {
 		_facePlayer = NpcTable["facePlayer"];
 	}
 
+	_range = 0;
+	if (NpcTable["range"]) {
+		_range = NpcTable["range"];
+	}
+
 	_sensoryComponent = _owner->get<SensoryComponent>();
 	_transform = _owner->get<TransformComponent>();
 
 	// Add update function to functionlist
 	_owner->addUpdateFunction([this](const sf::Time&dTime) {update(dTime);});
+
+	// Add interact function to functionlist
+	_owner->addInteractFunction([this]() {printPhrase(); });
+}
+
+void NpcComponent::printPhrase() {
+	printf("%s\n", _phrase.c_str());
 }
 
 void NpcComponent::update(const sf::Time& dTime) {

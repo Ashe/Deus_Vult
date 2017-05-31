@@ -1,6 +1,8 @@
 #include "EntityList.h"
 
 Entity* EntityList::_playerRef = NULL;
+std::vector<Entity*> EntityList::_entities;
+std::vector<Entity*> EntityList::_interactiveEntities;
 
 Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& type) {
 	sol::state_view _lua(ts);
@@ -23,6 +25,11 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 		else if (componentName == "SensoryComponent") {
 			sol::table scTable = value.as<sol::table>();
 			addComponent<SensoryComponent>(e, scTable);
+		}
+		else if (componentName == "InteractionComponent") {
+			sol::table icTable = value.as<sol::table>();
+			_interactiveEntities.push_back(e);
+			addComponent<InteractionComponent>(e, icTable);
 		}
 		else if (componentName == "OutlineComponent") {
 			sol::table pcTable = value.as<sol::table>();
@@ -52,7 +59,7 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 	//entities.push_back(std::move(e));
 
 	if (type != "player")
-		entities.push_back(e);
+		_entities.push_back(e);
 	else
 		_playerRef = e;
 
@@ -62,15 +69,43 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 void EntityList::update(const sf::Time& dTime) {
 	_playerRef->update(dTime);
 
-	for (Entity* entity : entities) {
+	for (Entity* entity : _entities) {
 		entity->update(dTime);
 	}
 }
 
 void EntityList::render(sf::RenderWindow* window, const sf::Time& dTime) {
-	for (Entity* entity : entities) {
+	for (Entity* entity : _entities) {
 		entity->render(window, dTime);
 	}
 
 	_playerRef->render(window, dTime);
+}
+
+Entity* EntityList::getClosestInteractive() {
+	Entity* closestEntity = nullptr;
+	float distance = FLT_MAX;
+
+	for (auto entity : _interactiveEntities) {
+		auto transform = entity->get<TransformComponent>();
+		auto playerTransform = getPlayer()->get<TransformComponent>();
+		auto npcComponent = entity->get<NpcComponent>();
+
+		if (npcComponent && transform) {
+			float thisDist = abs(transform->_position.x - playerTransform->_position.x);
+
+			// If within range and smaller than the current record, register
+			if (thisDist < npcComponent->getRange() && thisDist < distance) {
+				distance = thisDist;
+				closestEntity = entity;
+			}
+		}
+	}
+	return closestEntity;
+}
+
+void EntityList::interactWithClosest() {
+	Entity* entity = getClosestInteractive();
+	if (entity != nullptr)
+		entity->interact();
 }

@@ -13,13 +13,9 @@ class NpcComponent : public Component {
 public:
 	NpcComponent(Entity* e, sol::table& componentTable);
 
-	void setPhrase(const std::string& phrase) {
-		this->_phrase = phrase;
-	}
+	void printPhrase();
 
-	std::string getPhrase() const {
-		return _phrase;
-	}
+	float getRange() const { return _range; }
 
 	void update(const sf::Time&);
 
@@ -28,6 +24,8 @@ private:
 
 	std::string _phrase;
 	bool _facePlayer;
+
+	float _range;
 
 	SensoryComponent* _sensoryComponent;
 	TransformComponent* _transform;

@@ -10,12 +10,9 @@ class InputManager;
 
 class Controller {
 public:
-	Controller(EntityList* list) : _list(list) {}
-
 	void initialise(InputManager* const);
 
 private:
-	EntityList* _list;
 	Entity* _player;
 };
 

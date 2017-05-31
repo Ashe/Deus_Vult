@@ -47,7 +47,9 @@ bruh = {
 		rotation = 0
 	},
 	SensoryComponent = {},
+	InteractionComponent = {},
     NpcComponent = {
+		range = 100,
         phrase = "Bruh.",
 		facePlayer = true
 	},
