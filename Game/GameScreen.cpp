@@ -16,7 +16,11 @@ void GameScreen::init() {
 
 	_controller.initialise(&_input);
 
-	//VisualManager::releaseData();
+
+	text.setFont(*ResourceManager::getFont("Data/common/fonts/belgrano/regular.ttf"));
+	text.setString("Fuck bitches, get money.");
+	text.setPosition(115, 155);
+
 }
 
 bool GameScreen::update(const sf::Time& dTime) {
@@ -30,6 +34,8 @@ void GameScreen::render(const sf::Time& dTime) {
 	_window->setView(sf::View(pos, _window->getView().getSize()));
 
 	_entities.render(_window, dTime);
+
+	_window->draw(text);
 }
 
 void GameScreen::handleEvent(const sf::Event& e) {

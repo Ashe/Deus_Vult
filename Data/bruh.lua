@@ -46,8 +46,10 @@ bruh = {
 		}, 
 		rotation = 0
 	},
+	SensoryComponent = {},
     NpcComponent = {
         phrase = "Bruh.",
+		facePlayer = true
 	},
 	OutlineComponent = {
 		thickness = 8,

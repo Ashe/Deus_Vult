@@ -9,6 +9,7 @@
 
 #include "..\Components\GraphicsComponent.h"
 #include "..\Components\OutlineComponent.h"
+#include "..\Components\SensoryComponent.h"
 #include "..\Components\TransformComponent.h"
 #include "..\Components\MovementComponent.h"
 #include "..\Components\NpcComponent.h"
@@ -44,10 +45,15 @@ public:
 
 	void update(const sf::Time&);
 	void render(sf::RenderWindow*, const sf::Time&);
+	void addUpdateFunction(std::function<void(const sf::Time&)>);
+	void addRenderFunction(std::function<void(sf::RenderWindow*, const sf::Time&)>);
 
 private:
 	std::string _type;
 	std::map<std::type_index, Component*> _components;
+
+	std::vector<std::function<void(const sf::Time&)>> _updateFunctions;
+	std::vector<std::function<void(sf::RenderWindow*, const sf::Time&)>> _renderFunctions;
 };
 
 template <typename T>

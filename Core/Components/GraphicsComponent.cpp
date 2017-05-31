@@ -71,6 +71,10 @@ GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Co
 	else {
 		printf("Error, GraphicsComponent.filename is not a string!\n");
 	}
+
+
+	// Add the render function to the list of functions to render
+	_owner->addRenderFunction([this](sf::RenderWindow* window, const sf::Time&dTime) {render(window, dTime); });
 }
 
 void GraphicsComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
@@ -120,6 +124,10 @@ void GraphicsComponent::changeAnimation(const std::string& animName) {
 	printf("No animations with %s found.\n", animName.c_str());
 }
 
+sf::Vector2i GraphicsComponent::getSize() const {
+	return sf::Vector2i(_spriteWidth, _spriteHeight);
+}
+
 void GraphicsComponent::setAnimations(sol::table & animationTable) {
 	for (auto key_value_pair : animationTable) {
 		std::string animationName = key_value_pair.first.as<std::string>();
@@ -151,7 +159,7 @@ void GraphicsComponent::setAnimations(sol::table & animationTable) {
 }
 
 bool GraphicsComponent::setTexture(){
-	_texture = ResourceManager::getTex(_filename);
+	_texture = ResourceManager::getTexture(_filename);
 	if (_texture)
 		return true;
 

@@ -20,6 +20,10 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 			sol::table gcTable = value.as<sol::table>();
 			addComponent<GraphicsComponent>(e, gcTable);
 		}
+		else if (componentName == "SensoryComponent") {
+			sol::table scTable = value.as<sol::table>();
+			addComponent<SensoryComponent>(e, scTable);
+		}
 		else if (componentName == "OutlineComponent") {
 			sol::table pcTable = value.as<sol::table>();
 			addComponent<OutlineComponent>(e, pcTable);

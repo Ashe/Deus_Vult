@@ -7,6 +7,7 @@
 
 #include "SFML\Graphics.hpp"
 #include "TransformComponent.h"
+#include "SensoryComponent.h"
 
 class OutlineComponent : public Component {
 public:
@@ -22,7 +23,7 @@ public:
 	sf::Color getOutlineColour();
 
 private:
-	TransformComponent* _playerPosition;
+	SensoryComponent* _sensor;
 	TransformComponent* _thisPosition;
 };
 

@@ -23,9 +23,11 @@
     <ClCompile Include="Core\Animation\Animation.cpp" />
     <ClCompile Include="Core\Components\ControllerComponent.cpp" />
     <ClCompile Include="Core\Components\GraphicsComponent.cpp" />
+    <ClCompile Include="Core\Components\InteractionComponent.cpp" />
     <ClCompile Include="Core\Components\MovementComponent.cpp" />
     <ClCompile Include="Core\Components\NpcComponent.cpp" />
     <ClCompile Include="Core\Components\OutlineComponent.cpp" />
+    <ClCompile Include="Core\Components\SensoryComponent.cpp" />
     <ClCompile Include="Core\Components\TransformComponent.cpp" />
     <ClCompile Include="Core\Common\Entity.cpp" />
     <ClCompile Include="Core\ResourceManagers\EntityList.cpp" />
@@ -43,9 +45,11 @@
     <ClInclude Include="Core\Components\Component.h" />
     <ClInclude Include="Core\Components\ControllerComponent.h" />
     <ClInclude Include="Core\Components\GraphicsComponent.h" />
+    <ClInclude Include="Core\Components\InteractionComponent.h" />
     <ClInclude Include="Core\Components\MovementComponent.h" />
     <ClInclude Include="Core\Components\NpcComponent.h" />
     <ClInclude Include="Core\Components\OutlineComponent.h" />
+    <ClInclude Include="Core\Components\SensoryComponent.h" />
     <ClInclude Include="Core\Components\TransformComponent.h" />
     <ClInclude Include="Core\Common\Entity.h" />
     <ClInclude Include="Core\ResourceManagers\EntityList.h" />

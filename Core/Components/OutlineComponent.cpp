@@ -1,6 +1,5 @@
 #include "OutlineComponent.h"
-
-#include "..\ResourceManagers\EntityList.h"
+#include "..\Common\Entity.h"
 
 OutlineComponent::OutlineComponent(Entity * e, sol::table & componentTable) : Component(e) {
 	// Set outline thickness
@@ -38,9 +37,9 @@ OutlineComponent::OutlineComponent(Entity * e, sol::table & componentTable) : Co
 
 sf::Color OutlineComponent::getOutlineColour() {
 
-	if (_playerPosition && _thisPosition) {
+	if (_sensor && _thisPosition) {
 		// If there's a player position, base the outline on it
-		float distance = abs(_playerPosition->_position.x - _thisPosition->_position.x);
+		float distance = abs(_sensor->getPlayerPos().x - _thisPosition->_position.x);
 		if (distance < _distanceWeak) {
 
 			// Easy out for if the distance needs no interpolating
@@ -62,7 +61,7 @@ sf::Color OutlineComponent::getOutlineColour() {
 	}
 
 	// If no player to base outline off nor any other info, return transparent
-	_playerPosition = EntityList::getPlayer()->get<TransformComponent>();
+	_sensor = _owner->get<SensoryComponent>();
 	_thisPosition = _owner->get<TransformComponent>();
 	return sf::Color::Transparent;
 }

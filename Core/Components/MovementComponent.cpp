@@ -15,6 +15,9 @@ MovementComponent::MovementComponent(Entity* e, sol::table& mcTable) : Component
 
 	_transform = _owner->get<TransformComponent>();
 	_graphics = _owner->get<GraphicsComponent>();
+
+	// Add update function to functionlist
+	_owner->addUpdateFunction([this](const sf::Time&dTime) {update(dTime); });
 }
 
 void MovementComponent::update(const sf::Time& dTime) {

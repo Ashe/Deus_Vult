@@ -26,6 +26,8 @@ public:
 
 	void changeAnimation(const std::string&);
 
+	sf::Vector2i getSize() const;
+
 private:
 	// Sprite details
 	std::string _filename;

@@ -25,6 +25,9 @@ private:
 	EntityList _entities;
 	Controller _controller = Controller(&_entities);
 
+	sf::Font font;
+	sf::Text text;
+
 };
 
 #endif
