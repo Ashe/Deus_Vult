@@ -1,7 +1,7 @@
 player = {
 	ControllerComponent = {},
     GraphicsComponent = {
-        filename = "img/warrior.png",
+        filename = "common/img/warrior.png",
 		size = {32, 32},
 		defaultAnim = "idle",
 		animations = {

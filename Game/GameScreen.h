@@ -7,7 +7,9 @@
 #include "..\Core\ResourceManagers\EntityList.h"
 #include "..\Core\ResourceManagers\InputManager.h"
 
+#include "LuaFunctions.h"
 #include "Controller.h"
+
 
 class GameScreen : public Screen {
 public:

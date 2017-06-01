@@ -8,19 +8,9 @@ void GameScreen::init() {
 	sol::state lua;
 	lua.open_libraries();
 
-	lua.set_function("loadEntity", &EntityList::loadEntity);
-	luah::loadScript(lua, "player.lua");
-	luah::loadScript(lua, "bruh.lua");
-
-	luah::loadScript(lua, "makePlayer.lua");
+	lfs::loadFunctions(lua);
 
 	_controller.initialise(&_input);
-
-
-	text.setFont(*ResourceManager::getFont("Data/common/fonts/belgrano/regular.ttf"));
-	text.setString("Fuck bitches, get money.");
-	text.setPosition(115, 155);
-
 }
 
 bool GameScreen::update(const sf::Time& dTime) {

@@ -72,15 +72,18 @@
     <ClCompile Include="Core\Components\InteractionComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Game\LuaFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Components\ScriptComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game\Controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\EntityExtra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Core\Components\Component.h">
@@ -137,10 +140,20 @@
     <ClInclude Include="Core\Components\InteractionComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Game\LuaFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Components\ScriptComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\makePlayer.lua" />
     <None Include="Data\player.lua" />
     <None Include="Data\bruh.lua" />
+    <None Include="Data\bruh\bruh.lua" />
+    <None Include="Data\player\player.lua" />
+    <None Include="Data\bruh\interaction.lua" />
+    <None Include="Data\common\scripts\makePlayer.lua" />
   </ItemGroup>
 </Project>

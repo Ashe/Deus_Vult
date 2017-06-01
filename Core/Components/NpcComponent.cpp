@@ -27,9 +27,6 @@ NpcComponent::NpcComponent(Entity* e, sol::table& NpcTable) : Component(e) {
 
 	// Add update function to functionlist
 	_owner->addUpdateFunction([this](const sf::Time&dTime) {update(dTime);});
-
-	// Add interact function to functionlist
-	_owner->addInteractFunction([this]() {printPhrase(); });
 }
 
 void NpcComponent::printPhrase() {

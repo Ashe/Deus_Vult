@@ -1,6 +1,6 @@
 bruh = {
     GraphicsComponent = {
-        filename = "img/rogue.png",
+        filename = "common/img/rogue.png",
 		size = {32, 32},
 		defaultAnim = "idle",
 		animations = {
@@ -49,7 +49,7 @@ bruh = {
 	SensoryComponent = {},
 	InteractionComponent = {},
     NpcComponent = {
-		range = 100,
+		range = 150,
         phrase = "Bruh.",
 		facePlayer = true
 	},
@@ -58,5 +58,8 @@ bruh = {
 		colour = {255, 0, 0, 200},
 		distanceStrong = 150,
 		distanceWeak = 350
-    }
+    },
+	ScriptComponent = {
+		script = "bruh/interaction.lua"
+	}
 }

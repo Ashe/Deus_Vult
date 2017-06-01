@@ -27,6 +27,7 @@
     <ClCompile Include="Core\Components\MovementComponent.cpp" />
     <ClCompile Include="Core\Components\NpcComponent.cpp" />
     <ClCompile Include="Core\Components\OutlineComponent.cpp" />
+    <ClCompile Include="Core\Components\ScriptComponent.cpp" />
     <ClCompile Include="Core\Components\SensoryComponent.cpp" />
     <ClCompile Include="Core\Components\TransformComponent.cpp" />
     <ClCompile Include="Core\Common\Entity.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="Core\Common\Scripts.cpp" />
     <ClCompile Include="Game\Controller.cpp" />
     <ClCompile Include="Game\GameScreen.cpp" />
+    <ClCompile Include="Game\LuaFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Animation\AnimatedSprite.hpp" />
@@ -49,6 +51,7 @@
     <ClInclude Include="Core\Components\MovementComponent.h" />
     <ClInclude Include="Core\Components\NpcComponent.h" />
     <ClInclude Include="Core\Components\OutlineComponent.h" />
+    <ClInclude Include="Core\Components\ScriptComponent.h" />
     <ClInclude Include="Core\Components\SensoryComponent.h" />
     <ClInclude Include="Core\Components\TransformComponent.h" />
     <ClInclude Include="Core\Common\Entity.h" />
@@ -59,13 +62,17 @@
     <ClInclude Include="Core\Common\Screen.h" />
     <ClInclude Include="Core\Common\Scripts.h" />
     <ClInclude Include="Game\Controller.h" />
-    <ClInclude Include="Game\EntityExtra.h" />
+    <ClInclude Include="Game\LuaFunctions.h" />
     <ClInclude Include="Game\GameScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\bruh.lua" />
+    <None Include="Data\bruh\bruh.lua" />
+    <None Include="Data\bruh\interaction.lua" />
+    <None Include="Data\common\scripts\makePlayer.lua" />
     <None Include="Data\player.lua" />
     <None Include="Data\makePlayer.lua" />
+    <None Include="Data\player\player.lua" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BF4003C0-9EEB-403D-8A5C-7119DCE78786}</ProjectGuid>

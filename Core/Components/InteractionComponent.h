@@ -6,6 +6,11 @@
 #include "Component.h"
 
 #include "SFML\Graphics.hpp"
+#include "..\ResourceManagers\ResourceManager.h"
+
+#include "TransformComponent.h"
+#include "SensoryComponent.h"
+#include "NpcComponent.h"
 
 class InteractionComponent : public Component {
 public:
@@ -13,6 +18,12 @@ public:
 
 	void render(sf::RenderWindow*, const sf::Time&);
 private:
+	sf::Text _text;
+
+	TransformComponent* _transform;
+	SensoryComponent* _sensor;
+	NpcComponent* _npc;
+	float _spriteHeight;
 };
 
 #endif // !INTERACTIONCOMPONENT_H

@@ -51,6 +51,11 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 			sol::table ccTable = value.as<sol::table>();
 			addComponent<ControllerComponent>(e, ccTable);
 		}
+		else if (componentName == "ScriptComponent") {
+			sol::table scTable = value.as<sol::table>();
+			addComponent(e, scTable, _lua);
+		}
+
 		printf("Added %s to %s.\n", componentName.c_str(), type.c_str());
 	}
 	printf("-----------------------------\n%s entity loaded.\n-----------------------------\n", type.c_str());
@@ -62,6 +67,8 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 		_entities.push_back(e);
 	else
 		_playerRef = e;
+
+	e->init();
 
 	return e;
 }
