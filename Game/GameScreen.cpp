@@ -5,10 +5,9 @@ GameScreen::GameScreen(sf::RenderWindow* window)
 	:_window(window) {}
 
 void GameScreen::init() {
-	sol::state lua;
-	lua.open_libraries();
+	_lua.open_libraries();
 
-	lfs::loadFunctions(lua);
+	lfs::loadFunctions(_lua);
 
 	_controller.initialise(&_input);
 }

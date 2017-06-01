@@ -1,13 +1,21 @@
-function init()
+local init = function (e)
 print("INIT FUNCTION:")
-printPhrase(this)
+printPhrase(e)
 end
 
---function update(dTime) 
+local update = function(e, dTime) 
 --print("EVERY FRAME SPAM")
---end
-
-function interact()
-print("INTERACT FUNCTION")
-printPhrase(this)
 end
+
+local interact = function (e)
+print("INTERACT FUNCTION")
+printPhrase(e)
+end
+
+local functionsTable = {
+	init = init,
+	update = update,
+	interact = interact
+}
+
+return functionsTable

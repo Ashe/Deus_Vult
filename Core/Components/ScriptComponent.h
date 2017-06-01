@@ -17,6 +17,10 @@ public:
 private:
 	sol::state_view& _lua;
 	std::string _scriptPath;
+
+	sol::function _init;
+	sol::function _update;
+	sol::function _interact;
 };
 
 #endif // !SCRIPTCOMPONENT_H

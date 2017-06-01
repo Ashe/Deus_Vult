@@ -24,6 +24,8 @@ private:
 	sf::RenderWindow* _window;
 	InputManager _input;
 
+	sol::state _lua;
+
 	Controller _controller;
 
 	sf::Font font;
