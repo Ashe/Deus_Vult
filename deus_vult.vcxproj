@@ -68,7 +68,7 @@
   <ItemGroup>
     <None Include="Data\bruh.lua" />
     <None Include="Data\bruh\bruh.lua" />
-    <None Include="Data\bruh\interaction.lua" />
+    <None Include="Data\bruh\script.lua" />
     <None Include="Data\common\scripts\makePlayer.lua" />
     <None Include="Data\player.lua" />
     <None Include="Data\makePlayer.lua" />

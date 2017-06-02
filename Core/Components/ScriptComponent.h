@@ -14,6 +14,9 @@ public:
 	void update(const sf::Time&);
 	void interact();
 
+	void inRange();
+	void outRange();
+
 private:
 	sol::state_view& _lua;
 	std::string _scriptPath;
@@ -21,6 +24,8 @@ private:
 	sol::function _init;
 	sol::function _update;
 	sol::function _interact;
+	sol::function _inRange;
+	sol::function _outRange;
 };
 
 #endif // !SCRIPTCOMPONENT_H

@@ -10,7 +10,6 @@
 
 #include "TransformComponent.h"
 #include "SensoryComponent.h"
-#include "NpcComponent.h"
 
 class InteractionComponent : public Component {
 public:
@@ -22,7 +21,6 @@ private:
 
 	TransformComponent* _transform;
 	SensoryComponent* _sensor;
-	NpcComponent* _npc;
 	float _spriteHeight;
 };
 

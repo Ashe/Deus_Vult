@@ -96,13 +96,13 @@ Entity* EntityList::getClosestInteractive() {
 	for (auto entity : _interactiveEntities) {
 		auto transform = entity->get<TransformComponent>();
 		auto playerTransform = getPlayer()->get<TransformComponent>();
-		auto npcComponent = entity->get<NpcComponent>();
+		auto sensoryComponent = entity->get<SensoryComponent>();
 
-		if (npcComponent && transform) {
+		if (sensoryComponent && transform) {
 			float thisDist = abs(transform->_position.x - playerTransform->_position.x);
 
 			// If within range and smaller than the current record, register
-			if (thisDist < npcComponent->getRange() && thisDist < distance) {
+			if (thisDist < sensoryComponent->getRange() && thisDist < distance) {
 				distance = thisDist;
 				closestEntity = entity;
 			}

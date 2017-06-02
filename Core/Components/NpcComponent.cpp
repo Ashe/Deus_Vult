@@ -17,11 +17,6 @@ NpcComponent::NpcComponent(Entity* e, sol::table& NpcTable) : Component(e) {
 		_facePlayer = NpcTable["facePlayer"];
 	}
 
-	_range = 0;
-	if (NpcTable["range"]) {
-		_range = NpcTable["range"];
-	}
-
 	_sensoryComponent = _owner->get<SensoryComponent>();
 	_transform = _owner->get<TransformComponent>();
 

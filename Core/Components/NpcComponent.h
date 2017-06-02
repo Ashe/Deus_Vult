@@ -15,8 +15,6 @@ public:
 
 	void printPhrase();
 
-	float getRange() const { return _range; }
-
 	void update(const sf::Time&);
 
 	void setFacePlayer(bool);
@@ -24,8 +22,6 @@ private:
 
 	std::string _phrase;
 	bool _facePlayer;
-
-	float _range;
 
 	SensoryComponent* _sensoryComponent;
 	TransformComponent* _transform;

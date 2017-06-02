@@ -153,7 +153,7 @@
     <None Include="Data\bruh.lua" />
     <None Include="Data\bruh\bruh.lua" />
     <None Include="Data\player\player.lua" />
-    <None Include="Data\bruh\interaction.lua" />
     <None Include="Data\common\scripts\makePlayer.lua" />
+    <None Include="Data\bruh\script.lua" />
   </ItemGroup>
 </Project>

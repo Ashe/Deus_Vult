@@ -21,11 +21,22 @@ ScriptComponent::ScriptComponent(Entity* e, sol::table& ComponentTable, sol::sta
 			_owner->addUpdateFunction([this](const sf::Time& dTime) {update(dTime); });
 		}
 
-		// if there's an interact function, call it when used
+		// if there's a function for interaction, add it to list
 		if (table["interact"]) {
 			_interact = table["interact"];
 			_owner->addInteractFunction([this]() {interact(); });
 		}
+
+		// if there's a function for the player entering range, register
+		if (table["inRange"]) {
+			_inRange = table["inRange"];
+		}
+
+		// if there's a function for leaving range, register
+		if (table["outRange"]) {
+			_outRange = table["outRange"];
+		}
+
 	}
 	else {
 		printf("Error, ScriptComponent.script is not a string!\n");
@@ -43,4 +54,12 @@ void ScriptComponent::update(const sf::Time& dTime) {
 
 void ScriptComponent::interact() {
 	_interact(_owner);
+}
+
+void ScriptComponent::inRange() {
+	_inRange(_owner);
+}
+
+void ScriptComponent::outRange() {
+	_outRange(_owner);
 }

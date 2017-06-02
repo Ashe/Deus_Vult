@@ -46,10 +46,11 @@ bruh = {
 		}, 
 		rotation = 0
 	},
-	SensoryComponent = {},
+	SensoryComponent = {
+		range = 150
+	},
 	InteractionComponent = {},
     NpcComponent = {
-		range = 150,
         phrase = "Bruh.",
 		facePlayer = true
 	},
@@ -60,6 +61,6 @@ bruh = {
 		distanceWeak = 350
     },
 	ScriptComponent = {
-		script = "bruh/interaction.lua"
+		script = "bruh/script.lua"
 	}
 }
