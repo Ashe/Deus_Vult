@@ -1,6 +1,6 @@
 #include "InteractionComponent.h"
 
-#include "..\ResourceManagers\EntityList.h"
+#include "../ResourceManagers/EntityList.h"
 
 InteractionComponent::InteractionComponent(Entity* e, sol::table& componentTable) : Component(e) {
 

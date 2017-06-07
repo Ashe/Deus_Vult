@@ -2,7 +2,7 @@
 #define SCRIPTCOMPONENT_H
 
 #include "Component.h"
-#include "..\Common\Scripts.h"
+#include "../Common/Scripts.h"
 
 #include "SFML/System.hpp"
 

@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "..\..\Game\GameScreen.h"
+#include "../../Game/GameScreen.h"
 
 class Game {
 public:

@@ -1,5 +1,5 @@
 #include "Entity.h"
-#include "..\Components\Component.h"
+#include "../Components/Component.h"
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Entity Functions

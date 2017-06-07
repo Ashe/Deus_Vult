@@ -1,6 +1,6 @@
 #include "SensoryComponent.h"
 
-#include "..\ResourceManagers\EntityList.h"
+#include "../ResourceManagers/EntityList.h"
 
 
 SensoryComponent::SensoryComponent(Entity* e, sol::table& componentTable) : Component(e) {

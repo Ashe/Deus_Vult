@@ -1,6 +1,6 @@
 #include "ScriptComponent.h"
 
-#include "..\ResourceManagers\EntityList.h"
+#include "../ResourceManagers/EntityList.h"
 
 ScriptComponent::ScriptComponent(Entity* e, sol::table& ComponentTable, sol::state_view& lua) : Component(e), _lua(lua) {
 	auto scriptRef = ComponentTable["script"];

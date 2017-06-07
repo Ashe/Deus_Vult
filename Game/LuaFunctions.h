@@ -1,6 +1,6 @@
-#include "..\Core\ResourceManagers\EntityList.h"
+#include "../Core/ResourceManagers/EntityList.h"
 
-#include "..\Core\Common\Scripts.h"
+#include "../Core/Common/Scripts.h"
 
 // Entity Interaction Functions
 namespace lfs {

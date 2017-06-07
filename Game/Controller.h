@@ -1,9 +1,9 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "..\Core\ResourceManagers\EntityList.h"
+#include "../Core/ResourceManagers/EntityList.h"
 
-#include "..\Core\ResourceManagers\InputManager.h"
+#include "../Core/ResourceManagers/InputManager.h"
 
 class InputManager;
 

@@ -2,13 +2,13 @@
 #define GRAPHICSCOMPONENT_H
 
 #include <string>
-#include "..\Common\Scripts.h"
+#include "../Common/Scripts.h"
 #include "Component.h"
 #include <SFML/Graphics.hpp>
 
 #include "OutlineComponent.h"
 #include "TransformComponent.h"
-#include "..\Animation\AnimatedSprite.hpp"
+#include "../Animation/AnimatedSprite.hpp"
 
 class GraphicsComponent : public Component {
 public:
