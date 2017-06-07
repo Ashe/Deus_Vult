@@ -5,7 +5,7 @@
 #include "..\Common\Scripts.h" 
 #include "Component.h"
 
-#include "SFML\Graphics.hpp"
+#include <SFML\Graphics.hpp>
 #include "..\ResourceManagers\ResourceManager.h"
 
 #include "TransformComponent.h"

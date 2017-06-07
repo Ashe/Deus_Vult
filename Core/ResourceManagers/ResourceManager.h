@@ -1,7 +1,7 @@
 #ifndef RESOURCEMANAGER_H
 #define RESOURCEMANAGER_H
 
-#include "SFML\Graphics.hpp"
+#include <SFML\Graphics.hpp>
 #include <assert.h>
 
 class ResourceManager {
