@@ -4,7 +4,7 @@
 #include "Component.h"
 #include "..\Common\Scripts.h"
 
-#include "SFML\System.hpp"
+#include "SFML/System.hpp"
 
 class ScriptComponent : public Component {
 public:

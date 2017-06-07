@@ -4,7 +4,7 @@
 #include <string>
 #include "Component.h"
 
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "sol.hpp"
 
 class TransformComponent : public Component {

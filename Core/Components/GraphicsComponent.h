@@ -4,7 +4,7 @@
 #include <string>
 #include "..\Common\Scripts.h"
 #include "Component.h"
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 #include "OutlineComponent.h"
 #include "TransformComponent.h"

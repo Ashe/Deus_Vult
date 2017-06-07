@@ -8,7 +8,7 @@
 #include "TransformComponent.h"
 #include "GraphicsComponent.h"
 
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 class MovementComponent : public Component {
 public:

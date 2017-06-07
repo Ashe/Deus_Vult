@@ -2,7 +2,7 @@
 #define INPUTMANAGER_H
 
 #include <functional>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 class InputManager {
 public:
