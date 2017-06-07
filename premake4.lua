@@ -5,8 +5,12 @@ solution "DeusVult"
         kind "StaticLib"
         language "C++"
         files {
+            "sol2-develop/sol.hpp",
             "Core/**.h",
             "Core/**.cpp"
+        }
+        links {
+           "lua5.1",
         }
 
         configuration "Debug"
@@ -21,7 +25,6 @@ solution "DeusVult"
         kind "ConsoleApp"
         language "C++"
         files {
-            "sol2-develop/sol.hpp",
             "Game/**.h",
             "Game/**.cpp"
         }
@@ -29,11 +32,10 @@ solution "DeusVult"
             "DeusVultCore",
             "SFML-Graphics",
 	    "SFML-Window",
-            "lua5.1"
         }
 
 	configuration {"linux"}
-            buildoptions {"-std=c++11", "-I/usr/include/lua5.1"}
+            buildoptions {"-std=c++11"}
 
         configuration "Debug"
         defines { "DEBUG" }

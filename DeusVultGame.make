@@ -26,10 +26,10 @@ ifeq ($(config),debug)
   DEFINES   += -DDEBUG
   INCLUDES  += 
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c++11 -I/usr/include/lua5.1
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c++11
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -L.
-  LIBS      += -lDeusVultCore -lSFML-Graphics -lSFML-Window -llua5.1
+  LIBS      += -lDeusVultCore -lSFML-Graphics -lSFML-Window
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += libDeusVultCore.a
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
@@ -48,10 +48,10 @@ ifeq ($(config),release)
   DEFINES   += -DNDEBUG
   INCLUDES  += 
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c++11 -I/usr/include/lua5.1
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c++11
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -s -L.
-  LIBS      += -lDeusVultCore -lSFML-Graphics -lSFML-Window -llua5.1
+  LIBS      += -lDeusVultCore -lSFML-Graphics -lSFML-Window
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += libDeusVultCore.a
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
