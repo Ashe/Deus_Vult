@@ -30,12 +30,14 @@ solution "DeusVult"
         }
         links {
             "DeusVultCore",
-            "SFML-Graphics",
-	    "SFML-Window",
+            "sfml-graphics",
+	    "sfml-window",
+            "sfml-system",
+            "lua5.1"
         }
 
 	configuration {"linux"}
-            buildoptions {"-std=c++11"}
+            buildoptions {"-std=c++14"}
 
         configuration "Debug"
         defines { "DEBUG" }

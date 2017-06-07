@@ -91,7 +91,7 @@ void EntityList::render(sf::RenderWindow* window, const sf::Time& dTime) {
 
 Entity* EntityList::getClosestInteractive() {
 	Entity* closestEntity = nullptr;
-	float distance = FLT_MAX;
+	float distance = 999999;
 
 	for (auto entity : _interactiveEntities) {
 		auto transform = entity->get<TransformComponent>();

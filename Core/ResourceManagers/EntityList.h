@@ -4,7 +4,7 @@
 #include "../Common/Entity.h"
 #include <vector>
 
-static class EntityList {
+class EntityList {
 public:
 	//EntityList(sol::state& lua) : _lua(lua) {}
 	static Entity* loadEntity(const sol::this_state& ts, const std::string& type);

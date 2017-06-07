@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "cmath"
 
 Game::Game(sf::RenderWindow* window)
 	:_window(window), _game(window) {}
@@ -13,9 +14,9 @@ void Game::init() {
 }
 
 void Game::windowResized() {
-	// This function is called whenever the window is resized
-	int tempX = round(_window->getSize().x);
-	int tempY = round(_window->getSize().y);
+        // This function is called whenever the window is resized
+        int tempX = std::round(_window->getSize().x);
+        int tempY = std::round(_window->getSize().y);
 
 	tempX = (tempX % 2 == 0) ? tempX : tempX + 1;
 	tempY = (tempY % 2 == 0) ? tempY : tempY + 1;

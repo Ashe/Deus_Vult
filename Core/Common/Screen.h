@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-class Screen abstract {
+class Screen {
 public:
 	virtual void init() = 0;
 	virtual bool update(const sf::Time&) = 0;
