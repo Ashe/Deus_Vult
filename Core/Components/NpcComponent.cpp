@@ -1,7 +1,7 @@
 #include "NpcComponent.h"
-#include <sol.hpp>
+#include "../Common/Scripts.h"
 
-#include "..\Common\Entity.h"
+#include "../Common/Entity.h"
 
 NpcComponent::NpcComponent(Entity* e, sol::table& NpcTable) : Component(e) {
 	auto phraseRef = NpcTable["phrase"];

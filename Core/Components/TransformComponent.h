@@ -1,11 +1,11 @@
-#ifndef TRANSFORMCOMPONENT_H 
+#ifndef TRANSFORMCOMPONENT_H
 #define TRANSFORMCOMPONENT_H
 
 #include <string>
 #include "Component.h"
 
 #include <SFML/Graphics.hpp>
-#include "sol.hpp"
+#include "../Common/Scripts.h"
 
 class TransformComponent : public Component {
 public:
@@ -21,4 +21,3 @@ public:
 };
 
 #endif
-

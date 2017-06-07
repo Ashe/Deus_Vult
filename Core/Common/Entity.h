@@ -5,17 +5,17 @@
 #include <string>
 #include <typeindex>
 
-#include "..\Common\Scripts.h"
+#include "../Common/Scripts.h"
 
-#include "..\Components\GraphicsComponent.h"
-#include "..\Components\OutlineComponent.h"
-#include "..\Components\SensoryComponent.h"
-#include "..\Components\InteractionComponent.h"
-#include "..\Components\TransformComponent.h"
-#include "..\Components\MovementComponent.h"
-#include "..\Components\NpcComponent.h"
-#include "..\Components\ScriptComponent.h"
-#include "..\Components\ControllerComponent.h"
+#include "../Components/GraphicsComponent.h"
+#include "../Components/OutlineComponent.h"
+#include "../Components/SensoryComponent.h"
+#include "../Components/InteractionComponent.h"
+#include "../Components/TransformComponent.h"
+#include "../Components/MovementComponent.h"
+#include "../Components/NpcComponent.h"
+#include "../Components/ScriptComponent.h"
+#include "../Components/ControllerComponent.h"
 
 // Forward declaration
 class Component;

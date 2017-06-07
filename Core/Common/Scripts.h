@@ -1,7 +1,7 @@
 #ifndef SCRIPTS_H
 #define SCRIPTS_H
 
-#include <sol.hpp>
+#include "../../sol2-develop/sol.hpp"
 
 struct lua_State;
 

@@ -14,7 +14,7 @@ sf::Image* ResourceManager::getImage(const std::string& path) {
 		}
 		else {
 			printf("| - Invalid file path %s.\n", path.c_str());
-			return &sf::Image();
+			return nullptr;
 		}
 	}
 
@@ -26,7 +26,7 @@ sf::Texture* ResourceManager::getTexture(const std::string& path) {
 		sf::Texture tex;
 		if (!tex.loadFromImage(*getImage(path))) {
 			printf("| - Failed loading texture from image: %s\n.", path.c_str());
-			return &sf::Texture();
+			return nullptr;
 		}
 		_textures[path] = tex;
 		printf("| - Loaded texture from image: %s.\n", path.c_str());
@@ -43,7 +43,7 @@ sf::Font* ResourceManager::getFont(const std::string& path) {
 		}
 		else {
 			printf("| - Invalid file path %s.\n", path.c_str());
-			return &sf::Font();
+			return nullptr;
 		}
 	}
 

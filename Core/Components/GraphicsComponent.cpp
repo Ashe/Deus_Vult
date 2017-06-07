@@ -1,9 +1,9 @@
 #include "GraphicsComponent.h"
-#include <sol.hpp>
+#include "../Common/Scripts.h"
 
-#include "..\Common\Entity.h"
+#include "../Common/Entity.h"
 
-#include "..\ResourceManagers\ResourceManager.h"
+#include "../ResourceManagers/ResourceManager.h"
 
 GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Component(e) {
 	_transform = _owner->get<TransformComponent>();
@@ -85,7 +85,7 @@ void GraphicsComponent::render(sf::RenderWindow* window, const sf::Time& dTime) 
 
 		_animatedSprite.setScale((!_transform->_flipX * 2 - 1) * _transform->_scale.x, (!_transform->_flipY * 2 - 1) * _transform->_scale.y);
 
-		if (_outline && _outlineThickness > 0) 
+		if (_outline && _outlineThickness > 0)
 			drawOutline(window);
 		else if (!_noOutline) {
 			// If there's no outline module, find it

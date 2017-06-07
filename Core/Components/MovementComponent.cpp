@@ -1,7 +1,7 @@
 #include "MovementComponent.h"
-#include "..\Common\Entity.h"
+#include "../Common/Entity.h"
 
-#include <sol.hpp>
+#include "../Common/Scripts.h"
 
 MovementComponent::MovementComponent(Entity* e, sol::table& mcTable) : Component(e) {
 	if (mcTable["maxspeed"])
