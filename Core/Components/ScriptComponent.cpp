@@ -49,7 +49,7 @@ void ScriptComponent::init() {
 }
 
 void ScriptComponent::update(const sf::Time& dTime) {
-	_update(_owner, dTime);
+       _update(_owner, dTime);
 }
 
 void ScriptComponent::interact() {

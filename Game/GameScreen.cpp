@@ -14,7 +14,7 @@ void GameScreen::init() {
 
 bool GameScreen::update(const sf::Time& dTime) {
 
-	EntityList::update(dTime);
+        EntityList::update(dTime);
 	return false;
 }
 
@@ -22,9 +22,7 @@ void GameScreen::render(const sf::Time& dTime) {
 	sf::Vector2f pos = EntityList::getPlayer()->get<TransformComponent>()->_position;
 	_window->setView(sf::View(pos, _window->getView().getSize()));
 
-	EntityList:: render(_window, dTime);
-
-	_window->draw(text);
+	EntityList::render(_window, dTime);
 }
 
 void GameScreen::handleEvent(const sf::Event& e) {
@@ -34,4 +32,3 @@ void GameScreen::handleEvent(const sf::Event& e) {
 void GameScreen::quit() {
 
 }
-

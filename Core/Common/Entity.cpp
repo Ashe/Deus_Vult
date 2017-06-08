@@ -27,7 +27,7 @@ void Entity::interact() {
 
 void Entity::update(const sf::Time& dTime) {
 	for (auto function : _updateFunctions)
-		function(dTime);
+            function(dTime);
 }
 
 void Entity::render(sf::RenderWindow* window, const sf::Time& dTime) {

@@ -74,10 +74,10 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 }
 
 void EntityList::update(const sf::Time& dTime) {
-	_playerRef->update(dTime);
+        _playerRef->update(dTime);
 
 	for (Entity* entity : _entities) {
-		entity->update(dTime);
+            entity->update(dTime);
 	}
 }
 

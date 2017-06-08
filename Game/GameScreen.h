@@ -27,10 +27,6 @@ private:
 	sol::state _lua;
 
 	Controller _controller;
-
-	sf::Font font;
-	sf::Text text;
-
 };
 
 #endif
