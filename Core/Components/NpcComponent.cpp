@@ -4,12 +4,23 @@
 #include "../Common/Entity.h"
 
 NpcComponent::NpcComponent(Entity* e, sol::table& NpcTable) : Component(e) {
-	auto phraseRef = NpcTable["phrase"];
+
+	_showMessage = false;
+	_textAdjustReady = false;
+	auto phraseRef = NpcTable["initialMessage"];
 	if (phraseRef.valid()) {
-		_phrase = phraseRef;
+		std::string phrase = phraseRef;
+		phrase.c_str();
+		setTextString(phrase);
+		_showMessage = true;
 	}
 	else {
 		printf("Error, NpcComponent.phrase is not a string!\n");
+	}
+
+	_speechEnabled = false;
+	if (NpcTable["enableSpeech"]) {
+		enableSpeech();
 	}
 
 	_facePlayer = false;
@@ -24,8 +35,21 @@ NpcComponent::NpcComponent(Entity* e, sol::table& NpcTable) : Component(e) {
 	_owner->addUpdateFunction([this](const sf::Time&dTime) {update(dTime);});
 }
 
-void NpcComponent::printPhrase() {
-	printf("%s\n", _phrase.c_str());
+void NpcComponent::printText() {
+	std::string phrase = _text.getString();
+	printf("%s\n", phrase.c_str());
+}
+
+void NpcComponent::setTextString(const std::string& text) {
+	_text.setString(text);
+	centerText();
+}
+
+void NpcComponent::setShowText(bool show) {
+	_showMessage = show;
+
+	if (!_speechEnabled)
+		enableSpeech();
 }
 
 void NpcComponent::update(const sf::Time& dTime) {
@@ -36,10 +60,50 @@ void NpcComponent::update(const sf::Time& dTime) {
 		}
 		return;
 	}
+
 	_sensoryComponent = _owner->get<SensoryComponent>();
 	_transform = _owner->get<TransformComponent>();
+	_spriteDim = _owner->get<GraphicsComponent>()->getSize();
+}
+
+void NpcComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
+
+	if (_showMessage && _transform && _textAdjustReady) {
+		_text.setPosition(_transform->_position);
+		_text.move(_textAdjust);
+		window->draw(_text);
+		return;
+	}
+
+	_transform = _owner->get<TransformComponent>();
+	_spriteDim = _owner->get<GraphicsComponent>()->getSize();
+
+	centerText();
+}
+
+void NpcComponent::enableSpeech() {
+	if (!_speechEnabled) {
+		_speechEnabled = true;
+
+		_text.setFont(*ResourceManager::getFont("Data/common/fonts/belgrano/regular.ttf"));
+		_text.setOrigin(_text.getCharacterSize() / 3, _text.getCharacterSize() / 2);
+
+		// Add render function to functionlist
+		_owner->addRenderFunction([this](sf::RenderWindow* window, const sf::Time& dTime) {render(window, dTime); });
+	}
 }
 
 void NpcComponent::setFacePlayer(bool face) {
 	_facePlayer = face;
+}
+
+void NpcComponent::centerText() {
+	if (_transform) {
+		//center text
+		sf::FloatRect textRect = _text.getLocalBounds();
+		_textAdjust = sf::Vector2f(textRect.left - textRect.width / 2.0f,
+			textRect.top - textRect.height / 2.0f - (_spriteDim.y * _transform->_scale.y) / 1.5);
+	}
+
+	_textAdjustReady = _textAdjust.x != 0 && _textAdjust.y != 0;
 }

@@ -14,7 +14,7 @@ void GameScreen::init() {
 
 bool GameScreen::update(const sf::Time& dTime) {
 
-        EntityList::update(dTime);
+    EntityList::update(dTime);
 	return false;
 }
 

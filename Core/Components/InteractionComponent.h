@@ -16,12 +16,15 @@ public:
 	InteractionComponent(Entity* e, sol::table& componentTable);
 
 	void render(sf::RenderWindow*, const sf::Time&);
+
+	void setShowInteractPrompt(bool);
+
 private:
+	bool _showPrompt;
 	sf::Text _text;
 
 	TransformComponent* _transform;
 	SensoryComponent* _sensor;
-	float _spriteHeight;
 };
 
 #endif // !INTERACTIONCOMPONENT_H

@@ -4,11 +4,14 @@
 
 InteractionComponent::InteractionComponent(Entity* e, sol::table& componentTable) : Component(e) {
 
+	_showPrompt = false;
+	if (componentTable["showPrompt"])
+		_showPrompt = componentTable["showPrompt"];
+
 	_text.setString("E");
 	_text.setFont(*ResourceManager::getFont("Data/common/fonts/belgrano/regular.ttf"));
 	_text.setOrigin(_text.getCharacterSize() / 3, _text.getCharacterSize() / 2);
 
-	_spriteHeight = _owner->get<GraphicsComponent>()->getSize().y;
 	_transform = _owner->get<TransformComponent>();
 	_sensor = _owner->get<SensoryComponent>();
 
@@ -18,17 +21,19 @@ InteractionComponent::InteractionComponent(Entity* e, sol::table& componentTable
 
 void InteractionComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
 	if (EntityList::getClosestInteractive() == _owner) {
-		if (_transform && _sensor) {
+		if (_showPrompt && _transform && _sensor) {
 			if (_sensor->playerInRange()) {
-				_text.setPosition(_owner->get<TransformComponent>()->_position);
-				_text.move(0, - 2 * (_spriteHeight * _transform->_scale.y / 3));
+				_text.setPosition(_transform->_position);
 				window->draw(_text);
 				return;
 			}
 		}
 
-		_spriteHeight = _owner->get<GraphicsComponent>()->getSize().y;
 		_transform = _owner->get<TransformComponent>();
 		_sensor = _owner->get<SensoryComponent>();
 	}
+}
+
+void InteractionComponent::setShowInteractPrompt(bool show) {
+	_showPrompt = show;
 }

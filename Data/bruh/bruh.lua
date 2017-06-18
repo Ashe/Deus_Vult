@@ -49,9 +49,10 @@ bruh = {
 	SensoryComponent = {
 		range = 150
 	},
-	InteractionComponent = {},
+	InteractionComponent = {
+		showPrompt = true
+	},
     NpcComponent = {
-        phrase = "Bruh.",
 		facePlayer = true
 	},
 	OutlineComponent = {
