@@ -60,7 +60,7 @@ GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Co
 		}
 		else {
 			_frameTime = 0;
-			Animation animation;
+			SPRAnimation animation;
 			animation.setSpriteSheet(*_texture);
 			animation.addFrame(sf::IntRect(0, 0, _spriteWidth, _spriteHeight));
 			_animationList["default"] = animation;
@@ -141,7 +141,7 @@ void GraphicsComponent::setAnimations(sol::table & animationTable) {
 
 		sol::table frameTable = detailsTable["animation"];
 
-		Animation animation = Animation(frameTime);
+		SPRAnimation animation = SPRAnimation(frameTime);
 		animation._name = animationName;
 		animation.setSpriteSheet(*_texture);
 

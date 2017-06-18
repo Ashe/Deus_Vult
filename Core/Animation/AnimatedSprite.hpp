@@ -30,7 +30,7 @@
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/System/Vector2.hpp>
 
-#include "Animation.hpp"
+#include "SPRAnimation.hpp"
 
 class AnimatedSprite : public sf::Drawable, public sf::Transformable
 {
@@ -38,15 +38,15 @@ public:
 	explicit AnimatedSprite(sf::Time frameTime = sf::seconds(0.2f), bool paused = false, bool looped = true);
 
 	void update(sf::Time deltaTime);
-	void setAnimation(const Animation& animation);
+	void setAnimation(const SPRAnimation& animation);
 	void setFrameTime(sf::Time time);
 	void play();
-	void play(const Animation& animation);
+	void play(const SPRAnimation& animation);
 	void pause();
 	void stop();
 	void setLooped(bool looped);
 	void setColor(const sf::Color& color);
-	const Animation* getAnimation() const;
+	const SPRAnimation* getAnimation() const;
 	sf::FloatRect getLocalBounds() const;
 	sf::FloatRect getGlobalBounds() const;
 	bool isLooped() const;
@@ -55,7 +55,7 @@ public:
 	void setFrame(std::size_t newFrame, bool resetTime = true);
 
 private:
-	const Animation* m_animation;
+	const SPRAnimation* m_animation;
 	sf::Time m_frameTime;
 	sf::Time m_currentTime;
 	std::size_t m_currentFrame;

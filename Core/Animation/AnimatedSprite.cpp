@@ -26,7 +26,7 @@
 AnimatedSprite::AnimatedSprite(sf::Time frameTime, bool paused, bool looped) :
 	m_animation(NULL), m_frameTime(frameTime), m_currentFrame(0), m_isPaused(paused), m_isLooped(looped), m_texture(NULL) { }
 
-void AnimatedSprite::setAnimation(const Animation& animation)
+void AnimatedSprite::setAnimation(const SPRAnimation& animation)
 {
 	m_animation = &animation;
 	m_texture = m_animation->getSpriteSheet();
@@ -44,7 +44,7 @@ void AnimatedSprite::play()
 	m_isPaused = false;
 }
 
-void AnimatedSprite::play(const Animation& animation)
+void AnimatedSprite::play(const SPRAnimation& animation)
 {
 	if (getAnimation() != &animation)
 		setAnimation(animation);
@@ -77,7 +77,7 @@ void AnimatedSprite::setColor(const sf::Color& color)
 	m_vertices[3].color = color;
 }
 
-const Animation* AnimatedSprite::getAnimation() const
+const SPRAnimation* AnimatedSprite::getAnimation() const
 {
 	return m_animation;
 }

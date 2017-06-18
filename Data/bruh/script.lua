@@ -3,7 +3,7 @@ local convNo = 0
 local convos = {
 	[0] = "Hello there!",
 	[1] = "How is it going?",
-	[2] = "Why are you still here?\nDon't you have better things to do?",
+	[2] = "Why are you still here?",
 	[3] = "Quit that!",
 	[4] = "Beat it, chump."
 }
@@ -33,7 +33,7 @@ local inRange = function (e)
 	print("Player is in range: Reset Conversations")
 	if convNo < 4 then
 		convNo = 0
-		sayMessage(e, "Hey, over here!")
+		sayMessage(e, "Pssst! Over here!")
 		enableIntPrompt(e, true)
 	elseif convNo == 4 then
 		sayMessage(e, "Fuck off.")

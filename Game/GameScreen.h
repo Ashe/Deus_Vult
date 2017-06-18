@@ -10,6 +10,7 @@
 #include "LuaFunctions.h"
 #include "Controller.h"
 
+#include <spine/spine-sfml.h>
 
 class GameScreen : public Screen {
 public:

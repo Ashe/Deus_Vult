@@ -38,8 +38,8 @@ private:
 
 	// Animations
 	AnimatedSprite _animatedSprite;
-	Animation _currentAnimation = Animation();
-	std::map<std::string, Animation> _animationList;
+	SPRAnimation _currentAnimation = SPRAnimation();
+	std::map<std::string, SPRAnimation> _animationList;
 	int _frameTime = 0;
 
 	// Component links

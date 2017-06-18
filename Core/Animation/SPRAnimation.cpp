@@ -21,31 +21,31 @@
 //
 ////////////////////////////////////////////////////////////
 
-#include "Animation.hpp"
+#include "SPRAnimation.hpp"
 
-Animation::Animation(float frameTime) :_frameTime(frameTime), m_texture(NULL) {}
+SPRAnimation::SPRAnimation(float frameTime) :_frameTime(frameTime), m_texture(NULL) {}
 
-void Animation::addFrame(sf::IntRect rect)
+void SPRAnimation::addFrame(sf::IntRect rect)
 {
 	m_frames.push_back(rect);
 }
 
-void Animation::setSpriteSheet(const sf::Texture& texture)
+void SPRAnimation::setSpriteSheet(const sf::Texture& texture)
 {
 	m_texture = &texture;
 }
 
-const sf::Texture* Animation::getSpriteSheet() const
+const sf::Texture* SPRAnimation::getSpriteSheet() const
 {
 	return m_texture;
 }
 
-std::size_t Animation::getSize() const
+std::size_t SPRAnimation::getSize() const
 {
 	return m_frames.size();
 }
 
-const sf::IntRect& Animation::getFrame(std::size_t n) const
+const sf::IntRect& SPRAnimation::getFrame(std::size_t n) const
 {
 	return m_frames[n];
 }

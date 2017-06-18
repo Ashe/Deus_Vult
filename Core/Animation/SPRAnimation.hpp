@@ -28,10 +28,10 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
-class Animation
+class SPRAnimation
 {
 public:
-	Animation(float frameTime = 0);
+	SPRAnimation(float frameTime = 0);
 
 	void addFrame(sf::IntRect rect);
 	void setSpriteSheet(const sf::Texture& texture);
@@ -42,10 +42,10 @@ public:
 	std::string _name;
 	float _frameTime;
 
-	bool operator==(const Animation& other) {
+	bool operator==(const SPRAnimation& other) {
 		return other._name == _name;
 	}
-	bool operator!=(const Animation& other) {
+	bool operator!=(const SPRAnimation& other) {
 		return other._name != _name;
 	}
 

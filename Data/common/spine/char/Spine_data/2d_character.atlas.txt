@@ -1,0 +1,104 @@
+
+2d_character.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+defult/Sleeveless_01
+  rotate: false
+  xy: 518, 373
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+defult/arm_Left_dn
+  rotate: false
+  xy: 542, 333
+  size: 12, 38
+  orig: 12, 38
+  offset: 0, 0
+  index: -1
+defult/arm_Left_up
+  rotate: false
+  xy: 160, 184
+  size: 21, 30
+  orig: 21, 30
+  offset: 0, 0
+  index: -1
+defult/arm_rigth_dn
+  rotate: false
+  xy: 160, 216
+  size: 34, 27
+  orig: 34, 27
+  offset: 0, 0
+  index: -1
+defult/arm_rigth_up
+  rotate: true
+  xy: 196, 222
+  size: 21, 30
+  orig: 21, 30
+  offset: 0, 0
+  index: -1
+defult/arm_rigth_weapon
+  rotate: false
+  xy: 2, 245
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+defult/body
+  rotate: false
+  xy: 2, 21
+  size: 38, 72
+  orig: 38, 72
+  offset: 0, 0
+  index: -1
+defult/body_belt.
+  rotate: false
+  xy: 42, 76
+  size: 39, 17
+  orig: 39, 17
+  offset: 0, 0
+  index: -1
+defult/head_face
+  rotate: false
+  xy: 2, 95
+  size: 156, 148
+  orig: 156, 148
+  offset: 0, 0
+  index: -1
+defult/head_hair
+  rotate: false
+  xy: 260, 245
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+defult/leg_left_dn
+  rotate: true
+  xy: 2, 2
+  size: 17, 35
+  orig: 17, 35
+  offset: 0, 0
+  index: -1
+defult/leg_left_up
+  rotate: false
+  xy: 518, 332
+  size: 22, 39
+  orig: 22, 39
+  offset: 0, 0
+  index: -1
+defult/leg_rigth_dn
+  rotate: false
+  xy: 518, 297
+  size: 18, 33
+  orig: 18, 33
+  offset: 0, 0
+  index: -1
+defult/leg_rigth_up
+  rotate: false
+  xy: 648, 462
+  size: 19, 39
+  orig: 19, 39
+  offset: 0, 0
+  index: -1
