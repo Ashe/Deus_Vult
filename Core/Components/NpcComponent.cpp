@@ -63,7 +63,7 @@ void NpcComponent::update(const sf::Time& dTime) {
 
 	_sensoryComponent = _owner->get<SensoryComponent>();
 	_transform = _owner->get<TransformComponent>();
-	_spriteDim = _owner->get<GraphicsComponent>()->getSize();
+	_spriteDim = _owner->get<SpriteComponent>()->getSize();
 }
 
 void NpcComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
@@ -76,7 +76,7 @@ void NpcComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
 	}
 
 	_transform = _owner->get<TransformComponent>();
-	_spriteDim = _owner->get<GraphicsComponent>()->getSize();
+	_spriteDim = _owner->get<SpriteComponent>()->getSize();
 
 	centerText();
 }

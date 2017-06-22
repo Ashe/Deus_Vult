@@ -6,6 +6,7 @@
 #include "Component.h"
 
 #include "MovementComponent.h"
+#include "SpineComponent.h"
 
 class ControllerComponent : public Component {
 public:
@@ -15,6 +16,12 @@ public:
 
 	void addDirLeft();
 	void addDirRight();
+
+	void startSprinting();
+	void stopSprinting();
+
+	void test();
+
 };
 
 #endif

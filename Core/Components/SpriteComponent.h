@@ -1,18 +1,15 @@
-#ifndef GRAPHICSCOMPONENT_H
-#define GRAPHICSCOMPONENT_H
+#ifndef SPRITECOMPONENT_H
+#define SPRITECOMPONENT_H
 
-#include <string>
-#include "../Common/Scripts.h"
-#include "Component.h"
-#include <SFML/Graphics.hpp>
+#include "GraphicsComponentBase.h"
 
 #include "OutlineComponent.h"
 #include "TransformComponent.h"
 #include "../Animation/AnimatedSprite.hpp"
 
-class GraphicsComponent : public Component {
+class SpriteComponent : public GraphicsComponentBase {
 public:
-	GraphicsComponent(Entity* e, sol::table& componentTable);
+	SpriteComponent(Entity* e, sol::table& componentTable);
 
 	void setImageFilename(const std::string& filename) {
 		this->_filename = filename;
@@ -25,6 +22,7 @@ public:
 	void render(sf::RenderWindow*, const sf::Time&);
 
 	void changeAnimation(const std::string&);
+	void playAnimation(const std::string&, float) {};
 
 	sf::Vector2i getSize() const;
 

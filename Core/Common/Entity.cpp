@@ -31,8 +31,14 @@ void Entity::update(const sf::Time& dTime) {
 }
 
 void Entity::render(sf::RenderWindow* window, const sf::Time& dTime) {
+	// TODO: THIS FUNCTION MUST BE FIXED FOR EFFICIENCY
+
 	for (auto function : _renderFunctions)
 		function(window, dTime);
+
+	auto interact = get<InteractionComponent>();
+	if (interact)
+		interact->render(window, dTime);
 }
 
 void Entity::addInitFunction(std::function<void()> func) {

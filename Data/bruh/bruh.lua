@@ -1,5 +1,5 @@
 bruh = {
-    GraphicsComponent = {
+    SpriteComponent = {
         filename = "common/img/rogue.png",
 		size = {32, 32},
 		defaultAnim = "idle",

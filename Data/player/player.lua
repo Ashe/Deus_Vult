@@ -1,39 +1,30 @@
 player = {
 	ControllerComponent = {},
-    GraphicsComponent = {
-        filename = "common/img/warrior.png",
-		size = {32, 32},
+    SpineComponent = {
+		dataIsJSON = false,
+        atlas = "common/spine/hero/export/hero.atlas",
+        data = "common/spine/hero/export/hero.skel",
 		defaultAnim = "idle",
+		timeScale = 1,
+		defaultMix = 0.2,
 		animations = {
 			idle = {
-				frameTime =100,
-				animation = {
-					{0, 0},
-					{32, 0},
-					{64, 0},
-					{96, 0},
-					{128, 0},
-					{160, 0},
-					{192, 0},
-					{224, 0},
-					{256, 0},
-					{288, 0}
-				}
+				animString = "Idle"
 			},
 			walk = {
-				frameTime = 70,
-				animation = {
-					{0, 64},
-					{32, 64},
-					{64, 64},
-					{96, 64},
-					{128, 64},
-					{160, 64},
-					{192, 64},
-					{224, 64},
-					{256, 64},
-					{288, 64}
-				}
+				animString = "Walk"
+			},
+			run = {
+				animString = "Run"
+			},
+			attack = {
+				animString = "Attack"
+			},
+			crouch = {
+				animString = "Crouch"
+			},
+			fall = {
+				animString = "Fall"
 			}
 		}
     },
@@ -43,10 +34,10 @@ player = {
     },
 	TransformComponent = {
 		position = {
-			100, 300
+			100, 390
 		},
 		scale = {
-			5, 5
+			0.5, 0.5
 		}, 
 		rotation = 0
 	},

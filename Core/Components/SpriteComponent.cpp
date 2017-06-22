@@ -1,11 +1,11 @@
-#include "GraphicsComponent.h"
+#include "SpriteComponent.h"
 #include "../Common/Scripts.h"
 
 #include "../Common/Entity.h"
 
 #include "../ResourceManagers/ResourceManager.h"
 
-GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Component(e) {
+SpriteComponent::SpriteComponent(Entity* e, sol::table& componentTable) : GraphicsComponentBase(e) {
 	_transform = _owner->get<TransformComponent>();
 
 	_noOutline = false;
@@ -77,7 +77,7 @@ GraphicsComponent::GraphicsComponent(Entity* e, sol::table& componentTable) : Co
 	_owner->addRenderFunction([this](sf::RenderWindow* window, const sf::Time&dTime) {render(window, dTime); });
 }
 
-void GraphicsComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
+void SpriteComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
 	if (_transform) {
 		if (_frameTime > 0) {
 			_animatedSprite.update(dTime);
@@ -107,7 +107,7 @@ void GraphicsComponent::render(sf::RenderWindow* window, const sf::Time& dTime) 
 	_transform = _owner->get<TransformComponent>();
 }
 
-void GraphicsComponent::changeAnimation(const std::string& animName) {
+void SpriteComponent::changeAnimation(const std::string& animName) {
 	if (_animationList.count(animName)) {
 		if (_animationList[animName] != _currentAnimation) {
 			// If the animation is new, restart it (so attacks and jumps aren't screwed)
@@ -124,11 +124,11 @@ void GraphicsComponent::changeAnimation(const std::string& animName) {
 	printf("No animations with %s found.\n", animName.c_str());
 }
 
-sf::Vector2i GraphicsComponent::getSize() const {
+sf::Vector2i SpriteComponent::getSize() const {
 	return sf::Vector2i(_spriteWidth, _spriteHeight);
 }
 
-void GraphicsComponent::setAnimations(sol::table & animationTable) {
+void SpriteComponent::setAnimations(sol::table & animationTable) {
 	for (auto key_value_pair : animationTable) {
 		std::string animationName = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;
@@ -158,7 +158,7 @@ void GraphicsComponent::setAnimations(sol::table & animationTable) {
 	}
 }
 
-bool GraphicsComponent::setTexture(){
+bool SpriteComponent::setTexture(){
 	_texture = ResourceManager::getTexture(_filename);
 	if (_texture)
 		return true;
@@ -167,7 +167,7 @@ bool GraphicsComponent::setTexture(){
 	return false;
 }
 
-void GraphicsComponent::drawOutline(sf::RenderWindow* window) {
+void SpriteComponent::drawOutline(sf::RenderWindow* window) {
 	_animatedSprite.setColor(_outline->getOutlineColour());
 
 	_animatedSprite.setPosition(_transform->_position.x + _outlineThickness, _transform->_position.y);

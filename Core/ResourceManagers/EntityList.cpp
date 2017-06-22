@@ -18,9 +18,13 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 		std::string componentName = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;
 
-		if (componentName == "GraphicsComponent") {
+		if (componentName == "SpriteComponent") {
 			sol::table gcTable = value.as<sol::table>();
-			addComponent<GraphicsComponent>(e, gcTable);
+			addComponent<SpriteComponent>(e, gcTable);
+		}
+		else if (componentName == "SpineComponent") {
+			sol::table gcTable = value.as<sol::table>();
+			addComponent<SpineComponent>(e, gcTable);
 		}
 		else if (componentName == "SensoryComponent") {
 			sol::table scTable = value.as<sol::table>();

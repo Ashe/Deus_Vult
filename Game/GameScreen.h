@@ -28,18 +28,6 @@ private:
 	sol::state _lua;
 
 	Controller _controller;
-
-
-	// TEST
-	void GameScreen::hero(const char* jsonName, const char* binaryName, const char* atlasName,
-		float scale);
-
-	spine::SkeletonDrawable* _hero;
-	SkeletonBounds* _bounds;
-	SkeletonData* _skeletonData;
-	Atlas* _atlas;
-	Skeleton* _skeleton;
-	Slot* _headSlot;
 };
 
 #endif

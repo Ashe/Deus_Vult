@@ -6,7 +6,7 @@
 #include "Component.h"
 
 #include "TransformComponent.h"
-#include "GraphicsComponent.h"
+#include "GraphicsComponentBase.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -15,11 +15,13 @@ public:
 	MovementComponent(Entity* e, sol::table& componentTable);
 
 	int _direction = 0;
+	float _speedMultiplier = 1;
+
 	void update(const sf::Time& dTime);
 
 private:
 	TransformComponent* _transform;
-	GraphicsComponent* _graphics;
+	GraphicsComponentBase* _graphics;
 	float _maxspeed = 0;
 	float _acceleration = 0;
 	float _currentSpeed = 0;

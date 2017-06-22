@@ -22,7 +22,8 @@
     <ClCompile Include="Core\Animation\AnimatedSprite.cpp" />
     <ClCompile Include="Core\Animation\SPRAnimation.cpp" />
     <ClCompile Include="Core\Components\ControllerComponent.cpp" />
-    <ClCompile Include="Core\Components\GraphicsComponent.cpp" />
+    <ClCompile Include="Core\Components\SpineComponent.cpp" />
+    <ClCompile Include="Core\Components\SpriteComponent.cpp" />
     <ClCompile Include="Core\Components\InteractionComponent.cpp" />
     <ClCompile Include="Core\Components\MovementComponent.cpp" />
     <ClCompile Include="Core\Components\NpcComponent.cpp" />
@@ -85,7 +86,9 @@
     <ClInclude Include="Core\Animation\SPRAnimation.hpp" />
     <ClInclude Include="Core\Components\Component.h" />
     <ClInclude Include="Core\Components\ControllerComponent.h" />
-    <ClInclude Include="Core\Components\GraphicsComponent.h" />
+    <ClInclude Include="Core\Components\GraphicsComponentBase.h" />
+    <ClInclude Include="Core\Components\SpineComponent.h" />
+    <ClInclude Include="Core\Components\SpriteComponent.h" />
     <ClInclude Include="Core\Components\InteractionComponent.h" />
     <ClInclude Include="Core\Components\MovementComponent.h" />
     <ClInclude Include="Core\Components\NpcComponent.h" />

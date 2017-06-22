@@ -7,7 +7,8 @@
 
 #include "../Common/Scripts.h"
 
-#include "../Components/GraphicsComponent.h"
+#include "../Components/SpriteComponent.h"
+#include "../Components/SpineComponent.h"
 #include "../Components/OutlineComponent.h"
 #include "../Components/SensoryComponent.h"
 #include "../Components/InteractionComponent.h"
