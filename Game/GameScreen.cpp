@@ -11,11 +11,18 @@ void GameScreen::init() {
 
 	_controller.initialise(&_input);
 
+	hero("Data/common/spine/hero/export/hero.json", "Data/common/spine/hero/export/hero.skel", "Data/common/spine/hero/export/hero.atlas", 0.8f);
 }
 
 bool GameScreen::update(const sf::Time& dTime) {
 
     EntityList::update(dTime);
+
+	// TEST
+		SkeletonBounds_update(_bounds, _skeleton, true);
+		_hero->update(dTime.asSeconds());
+	// END TEST
+
 	return false;
 }
 
@@ -24,6 +31,10 @@ void GameScreen::render(const sf::Time& dTime) {
 	_window->setView(sf::View(pos, _window->getView().getSize()));
 
 	EntityList::render(_window, dTime);
+
+	// BEGIN TEST
+		_window->draw(*_hero);
+	// END TEST
 }
 
 void GameScreen::handleEvent(const sf::Event& e) {
@@ -32,6 +43,12 @@ void GameScreen::handleEvent(const sf::Event& e) {
 
 void GameScreen::quit() {
 
+	// TEST
+		SkeletonBounds_dispose(_bounds);
+		SkeletonData_dispose(_skeletonData);
+
+		Atlas_dispose(_atlas);
+	//TEST
 }
 
 // RANDOM STUFF
@@ -87,294 +104,44 @@ SkeletonData* readSkeletonBinaryData(const char* filename, Atlas* atlas, float s
 	return skeletonData;
 }
 
-void testcase(void func(SkeletonData* skeletonData, Atlas* atlas),
-	const char* jsonName, const char* binaryName, const char* atlasName,
+void GameScreen::hero(const char* jsonName, const char* binaryName, const char* atlasName,
 	float scale) {
-	Atlas* atlas = Atlas_createFromFile(atlasName, 0);
 
-	SkeletonData* skeletonData = readSkeletonJsonData(jsonName, atlas, scale);
-	func(skeletonData, atlas);
-	SkeletonData_dispose(skeletonData);
+	// GENERIC FUNC
+		_atlas = Atlas_createFromFile(atlasName, 0);
+		_skeletonData = readSkeletonJsonData(jsonName, _atlas, scale);
+	// END GENERIC FUNC
 
-	skeletonData = readSkeletonBinaryData(binaryName, atlas, scale);
-	func(skeletonData, atlas);
-	SkeletonData_dispose(skeletonData);
-
-	Atlas_dispose(atlas);
-}
-
-void spineboy(SkeletonData* skeletonData, Atlas* atlas) {
-	SkeletonBounds* bounds = SkeletonBounds_create();
+	_bounds = SkeletonBounds_create();
 
 	// Configure mixing.
-	AnimationStateData* stateData = AnimationStateData_create(skeletonData);
-	AnimationStateData_setMixByName(stateData, "walk", "jump", 0.2f);
-	AnimationStateData_setMixByName(stateData, "jump", "run", 0.2f);
+	AnimationStateData* stateData = AnimationStateData_create(_skeletonData);
+	AnimationStateData_setMixByName(stateData, "Idle", "Walk", 0.2f);
+	AnimationStateData_setMixByName(stateData, "Walk", "Crouch", 0.8f);
+	AnimationStateData_setMixByName(stateData, "Crouch", "Run", 0.2f);
+	AnimationStateData_setMixByName(stateData, "Run", "Attack", 0.5f);
+	AnimationStateData_setMixByName(stateData, "Attack", "Run", 0.5f);
 
-	spine::SkeletonDrawable* drawable = new spine::SkeletonDrawable(skeletonData, stateData);
-	drawable->timeScale = 1;
+	_hero = new spine::SkeletonDrawable(_skeletonData, stateData);
+	_hero->timeScale = 1;
 
-	Skeleton* skeleton = drawable->skeleton;
-	skeleton->flipX = false;
-	skeleton->flipY = false;
-	Skeleton_setToSetupPose(skeleton);
+	_skeleton = _hero->skeleton;
+	_skeleton->flipX = false;
+	_skeleton->flipY = false;
+	Skeleton_setToSetupPose(_skeleton);
 
-	skeleton->x = 320;
-	skeleton->y = 460;
-	Skeleton_updateWorldTransform(skeleton);
+	_skeleton->x = 320;
+	_skeleton->y = 460;
+	Skeleton_updateWorldTransform(_skeleton);
 
-	Slot* headSlot = Skeleton_findSlot(skeleton, "head");
+	_headSlot = Skeleton_findSlot(_skeleton, "head");
 
-	drawable->state->listener = callback;
-	AnimationState_setAnimationByName(drawable->state, 0, "test", true);
-	AnimationState_addAnimationByName(drawable->state, 0, "walk", true, 0);
-	AnimationState_addAnimationByName(drawable->state, 0, "jump", false, 3);
-	AnimationState_addAnimationByName(drawable->state, 0, "run", true, 0);
+	//_hero->state->listener = callback;
+	AnimationState_addAnimationByName(_hero->state, 0, "Idle", true, 0);
+	AnimationState_addAnimationByName(_hero->state, 0, "Walk", true, 3);
+	AnimationState_addAnimationByName(_hero->state, 0, "Crouch", true, 3);
+	AnimationState_addAnimationByName(_hero->state, 0, "Run", true, 5);
+	AnimationState_addAnimationByName(_hero->state, 0, "Attack", true, 1);
+	AnimationState_addAnimationByName(_hero->state, 0, "Run", true, 0.5);
 
-	sf::RenderWindow window(sf::VideoMode(640, 480), "Spine SFML - spineboy");
-	window.setFramerateLimit(60);
-	sf::Event event;
-	sf::Clock deltaClock;
-	while (window.isOpen()) {
-		while (window.pollEvent(event))
-			if (event.type == sf::Event::Closed) window.close();
-
-		float delta = deltaClock.getElapsedTime().asSeconds();
-		deltaClock.restart();
-
-		SkeletonBounds_update(bounds, skeleton, true);
-		sf::Vector2i position = sf::Mouse::getPosition(window);
-		if (SkeletonBounds_containsPoint(bounds, position.x, position.y)) {
-			headSlot->color.g = 0;
-			headSlot->color.b = 0;
-		}
-		else {
-			headSlot->color.g = 1;
-			headSlot->color.b = 1;
-		}
-
-		drawable->update(delta);
-
-		window.clear();
-		window.draw(*drawable);
-		window.display();
-	}
-
-	SkeletonBounds_dispose(bounds);
-}
-
-void goblins(SkeletonData* skeletonData, Atlas* atlas) {
-	spine::SkeletonDrawable* drawable = new spine::SkeletonDrawable(skeletonData);
-	drawable->timeScale = 1;
-
-	Skeleton* skeleton = drawable->skeleton;
-	skeleton->flipX = false;
-	skeleton->flipY = false;
-	Skeleton_setSkinByName(skeleton, "goblin");
-	Skeleton_setSlotsToSetupPose(skeleton);
-	//Skeleton_setAttachment(skeleton, "left hand item", "dagger");
-
-	skeleton->x = 320;
-	skeleton->y = 590;
-	Skeleton_updateWorldTransform(skeleton);
-
-	AnimationState_setAnimationByName(drawable->state, 0, "walk", true);
-
-	sf::RenderWindow window(sf::VideoMode(640, 640), "Spine SFML - goblins");
-	window.setFramerateLimit(60);
-	sf::Event event;
-	sf::Clock deltaClock;
-	while (window.isOpen()) {
-		while (window.pollEvent(event))
-			if (event.type == sf::Event::Closed) window.close();
-
-		float delta = deltaClock.getElapsedTime().asSeconds();
-		deltaClock.restart();
-
-		drawable->update(delta);
-
-		window.clear();
-		window.draw(*drawable);
-		window.display();
-	}
-}
-
-void raptor(SkeletonData* skeletonData, Atlas* atlas) {
-	spine::SkeletonDrawable* drawable = new spine::SkeletonDrawable(skeletonData);
-	drawable->timeScale = 1;
-
-	Skeleton* skeleton = drawable->skeleton;
-	skeleton->x = 320;
-	skeleton->y = 590;
-	Skeleton_updateWorldTransform(skeleton);
-
-	AnimationState_setAnimationByName(drawable->state, 0, "walk", true);
-	AnimationState_addAnimationByName(drawable->state, 1, "gungrab", false, 2);
-
-	sf::RenderWindow window(sf::VideoMode(640, 640), "Spine SFML - raptor");
-	window.setFramerateLimit(60);
-	sf::Event event;
-	sf::Clock deltaClock;
-	while (window.isOpen()) {
-		while (window.pollEvent(event))
-			if (event.type == sf::Event::Closed) window.close();
-
-		float delta = deltaClock.getElapsedTime().asSeconds();
-		deltaClock.restart();
-
-		drawable->update(delta);
-
-		window.clear();
-		window.draw(*drawable);
-		window.display();
-	}
-}
-
-void tank(SkeletonData* skeletonData, Atlas* atlas) {
-	spine::SkeletonDrawable* drawable = new spine::SkeletonDrawable(skeletonData);
-	drawable->timeScale = 1;
-
-	Skeleton* skeleton = drawable->skeleton;
-	skeleton->x = 500;
-	skeleton->y = 590;
-	Skeleton_updateWorldTransform(skeleton);
-
-	AnimationState_setAnimationByName(drawable->state, 0, "drive", true);
-
-	sf::RenderWindow window(sf::VideoMode(640, 640), "Spine SFML - tank");
-	window.setFramerateLimit(60);
-	sf::Event event;
-	sf::Clock deltaClock;
-
-	while (window.isOpen()) {
-		while (window.pollEvent(event))
-			if (event.type == sf::Event::Closed) window.close();
-
-		float delta = deltaClock.getElapsedTime().asSeconds();
-		deltaClock.restart();
-		drawable->update(delta);
-		window.clear();
-		window.draw(*drawable);
-		window.display();
-	}
-}
-
-void vine(SkeletonData* skeletonData, Atlas* atlas) {
-	spine::SkeletonDrawable* drawable = new spine::SkeletonDrawable(skeletonData);
-	drawable->timeScale = 1;
-
-	Skeleton* skeleton = drawable->skeleton;
-	skeleton->x = 320;
-	skeleton->y = 590;
-	Skeleton_updateWorldTransform(skeleton);
-
-	AnimationState_setAnimationByName(drawable->state, 0, "animation", true);
-
-	sf::RenderWindow window(sf::VideoMode(640, 640), "Spine SFML - vine");
-	window.setFramerateLimit(60);
-	sf::Event event;
-	sf::Clock deltaClock;
-	while (window.isOpen()) {
-		while (window.pollEvent(event))
-			if (event.type == sf::Event::Closed) window.close();
-
-		float delta = deltaClock.getElapsedTime().asSeconds();
-		deltaClock.restart();
-
-		drawable->update(delta);
-
-		window.clear();
-		window.draw(*drawable);
-		window.display();
-	}
-}
-
-void stretchyman(SkeletonData* skeletonData, Atlas* atlas) {
-	spine::SkeletonDrawable* drawable = new spine::SkeletonDrawable(skeletonData);
-	drawable->timeScale = 1;
-
-	Skeleton* skeleton = drawable->skeleton;
-	skeleton->flipX = false;
-	skeleton->flipY = false;
-
-	skeleton->x = 100;
-	skeleton->y = 590;
-	Skeleton_updateWorldTransform(skeleton);
-
-	AnimationState_setAnimationByName(drawable->state, 0, "sneak", true);
-
-	sf::RenderWindow window(sf::VideoMode(640, 640), "Spine SFML - Streatchyman");
-	window.setFramerateLimit(60);
-	sf::Event event;
-	sf::Clock deltaClock;
-	while (window.isOpen()) {
-		while (window.pollEvent(event))
-			if (event.type == sf::Event::Closed) window.close();
-
-		float delta = deltaClock.getElapsedTime().asSeconds();
-		deltaClock.restart();
-
-		drawable->update(delta);
-
-		window.clear();
-		window.draw(*drawable);
-		window.display();
-	}
-}
-
-void coin(SkeletonData* skeletonData, Atlas* atlas) {
-	spine::SkeletonDrawable* drawable = new spine::SkeletonDrawable(skeletonData);
-	drawable->timeScale = 1;
-
-	Skeleton* skeleton = drawable->skeleton;
-	skeleton->x = 320;
-	skeleton->y = 590;
-	Skeleton_updateWorldTransform(skeleton);
-
-	AnimationState_setAnimationByName(drawable->state, 0, "rotate", true);
-
-	sf::RenderWindow window(sf::VideoMode(640, 640), "Spine SFML - vine");
-	window.setFramerateLimit(60);
-	sf::Event event;
-	sf::Clock deltaClock;
-	while (window.isOpen()) {
-		while (window.pollEvent(event))
-			if (event.type == sf::Event::Closed) window.close();
-
-		float delta = deltaClock.getElapsedTime().asSeconds();
-		deltaClock.restart();
-
-		drawable->update(delta);
-
-		window.clear();
-		window.draw(*drawable);
-		window.display();
-	}
-}
-
-/**
-* Used for debugging purposes during runtime development
-*/
-void test(SkeletonData* skeletonData, Atlas* atlas) {
-	spSkeleton* skeleton = Skeleton_create(skeletonData);
-	spAnimationStateData* animData = spAnimationStateData_create(skeletonData);
-	spAnimationState* animState = spAnimationState_create(animData);
-	spAnimationState_setAnimationByName(animState, 0, "drive", true);
-
-
-	float d = 3;
-	for (int i = 0; i < 1; i++) {
-		spSkeleton_update(skeleton, d);
-		spAnimationState_update(animState, d);
-		spAnimationState_apply(animState, skeleton);
-		spSkeleton_updateWorldTransform(skeleton);
-		for (int ii = 0; ii < skeleton->bonesCount; ii++) {
-			spBone* bone = skeleton->bones[ii];
-			printf("%s %f %f %f %f %f %f\n", bone->data->name, bone->a, bone->b, bone->c, bone->d, bone->worldX, bone->worldY);
-		}
-		printf("========================================\n");
-		d += 0.1f;
-	}
-
-	Skeleton_dispose(skeleton);
 }

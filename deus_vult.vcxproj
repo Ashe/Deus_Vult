@@ -150,9 +150,33 @@
     <None Include="Data\bruh\bruh.lua" />
     <None Include="Data\bruh\script.lua" />
     <None Include="Data\common\scripts\makePlayer.lua" />
+    <None Include="Data\common\spine\char\Spine_data\2d_character_Atlas.asset" />
+    <None Include="Data\common\spine\char\Spine_data\2d_character_Material.mat" />
+    <None Include="Data\common\spine\char\Spine_data\2d_character_SkeletonData.asset" />
     <None Include="Data\player.lua" />
     <None Include="Data\makePlayer.lua" />
     <None Include="Data\player\player.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\common\spine\char\Spine_data\2d_character.atlas.txt" />
+    <Text Include="Data\common\spine\char\Spine_data\2d_character.json.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Data\common\spine\char\Img_anim\default\arm_Left_dn.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\arm_Left_up.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\arm_rigth_dn.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\arm_rigth_up.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\arm_rigth_weapon.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\body.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\body_belt..png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\head_face.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\head_hair.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\leg_left_dn.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\leg_left_up.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\leg_rigth_dn.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\leg_rigth_up.png" />
+    <Image Include="Data\common\spine\char\Img_anim\default\Sleeveless_01.png" />
+    <Image Include="Data\common\spine\char\Spine_data\2d_character.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BF4003C0-9EEB-403D-8A5C-7119DCE78786}</ProjectGuid>

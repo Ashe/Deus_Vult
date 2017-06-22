@@ -395,5 +395,59 @@
     <None Include="Data\player\player.lua" />
     <None Include="Data\common\scripts\makePlayer.lua" />
     <None Include="Data\bruh\script.lua" />
+    <None Include="Data\common\spine\char\Spine_data\2d_character_Atlas.asset" />
+    <None Include="Data\common\spine\char\Spine_data\2d_character_Material.mat" />
+    <None Include="Data\common\spine\char\Spine_data\2d_character_SkeletonData.asset" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\common\spine\char\Spine_data\2d_character.atlas.txt" />
+    <Text Include="Data\common\spine\char\Spine_data\2d_character.json.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Data\common\spine\char\Spine_data\2d_character.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\arm_Left_dn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\arm_Left_up.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\arm_rigth_dn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\arm_rigth_up.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\arm_rigth_weapon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\body.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\body_belt..png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\head_face.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\head_hair.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\leg_left_dn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\leg_left_up.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\leg_rigth_dn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\leg_rigth_up.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\common\spine\char\Img_anim\default\Sleeveless_01.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
