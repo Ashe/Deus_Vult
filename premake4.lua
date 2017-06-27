@@ -7,10 +7,16 @@ solution "DeusVult"
         files {
             "sol2-develop/sol.hpp",
             "Core/**.h",
-            "Core/**.cpp"
+            "Core/**.cpp",
+            "spine/spine-c/**.c",
+            "spine/spine-sfml/**.cpp"
         }
         links {
            "lua5.1",
+        }
+        includedirs {
+           "spine/spine-sfml/src",
+           "spine/spine-c/spine-c/include"
         }
 
         configuration "Debug"
@@ -26,14 +32,20 @@ solution "DeusVult"
         language "C++"
         files {
             "Game/**.h",
-            "Game/**.cpp"
+            "Game/**.cpp",
+            "spine/spine-c/src/spine/**.c",
+            "spine/spine-sfml/src/spine/**.cpp"
         }
         links {
             "DeusVultCore",
             "sfml-graphics",
-	    "sfml-window",
+            "sfml-window",
             "sfml-system",
             "lua5.1"
+        }
+        includedirs {
+           "spine/spine-sfml/src",
+           "spine/spine-c/spine-c/include"
         }
 
 	configuration {"linux"}

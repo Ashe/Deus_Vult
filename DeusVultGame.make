@@ -24,7 +24,7 @@ ifeq ($(config),debug)
   TARGETDIR  = .
   TARGET     = $(TARGETDIR)/DeusVultGame
   DEFINES   += -DDEBUG
-  INCLUDES  += 
+  INCLUDES  += -Ispine/spine-sfml/src -Ispine/spine-c/spine-c/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c++14
   CXXFLAGS  += $(CFLAGS) 
@@ -46,7 +46,7 @@ ifeq ($(config),release)
   TARGETDIR  = .
   TARGET     = $(TARGETDIR)/DeusVultGame
   DEFINES   += -DNDEBUG
-  INCLUDES  += 
+  INCLUDES  += -Ispine/spine-sfml/src -Ispine/spine-c/spine-c/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c++14
   CXXFLAGS  += $(CFLAGS) 
@@ -67,6 +67,7 @@ OBJECTS := \
 	$(OBJDIR)/GameScreen.o \
 	$(OBJDIR)/Controller.o \
 	$(OBJDIR)/LuaFunctions.o \
+	$(OBJDIR)/spine-sfml.o \
 
 RESOURCES := \
 
@@ -134,6 +135,9 @@ $(OBJDIR)/Controller.o: Game/Controller.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/LuaFunctions.o: Game/LuaFunctions.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/spine-sfml.o: spine/spine-sfml/src/spine/spine-sfml.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
