@@ -38,11 +38,11 @@ player = {
 		},
 		scale = {
 			0.5, 0.5
-		}, 
+		},
 		rotation = 0
 	},
 	MovementComponent = {
-		maxspeed = 1,
-		acceleration = 5
+		maxspeed = 2000,
+		acceleration = 4000
 	}
 }

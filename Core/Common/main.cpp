@@ -4,7 +4,7 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "One Rider from Light's Gaze");
 	Game game(&window);
 	game.init();
 

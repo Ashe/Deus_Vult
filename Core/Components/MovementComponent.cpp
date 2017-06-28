@@ -39,10 +39,10 @@ void MovementComponent::update(const sf::Time& dTime) {
 			// If there's no acceleration, go at max speed
 			// If there's no max speed, accelerate with no cap
 			if (_acceleration > 0)
-				_currentSpeed += _direction * dTime.asSeconds() * _acceleration;
+                _currentSpeed += _direction * dTime.asSeconds() * _acceleration;
 
 			if ((_maxspeed > 0 && abs(_currentSpeed) > _maxspeed) || _acceleration <= 0)
-				_currentSpeed = _direction * _maxspeed;
+                _currentSpeed = _direction * _maxspeed;
 
 			break;
 		case 0:
@@ -66,7 +66,7 @@ void MovementComponent::update(const sf::Time& dTime) {
 			printf("Direction %d is not valid!", _direction);
 		}
 
-		_transform->_position.x += _currentSpeed * _speedMultiplier;
+		_transform->_position.x += _currentSpeed * dTime.asSeconds() * _speedMultiplier;
 		return;
 	}
 

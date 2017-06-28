@@ -8,15 +8,17 @@ NpcComponent::NpcComponent(Entity* e, sol::table& NpcTable) : Component(e) {
 	_showMessage = false;
 	_textAdjustReady = false;
 	auto phraseRef = NpcTable["initialMessage"];
-	if (phraseRef.valid()) {
-		std::string phrase = phraseRef;
-		phrase.c_str();
-		setTextString(phrase);
-		_showMessage = true;
-	}
-	else {
-		printf("Error, NpcComponent.phrase is not a string!\n");
-	}
+    if (phraseRef) {
+        if (phraseRef.valid()) {
+            std::string phrase = phraseRef;
+            phrase.c_str();
+            setTextString(phrase);
+            _showMessage = true;
+        }
+        else {
+            printf("Error, NpcComponent.initialmessage is not a string!\n");
+        }
+    }
 
 	_speechEnabled = false;
 	if (NpcTable["enableSpeech"]) {

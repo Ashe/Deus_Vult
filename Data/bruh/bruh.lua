@@ -43,7 +43,7 @@ bruh = {
 		flipX = true,
 		scale = {
 			5, 5
-		}, 
+		},
 		rotation = 0
 	},
 	SensoryComponent = {

@@ -42,7 +42,7 @@ private:
 	SkeletonData* _skeletonData;
 	Atlas* _atlas;
 	Skeleton* _skeleton;
-	bool _debug;
+	bool _debug = false;
 
 	// Animations
 	std::map<std::string, std::string> _animationList;
