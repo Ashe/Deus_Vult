@@ -164,8 +164,6 @@ void SpineComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
 		SkeletonBounds_update(_bounds, _skeleton, true);
 		_spine->update(dTime.asSeconds());
 
-		//_animatedSprite.setScale((!_transform->_flipX * 2 - 1) * _transform->_scale.x, (!_transform->_flipY * 2 - 1) * _transform->_scale.y);
-
 		_spine->skeleton->root->scaleX = _transform->_scale.x;
 		_spine->skeleton->root->scaleY = _transform->_scale.y;
 
