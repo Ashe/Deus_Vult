@@ -25,6 +25,7 @@ MovementComponent::MovementComponent(Entity* e, sol::table& mcTable) : Component
 
 void MovementComponent::update(const sf::Time& dTime) {
 	if (_transform && _graphics) {
+
 		switch (_direction) {
 		case -1:
 		case 1:
@@ -39,10 +40,10 @@ void MovementComponent::update(const sf::Time& dTime) {
 			// If there's no acceleration, go at max speed
 			// If there's no max speed, accelerate with no cap
 			if (_acceleration > 0)
-                _currentSpeed += _direction * dTime.asSeconds() * _acceleration;
+                _currentSpeed += _direction * _acceleration;
 
 			if ((_maxspeed > 0 && abs(_currentSpeed) > _maxspeed) || _acceleration <= 0)
-                _currentSpeed = _direction * _maxspeed;
+              _currentSpeed = _direction * _maxspeed;
 
 			break;
 		case 0:
@@ -53,7 +54,7 @@ void MovementComponent::update(const sf::Time& dTime) {
 				int mod = (_currentSpeed < 0) * 2 - 1;
 
 				if (_acceleration > 0) {
-					_currentSpeed += mod * _acceleration * dTime.asSeconds();
+					_currentSpeed += mod * _acceleration;
 					if (abs(_currentSpeed) < 0.01)
 						_currentSpeed = 0;
 				}
@@ -66,7 +67,7 @@ void MovementComponent::update(const sf::Time& dTime) {
 			printf("Direction %d is not valid!", _direction);
 		}
 
-		_transform->_position.x += _currentSpeed * dTime.asSeconds() * _speedMultiplier;
+		_transform->_position.x += dTime.asSeconds() * _currentSpeed * _speedMultiplier;
 		return;
 	}
 

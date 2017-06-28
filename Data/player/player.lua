@@ -42,7 +42,7 @@ player = {
 		rotation = 0
 	},
 	MovementComponent = {
-		maxspeed = 2000,
-		acceleration = 4000
+		maxspeed = 2500,
+		acceleration = 20
 	}
 }

@@ -15,11 +15,11 @@ void Game::init() {
 
 void Game::windowResized() {
     // This function is called whenever the window is resized
-    int tempX = std::round(_window->getSize().x);
-    int tempY = std::round(_window->getSize().y);
+    //int tempX = std::round(_window->getSize().x);
+    //int tempY = std::round(_window->getSize().y);
 
-	tempX = (tempX % 2 == 0) ? tempX : tempX + 1;
-	tempY = (tempY % 2 == 0) ? tempY : tempY + 1;
+	//tempX = (tempX % 2 == 0) ? tempX : tempX + 1;
+	//tempY = (tempY % 2 == 0) ? tempY : tempY + 1;
 
 	//_window->setSize(sf::Vector2u(tempX, tempY));
 	_view = sf::View(sf::FloatRect(0, 0, _window->getSize().x, _window->getSize().y));
