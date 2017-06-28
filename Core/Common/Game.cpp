@@ -21,7 +21,7 @@ void Game::windowResized() {
 	tempX = (tempX % 2 == 0) ? tempX : tempX + 1;
 	tempY = (tempY % 2 == 0) ? tempY : tempY + 1;
 
-	_window->setSize(sf::Vector2u(tempX, tempY));
+	//_window->setSize(sf::Vector2u(tempX, tempY));
 	_view = sf::View(sf::FloatRect(0, 0, _window->getSize().x, _window->getSize().y));
 	_window->setView(_view);
 }
