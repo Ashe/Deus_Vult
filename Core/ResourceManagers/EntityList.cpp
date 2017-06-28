@@ -18,6 +18,8 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 		std::string componentName = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;
 
+		printf("Adding %s to %s..\n", componentName.c_str(), type.c_str());
+
 		if (componentName == "SpriteComponent") {
 			sol::table gcTable = value.as<sol::table>();
 			addComponent<SpriteComponent>(e, gcTable);
@@ -60,7 +62,7 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 			addComponent(e, scTable, _lua);
 		}
 
-		printf("Added %s to %s.\n", componentName.c_str(), type.c_str());
+		printf("└─ Loading successful.\n");
 	}
 	printf("-----------------------------\n%s entity loaded.\n-----------------------------\n", type.c_str());
 

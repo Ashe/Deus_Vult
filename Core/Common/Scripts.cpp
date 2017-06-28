@@ -10,7 +10,7 @@ bool luah::loadScript(sol::state& lua, const std::string& filename){
 	if (!result.valid()) {
 		sol::error err = result;
 		sol::call_status status = result.status();
-		printf("Something went horribly wrong: %s error \n\t %s\n", sol::to_string(status), err.what());
+		printf("Something went horribly wrong: %s error \n\t %s\n", sol::to_string(status).c_str(), err.what());
 		return false;
 	}
 	return true;
@@ -21,7 +21,7 @@ bool luah::loadScript(sol::state_view& lua, const std::string & filename) {
 	if (!result.valid()) {
 		sol::error err = result;
 		sol::call_status status = result.status();
-		printf("Something went horribly wrong: %s error \n\t %s\n", sol::to_string(status), err.what());
+		printf("Something went horribly wrong: %s error \n\t %s\n", sol::to_string(status).c_str(), err.what());
 		return false;
 	}
 	return true;

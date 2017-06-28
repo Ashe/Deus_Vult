@@ -23,7 +23,7 @@ void lfs::loadFunctions(sol::state & lua) {
 
 	lua.set_function("loadEntity", &EntityList::loadEntity);
 	luah::loadScript(lua, "player/player.lua");
-	luah::loadScript(lua, "bruh/bruh.lua");
+	luah::loadScript(lua, "npcs/bruh/bruh.lua");
 
 	// ~~~~~~~~~~~~~~~~
 	// EXECUTE NOW
@@ -76,4 +76,3 @@ bool lfs::enableIntPrompt(const sol::this_state& ts, Entity* e, bool show) {
 	}
 	return false;
 }
-
