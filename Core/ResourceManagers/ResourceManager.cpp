@@ -1,9 +1,20 @@
 #include "ResourceManager.h"
 
+sol::state* ResourceManager::_lua;
+std::map<std::string, sol::table> ResourceManager::_tables;
 std::map<std::string, sf::Image> ResourceManager::_images;
 std::map<std::string, sf::Texture> ResourceManager::_textures;
 std::map<std::string, sf::Font> ResourceManager::_fonts;
 
+sol::table* ResourceManager::getTable(const std::string& path) {
+
+    if (!_tables.count(path)) {
+        _tables[path] = _lua->do_file("Data/" + path);
+        printf("├─ Loaded table from %s.\n", path.c_str());
+    }
+
+    return &_tables[path];
+}
 
 sf::Image* ResourceManager::getImage(const std::string& path) {
 	if (!_images.count(path)) {
@@ -50,8 +61,13 @@ sf::Font* ResourceManager::getFont(const std::string& path) {
 	return &_fonts[path];
 }
 
+void ResourceManager::setLua(sol::state& lua) {
+    _lua = &lua;
+}
+
 void ResourceManager::releaseData() {
 	_images.clear();
 	_textures.clear();
 	_fonts.clear();
+    _tables.clear();
 }

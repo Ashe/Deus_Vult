@@ -4,21 +4,32 @@ Entity* EntityList::_playerRef = NULL;
 std::vector<Entity*> EntityList::_entities;
 std::vector<Entity*> EntityList::_interactiveEntities;
 
-Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& type) {
+Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& path) {
 	sol::state_view _lua(ts);
 
 	auto e = new Entity;
 	//std::unique_ptr<Entity> e = std::make_unique<Entity>();
-	e->setType(type);
 
-	sol::table entityTable = _lua[type];
+	sol::table resultTable = *ResourceManager::getTable(path);
+    sol::table entityTable;
+    std::string entityType;
+	for (auto key_value_pair : resultTable) {
+		entityType = key_value_pair.first.as<std::string>();
+		sol::object& value = key_value_pair.second;
 
-	printf("-----------------------------\nLoading entity %s.\n-----------------------------\n", type.c_str());
+        entityTable = value.as<sol::table>();
+    }
+
+	e->setType(entityType);
+
+	printf("-----------------------------\nLoading entity %s.\n-----------------------------\n", entityType.c_str());
 	for (auto key_value_pair : entityTable) {
 		std::string componentName = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;
 
-		printf("Adding %s to %s..\n", componentName.c_str(), type.c_str());
+		printf("Adding %s to %s..\n", componentName.c_str(), entityType.c_str());
+
+        bool successful = true;
 
 		if (componentName == "SpriteComponent") {
 			sol::table gcTable = value.as<sol::table>();
@@ -61,15 +72,21 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& typ
 			sol::table scTable = value.as<sol::table>();
 			addComponent(e, scTable, _lua);
 		}
+        else {
+            successful = false;
+        }
 
-		printf("└─ Loading successful.\n");
+        if (successful)
+            printf("└─ Loading successful.\n");
+        else
+            printf("└─ Error: %s is not a valid component.", componentName.c_str());
 	}
-	printf("-----------------------------\n%s entity loaded.\n-----------------------------\n", type.c_str());
+	printf("-----------------------------\n%s entity loaded.\n-----------------------------\n", entityType.c_str());
 
 	//auto returnPtr = e.get();
 	//entities.push_back(std::move(e));
 
-	if (type != "player")
+	if (entityType != "player")
 		_entities.push_back(e);
 	else
 		_playerRef = e;
@@ -88,6 +105,7 @@ void EntityList::update(const sf::Time& dTime) {
 }
 
 void EntityList::render(sf::RenderWindow* window, const sf::Time& dTime) {
+
 	for (Entity* entity : _entities) {
 		entity->render(window, dTime);
 	}

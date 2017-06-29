@@ -4,8 +4,8 @@
 #include "../Common/Scripts.h"
 
 MovementComponent::MovementComponent(Entity* e, sol::table& mcTable) : Component(e) {
-	if (mcTable["maxspeed"])
-		_maxspeed = (mcTable["maxspeed"]);
+	if (mcTable["maxSpeed"])
+		_maxspeed = (mcTable["maxSpeed"]);
 
 	if (mcTable["acceleration"])
 		_acceleration = mcTable["acceleration"];

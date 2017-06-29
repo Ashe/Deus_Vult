@@ -1,6 +1,6 @@
 #include "LuaFunctions.h"
 
-void lfs::loadFunctions(sol::state & lua) {
+void lfs::loadFunctions(sol::state& lua) {
 	// Load all of the entities & functions below into lua for use
 	// VERY important function, scripting breaks if things aren't loaded
 
@@ -22,15 +22,15 @@ void lfs::loadFunctions(sol::state & lua) {
 	// ~~~~~~~~~~~~~~~~
 
 	lua.set_function("loadEntity", &EntityList::loadEntity);
-	luah::loadScript(lua, "player/player.lua");
-	luah::loadScript(lua, "npcs/bruh/bruh.lua");
+	//luah::loadScript(lua, "player/player");
+	//luah::loadScript(lua, "npcs/bruh/bruh");
 
 	// ~~~~~~~~~~~~~~~~
 	// EXECUTE NOW
 	// ~~~~~~~~~~~~~~~~
 
-	luah::loadScript(lua, "common/scripts/makePlayer.lua");
-
+	//luah::loadScript(lua, "common/scripts/makePlayer.lua");
+    lua.do_file("Data/common/scripts/makePlayer.lua");
 }
 
 bool lfs::printPhrase(const sol::this_state& ts, Entity* e) {

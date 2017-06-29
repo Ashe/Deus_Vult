@@ -6,6 +6,7 @@ GameScreen::GameScreen(sf::RenderWindow* window)
 
 void GameScreen::init() {
 	_lua.open_libraries();
+    ResourceManager::setLua(_lua);
 
 	lfs::loadFunctions(_lua);
 

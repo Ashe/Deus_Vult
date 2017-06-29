@@ -1,4 +1,5 @@
 print("Creating the an entity with pure lua!")
-loadEntity("player")
+loadEntity("player/player.lua")
 print("Now creating an NPC.")
-loadEntity("bruh")
+loadEntity("npcs/bruh/bruh.lua")
+print("Done!")

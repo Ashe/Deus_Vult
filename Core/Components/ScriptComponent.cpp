@@ -30,6 +30,7 @@ ScriptComponent::ScriptComponent(Entity* e, sol::table& ComponentTable, sol::sta
 		// if there's a function for the player entering range, register
 		if (table["inRange"]) {
 			_inRange = table["inRange"];
+            _inRange(_owner);
 		}
 
 		// if there's a function for leaving range, register
@@ -49,7 +50,7 @@ void ScriptComponent::init() {
 }
 
 void ScriptComponent::update(const sf::Time& dTime) {
-       _update(_owner, dTime);
+    _update(_owner, dTime);
 }
 
 void ScriptComponent::interact() {
@@ -57,9 +58,11 @@ void ScriptComponent::interact() {
 }
 
 void ScriptComponent::inRange() {
-	_inRange(_owner);
+    if (_inRange)
+        _inRange(_owner);
 }
 
 void ScriptComponent::outRange() {
-	_outRange(_owner);
+    if (_outRange)
+        _outRange(_owner);
 }

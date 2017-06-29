@@ -2,6 +2,7 @@
 #define ENTITYLIST_H
 
 #include "../Common/Entity.h"
+#include "ResourceManager.h"
 #include <vector>
 
 class EntityList {
