@@ -55,7 +55,7 @@ SpriteComponent::SpriteComponent(Entity* e, sol::table& componentTable) : Graphi
 			if (animRef.valid())
 				changeAnimation(animRef);
 			else {
-				printf("No valid default animation, using %s.\n", _animationList.begin()->first.c_str());
+				printf("├─ No valid default animation, using %s.\n", _animationList.begin()->first.c_str());
 			}
 		}
 		else {
@@ -69,7 +69,7 @@ SpriteComponent::SpriteComponent(Entity* e, sol::table& componentTable) : Graphi
 
 	}
 	else {
-		printf("Error, GraphicsComponent.filename is not a string!\n");
+		printf("├─ Error, GraphicsComponent.filename is not a string!\n");
 	}
 
 
@@ -121,7 +121,7 @@ void SpriteComponent::changeAnimation(const std::string& animName) {
 		return;
 	}
 
-	printf("No animations with %s found.\n", animName.c_str());
+	printf("├─ No animations with %s found.\n", animName.c_str());
 }
 
 sf::Vector2i SpriteComponent::getSize() const {
@@ -163,7 +163,7 @@ bool SpriteComponent::setTexture(){
 	if (_texture)
 		return true;
 
-	printf("Error, could not load %s!\n", _filename.c_str());
+	printf("├─ Error, could not load %s!\n", _filename.c_str());
 	return false;
 }
 

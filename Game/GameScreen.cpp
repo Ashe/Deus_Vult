@@ -11,6 +11,8 @@ void GameScreen::init() {
 	lfs::loadFunctions(_lua);
 
 	_controller.initialise(&_input);
+
+    _map.loadMap("maps/testmap.lua");
 }
 
 bool GameScreen::update(const sf::Time& dTime) {
@@ -22,6 +24,8 @@ bool GameScreen::update(const sf::Time& dTime) {
 void GameScreen::render(const sf::Time& dTime) {
 	sf::Vector2f pos = EntityList::getPlayer()->get<TransformComponent>()->_position;
 	_window->setView(sf::View(pos, _window->getView().getSize()));
+
+    _map.render(_window);
 
 	EntityList::render(_window, dTime);
 }

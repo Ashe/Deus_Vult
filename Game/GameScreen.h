@@ -6,6 +6,7 @@
 #include "../Core/Common/Scripts.h"
 #include "../Core/ResourceManagers/EntityList.h"
 #include "../Core/ResourceManagers/InputManager.h"
+#include "GameMap.h"
 
 #include "LuaFunctions.h"
 #include "Controller.h"
@@ -28,6 +29,7 @@ private:
 	sol::state _lua;
 
 	Controller _controller;
+    GameMap _map;
 };
 
 #endif

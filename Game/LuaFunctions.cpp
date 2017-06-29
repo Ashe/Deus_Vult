@@ -30,6 +30,7 @@ void lfs::loadFunctions(sol::state& lua) {
 	// ~~~~~~~~~~~~~~~~
 
 	//luah::loadScript(lua, "common/scripts/makePlayer.lua");
+
     lua.do_file("Data/common/scripts/makePlayer.lua");
 }
 

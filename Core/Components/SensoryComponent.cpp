@@ -6,6 +6,7 @@
 SensoryComponent::SensoryComponent(Entity* e, sol::table& componentTable) : Component(e) {
 
 	_range = 0;
+    _inRange = false;
 	if (componentTable["range"]) {
 		_range = componentTable["range"];
 	}
@@ -14,6 +15,9 @@ SensoryComponent::SensoryComponent(Entity* e, sol::table& componentTable) : Comp
 	_playerTransform = EntityList::getPlayer()->get<TransformComponent>();
 	if (_playerTransform) {
 		_playerPosition = _playerTransform->_position;
+
+        if (_ownerTransform)
+            _inRange = abs(_playerPosition.x - _ownerTransform->_position.x) < _range;
 	}
 
 	_scripts = _owner->get<ScriptComponent>();

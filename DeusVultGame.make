@@ -66,6 +66,7 @@ endif
 OBJECTS := \
 	$(OBJDIR)/GameScreen.o \
 	$(OBJDIR)/Controller.o \
+	$(OBJDIR)/GameMap.o \
 	$(OBJDIR)/LuaFunctions.o \
 	$(OBJDIR)/spine-sfml.o \
 
@@ -132,6 +133,9 @@ $(OBJDIR)/GameScreen.o: Game/GameScreen.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/Controller.o: Game/Controller.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/GameMap.o: Game/GameMap.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/LuaFunctions.o: Game/LuaFunctions.cpp

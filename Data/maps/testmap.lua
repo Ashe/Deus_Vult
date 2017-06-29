@@ -1,14 +1,14 @@
-testmap = {
-   Geography = {
-      length = 20000,
-
-      --locate = function (x)
-      --   print("Locate Function Called");
-      --   return 0
-      --end
-   },
-   Spawns = {},
-   KeyLocations = {
-      spawn = 200
+local map = {
+    testMap = {
+       Geometry = {
+           {0,0},
+           {3000, 0}
+       },
+       Spawns = {},
+       KeyLocations = {
+           spawn = 200
+       }
    }
 }
+
+return map
