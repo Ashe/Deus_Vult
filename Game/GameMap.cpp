@@ -1,6 +1,6 @@
 #include "GameMap.h"
 
-#include "../Core/ResourceManagers/ResourceManager.cpp"
+#include "../Core/ResourceManagers/ResourceManager.h"
 
 void GameMap::loadMap(const std::string& path) {
     _valid = true;
@@ -48,7 +48,7 @@ void GameMap::loadGeometry(const sol::table& table) {
     _points.clear();
     _line.clear();
 
-    int previousX;
+    int previousX = NULL;
 
     for (auto coordTable : table) {
         sol::table coord = coordTable.second.as<sol::table>();
