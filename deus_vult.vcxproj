@@ -36,9 +36,10 @@
     <ClCompile Include="Core\ResourceManagers\InputManager.cpp" />
     <ClCompile Include="Core\Common\main.cpp" />
     <ClCompile Include="Core\Common\Game.cpp" />
+    <ClCompile Include="Core\ResourceManagers\MapManager.cpp" />
     <ClCompile Include="Core\ResourceManagers\ResourceManager.cpp" />
     <ClCompile Include="Core\Common\Scripts.cpp" />
-    <ClCompile Include="Game\GameMap.cpp" />
+    <ClCompile Include="Core\Common\GameMap.cpp" />
     <ClCompile Include="spine\spine-c\spine-c\src\spine\Animation.c" />
     <ClCompile Include="spine\spine-c\spine-c\src\spine\AnimationState.c" />
     <ClCompile Include="spine\spine-c\spine-c\src\spine\AnimationStateData.c" />
@@ -101,10 +102,11 @@
     <ClInclude Include="Core\ResourceManagers\EntityList.h" />
     <ClInclude Include="Core\Common\Game.h" />
     <ClInclude Include="Core\ResourceManagers\InputManager.h" />
+    <ClInclude Include="Core\ResourceManagers\MapManager.h" />
     <ClInclude Include="Core\ResourceManagers\ResourceManager.h" />
     <ClInclude Include="Core\Common\Screen.h" />
     <ClInclude Include="Core\Common\Scripts.h" />
-    <ClInclude Include="Game\GameMap.h" />
+    <ClInclude Include="Core\Common\GameMap.h" />
     <ClInclude Include="spine\spine-c\spine-c\include\spine\Animation.h" />
     <ClInclude Include="spine\spine-c\spine-c\include\spine\AnimationState.h" />
     <ClInclude Include="spine\spine-c\spine-c\include\spine\AnimationStateData.h" />

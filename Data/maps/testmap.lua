@@ -1,8 +1,10 @@
 local map = {
     testMap = {
        Geometry = {
-           {0,0},
-           {3000, 0}
+           {0,400},
+           {400, 400},
+           {800, 200},
+           {1100, 400},
        },
        Spawns = {},
        KeyLocations = {

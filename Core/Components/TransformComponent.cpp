@@ -1,5 +1,7 @@
 #include "TransformComponent.h"
 
+#include "../ResourceManagers/MapManager.h"
+
 TransformComponent::TransformComponent(Entity* e, sol::table& componentTable) : Component(e) {
     _position = sf::Vector2f(0, 0);
 	if (componentTable["position"]) {
@@ -9,6 +11,10 @@ TransformComponent::TransformComponent(Entity* e, sol::table& componentTable) : 
 		if (componentTable["position"][2])
 			_position.y = componentTable["position"][2];
 	}
+
+	// If there's a map, snap to it for convenience
+	GameMap* map= MapManager::getCurrentMap();
+	if (map) map->snapToMap(_position);
 
         _scale = sf::Vector2f(1, 1);
 	if (componentTable["scale"]) {

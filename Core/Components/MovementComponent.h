@@ -8,6 +8,8 @@
 #include "TransformComponent.h"
 #include "GraphicsComponentBase.h"
 
+#include "../ResourceManagers/MapManager.h"
+
 #include <SFML/Graphics.hpp>
 
 class MovementComponent : public Component {
@@ -22,6 +24,8 @@ public:
 private:
 	TransformComponent* _transform;
 	GraphicsComponentBase* _graphics;
+	GameMap* _map;
+
 	float _maxspeed = 0;
 	float _acceleration = 0;
 	float _currentSpeed = 0;

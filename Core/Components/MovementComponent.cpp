@@ -70,6 +70,12 @@ void MovementComponent::update(const sf::Time& dTime) {
 		}
 
 		_transform->_position.x += _currentSpeed * _speedMultiplier * deltaT;
+
+		if (_map)
+			_map->snapToMap(_transform->_position);
+		else 
+			_map = MapManager::getCurrentMap();
+
 		return;
 	}
 

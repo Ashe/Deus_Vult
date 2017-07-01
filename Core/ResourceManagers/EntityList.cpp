@@ -10,7 +10,7 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& pat
 	auto e = new Entity;
 	//std::unique_ptr<Entity> e = std::make_unique<Entity>();
 
-	sol::table resultTable = *ResourceManager::getTable(path);
+	sol::table resultTable = ResourceManager::getTable(path);
     sol::table entityTable;
     std::string entityType;
 	for (auto key_value_pair : resultTable) {
@@ -57,8 +57,8 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& pat
 			addComponent<TransformComponent>(e, pcTable);
 		}
 		else if (componentName == "MovementComponent") {
-			sol::table pcTable = value.as<sol::table>();
-			addComponent<MovementComponent>(e, pcTable);
+			sol::table mcTable = value.as<sol::table>();
+			addComponent<MovementComponent>(e, mcTable);
 		}
 		else if (componentName == "NpcComponent") {
 			sol::table npccTable = value.as<sol::table>();
@@ -77,9 +77,9 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& pat
         }
 
         if (successful)
-            printf("└─ Loading successful.\n");
+            printf("|- Loading successful.\n");
         else
-            printf("└─ Error: %s is not a valid component.", componentName.c_str());
+            printf("|- Error: %s is not a valid component.", componentName.c_str());
 	}
 	printf("-----------------------------\n%s entity loaded.\n-----------------------------\n", entityType.c_str());
 

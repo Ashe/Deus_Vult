@@ -8,7 +8,7 @@
 class ResourceManager {
 public:
     static void setLua(sol::state&);
-	static sol::table* getTable(const std::string&);
+	static sol::table getTable(const std::string&);
 
 	static sf::Image* getImage(const std::string&);
 	static sf::Texture* getTexture(const std::string&);

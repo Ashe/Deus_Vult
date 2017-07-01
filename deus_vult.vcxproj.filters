@@ -198,7 +198,10 @@
     <ClCompile Include="Core\Components\SpineComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\GameMap.cpp">
+    <ClCompile Include="Core\Common\GameMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ResourceManagers\MapManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -398,7 +401,10 @@
     <ClInclude Include="Core\Components\GraphicsComponentBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game\GameMap.h">
+    <ClInclude Include="Core\Common\GameMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ResourceManagers\MapManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
