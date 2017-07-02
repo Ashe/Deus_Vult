@@ -56,6 +56,8 @@ public:
 	void addUpdateFunction(std::function<void(const sf::Time&)>);
 	void addRenderFunction(std::function<void(sf::RenderWindow*, const sf::Time&)>);
 
+	sf::Vector2i getSize();
+
 private:
 	std::string _type;
 	std::map<std::type_index, Component*> _components;

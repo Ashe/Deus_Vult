@@ -37,7 +37,7 @@ private:
 	SensoryComponent* _sensoryComponent;
 	TransformComponent* _transform;
 
-	sf::Vector2i _spriteDim;
+	int _spriteDimY;
 };
 
 #endif 

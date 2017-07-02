@@ -1,49 +1,26 @@
 local entity = {
     bruh = {
-        SpriteComponent = {
-            filename = "common/img/rogue.png",
-            size = {32, 32},
+        SpineComponent = {
+            dataIsJSON = false,
+            atlas = "common/spine/goblins/export/goblins.atlas",
+            data = "common/spine/goblins/export/goblins.skel",
             defaultAnim = "idle",
+            timeScale = 1,
+            defaultMix = 0.2,
             animations = {
-                idle = {
-                    frameTime = 200,
-                    animation = {
-                        {0, 0},
-                        {32, 0},
-                        {64, 0},
-                        {96, 0},
-                        {128, 0},
-                        {160, 0},
-                        {192, 0},
-                        {224, 0},
-                        {256, 0},
-                        {288, 0}
-                    }
-                },
                 walk = {
-                    frameTime = 70,
-                    animation = {
-                        {0, 64},
-                        {32, 64},
-                        {64, 64},
-                        {96, 64},
-                        {128, 64},
-                        {160, 64},
-                        {192, 64},
-                        {224, 64},
-                        {256, 64},
-                        {288, 64}
-                    }
+                    animString = "walk"
                 }
-            }
+            },
+			skin = "goblin"
         },
         TransformComponent = {
             position = {
-                500, 300
+                500, 100
             },
             flipX = true,
             scale = {
-                5, 5
+                0.8, 0.8
             },
             rotation = 0
         },

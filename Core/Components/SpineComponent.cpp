@@ -118,6 +118,12 @@ SpineComponent::SpineComponent(Entity* e, sol::table& componentTable) : Graphics
 
 		_spine->state->data->defaultMix = 0.2;
 
+		auto skinRef = componentTable["skin"];
+		if (skinRef.valid()) {
+			std:: string skin = skinRef;
+			spSkeleton_setSkin(_skeleton, spSkeletonData_findSkin(_skeletonData, skin.c_str()));
+		}
+
 
 		// If there's any animations, set them. Else, take the entire file as the only sprite
 		sol::table animations = componentTable["animations"];
@@ -189,6 +195,17 @@ void SpineComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
 
 		window->draw(*_spine);
 
+		//// DEV MODE
+		//sf::RectangleShape rect;
+		//rect.setSize(sf::Vector2f(_spine->vertexArray->getBounds().width, _spine->vertexArray->getBounds().height));
+		//sf::Vector2f pos(_spine->skeleton->x, _spine->skeleton->y);
+		//sf::Vector2f center(_spine->vertexArray->getBounds().width / 2, _spine->vertexArray->getBounds().height);
+		//rect.setPosition(pos - center);
+		//rect.setFillColor(sf::Color::Transparent);
+		//rect.setOutlineColor(sf::Color::White);
+		//rect.setOutlineThickness(2);
+		//window->draw(rect);
+
 		return;
 	}
 
@@ -226,7 +243,7 @@ void SpineComponent::playAnimation(const std::string& animName, float delay) {
 }
 
 sf::Vector2i SpineComponent::getSize() const {
-	return sf::Vector2i(_spriteWidth, _spriteHeight);
+	return sf::Vector2i(_spine->vertexArray->getBounds().width, _spine->vertexArray->getBounds().height);
 }
 
 void SpineComponent::setAnimations(sol::table & animationTable) {

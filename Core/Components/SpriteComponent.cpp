@@ -27,7 +27,7 @@ SpriteComponent::SpriteComponent(Entity* e, sol::table& componentTable) : Graphi
 			_spriteHeight = componentTable["size"][2];
 
 		// Set origin
-		_animatedSprite.setOrigin(_spriteWidth / 2, _spriteHeight / 2);
+		_animatedSprite.setOrigin(_spriteWidth / 2, _spriteHeight);
 
 		// If there's no texture, stop the function
 		if (!setTexture())

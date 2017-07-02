@@ -8,11 +8,12 @@ void GameScreen::init() {
 	_lua.open_libraries();
     ResourceManager::setLua(_lua);
 
+    _map = MapManager::changeMap("maps/testmap.lua");
+
 	lfs::loadFunctions(_lua);
 
 	_controller.initialise(&_input);
 
-    _map = MapManager::changeMap("maps/testmap.lua");
 }
 
 bool GameScreen::update(const sf::Time& dTime) {

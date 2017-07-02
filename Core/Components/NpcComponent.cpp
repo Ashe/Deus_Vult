@@ -65,20 +65,23 @@ void NpcComponent::update(const sf::Time& dTime) {
 
 	_sensoryComponent = _owner->get<SensoryComponent>();
 	_transform = _owner->get<TransformComponent>();
-	_spriteDim = _owner->get<SpriteComponent>()->getSize();
+	_spriteDimY = _owner->getSize().y;
 }
 
 void NpcComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
 
 	if (_showMessage && _transform && _textAdjustReady) {
+
+		_spriteDimY = _owner->getSize().y;
+
 		_text.setPosition(_transform->_position);
-		_text.move(_textAdjust);
+		_text.move(_textAdjust.x, _textAdjust.y - _spriteDimY);
 		window->draw(_text);
 		return;
 	}
 
 	_transform = _owner->get<TransformComponent>();
-	_spriteDim = _owner->get<SpriteComponent>()->getSize();
+
 
 	centerText();
 }
@@ -101,10 +104,11 @@ void NpcComponent::setFacePlayer(bool face) {
 
 void NpcComponent::centerText() {
 	if (_transform) {
+
 		//center text
 		sf::FloatRect textRect = _text.getLocalBounds();
 		_textAdjust = sf::Vector2f(textRect.left - textRect.width / 2.0f,
-			textRect.top - textRect.height / 2.0f - (_spriteDim.y * _transform->_scale.y) / 1.5);
+			textRect.top - textRect.height / 2.0f);
 	}
 
 	_textAdjustReady = _textAdjust.x != 0 && _textAdjust.y != 0;

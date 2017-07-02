@@ -56,3 +56,20 @@ void Entity::addUpdateFunction(std::function<void(const sf::Time&)> func) {
 void Entity::addRenderFunction(std::function<void(sf::RenderWindow*, const sf::Time&)> func) {
 	_renderFunctions.push_back(func);
 }
+
+sf::Vector2i Entity::getSize()
+{
+	if (get<SpineComponent>())
+		return get<SpineComponent>()->getSize();
+
+	if (get<SpriteComponent>()) {
+		const auto sprite = get<SpriteComponent>()->getSize();
+		if (get<TransformComponent>()) {
+			const auto trans = get<TransformComponent>()->_scale;
+			return sf::Vector2i(sprite.x * trans.x, sprite.y * trans.y);
+		}
+		return sf::Vector2i(sprite.x, sprite.y);
+	}
+
+	return sf::Vector2i();
+}
