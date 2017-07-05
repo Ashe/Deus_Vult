@@ -7,6 +7,7 @@
 
 #include "MovementComponent.h"
 
+#include "../../Game/Stats.h"
 
 class CombatComponent : public Component {
 public:
@@ -19,6 +20,7 @@ private:
 	MovementComponent* _movement;
 	bool _inCombat;
 
+	std::map<std::string, Stat> _stats;
 };
 
 #endif 

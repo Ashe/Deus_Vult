@@ -46,7 +46,12 @@ local entity = {
             maxSpeed = 2500,
             acceleration = 5000
         },
-		CombatComponent = {}
+		CombatComponent = {
+			health = {
+				value = 100,
+				drawStyle = "bar"
+			}
+		}
     }
 }
 

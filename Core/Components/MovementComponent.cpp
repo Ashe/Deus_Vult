@@ -70,6 +70,7 @@ void MovementComponent::update(const sf::Time& dTime) {
 		switch (dirToUse) {
 		case -1:
 		case 1:
+
 			_transform->_flipX = (dirToUse < 0);
 
 			if (_speedMultiplier <= 1)

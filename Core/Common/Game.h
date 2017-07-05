@@ -17,7 +17,6 @@ public:
 
 private:
 	sf::RenderWindow* _window;
-	sf::View _view;
 
 	GameScreen _game;
 	Screen* _currentScreen;

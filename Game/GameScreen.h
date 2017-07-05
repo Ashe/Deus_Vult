@@ -11,13 +11,15 @@
 #include "LuaFunctions.h"
 #include "Controller.h"
 
+#include "../Core/HUD/HUD.h"
+
 #include <spine/spine-sfml.h>
 
 class GameScreen : public Screen {
 public:
 	GameScreen(sf::RenderWindow*);
 	void init();
-	bool update(const sf::Time&);
+	void update(const sf::Time&);
 	void render(const sf::Time&);
 	void handleEvent(const sf::Event&);
 	void quit();
@@ -30,6 +32,11 @@ private:
 
 	Controller _controller;
     GameMap* _map;
+	HUD _hud;
+
+	sf::Vector2f* _playerPos;
+	sf::Vector2f getPlayerPos();
+	
 };
 
 #endif
