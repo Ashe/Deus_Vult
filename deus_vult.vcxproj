@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Core\Animation\AnimatedSprite.cpp" />
     <ClCompile Include="Core\Animation\SPRAnimation.cpp" />
+    <ClCompile Include="Core\Components\CombatComponent.cpp" />
     <ClCompile Include="Core\Components\ControllerComponent.cpp" />
     <ClCompile Include="Core\Components\SpineComponent.cpp" />
     <ClCompile Include="Core\Components\SpriteComponent.cpp" />
@@ -86,6 +87,7 @@
   <ItemGroup>
     <ClInclude Include="Core\Animation\AnimatedSprite.hpp" />
     <ClInclude Include="Core\Animation\SPRAnimation.hpp" />
+    <ClInclude Include="Core\Components\CombatComponent.h" />
     <ClInclude Include="Core\Components\Component.h" />
     <ClInclude Include="Core\Components\ControllerComponent.h" />
     <ClInclude Include="Core\Components\GraphicsComponentBase.h" />

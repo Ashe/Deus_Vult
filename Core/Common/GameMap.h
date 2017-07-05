@@ -9,12 +9,17 @@ public:
     void loadMap(const std::string&);
 	void snapToMap(sf::Vector2f&);
 
+	int getMidPointX(float);
+
     void render(sf::RenderWindow*);
 
 	bool isValid();
 	std::string getName();
 
 private:
+
+	int _gridSize;
+
     bool _valid;
     std::string _name;
     int _length;

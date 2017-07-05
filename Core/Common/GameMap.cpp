@@ -3,6 +3,8 @@
 
 void GameMap::loadMap(const std::string& path) {
     _valid = true;
+	_gridSize = 100;
+
     printf("Loading map..\n");
 
     sol::table mapTable;
@@ -80,6 +82,27 @@ void GameMap::snapToMap(sf::Vector2f& pos) {
 	pos.y = grad * x + constant;
 }
 
+int GameMap::getMidPointX(float x) {
+	bool found = false;
+	int i = 1;
+
+	int leftMark, rightMark;
+
+	while (!found && i < _marks.getVertexCount()) {
+		leftMark = _marks[i - 1].position.x;
+		rightMark = _marks[i].position.x;
+
+		if (leftMark <= x && x <= rightMark)
+			found = true;
+		else
+			i++;
+	}
+
+	if (found) {
+		return (leftMark + rightMark) / 2;
+	}
+}
+
 void GameMap::render(sf::RenderWindow* window) {
 	window->draw(_line);
 	window->draw(_marks);
@@ -155,8 +178,8 @@ void GameMap::loadGeometry(const sol::table& table) {
 	_rightBound = _points.back().x;
 
 	// Generate the locations for the 'marks'
-	for (int i = 0; i <= _length / 100; i++) {
-		sf::Vertex mark(sf::Vector2f(_leftBound + i * 100, 0), sf::Color(255, 255, 255, 100));
+	for (int i = 0; i <= _length / _gridSize; i++) {
+		sf::Vertex mark(sf::Vector2f(_leftBound + i * _gridSize, 0), sf::Color(255, 255, 255, 100));
 		snapToMap(mark.position);
 		mark.position.y -= 10;
 		_marks.append(mark);

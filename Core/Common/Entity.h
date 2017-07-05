@@ -17,6 +17,7 @@
 #include "../Components/NpcComponent.h"
 #include "../Components/ScriptComponent.h"
 #include "../Components/ControllerComponent.h"
+#include "../Components/CombatComponent.h"
 
 // Forward declaration
 class Component;

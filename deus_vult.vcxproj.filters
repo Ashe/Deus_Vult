@@ -204,6 +204,9 @@
     <ClCompile Include="Core\ResourceManagers\MapManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Components\CombatComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameScreen.h">
@@ -405,6 +408,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Core\ResourceManagers\MapManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Components\CombatComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

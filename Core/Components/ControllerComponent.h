@@ -6,13 +6,12 @@
 #include "Component.h"
 
 #include "MovementComponent.h"
+#include "CombatComponent.h"
 #include "SpineComponent.h"
 
 class ControllerComponent : public Component {
 public:
 	ControllerComponent(Entity* e, sol::table& componentTable);
-
-	MovementComponent* _movementComponent;
 
 	void addDirLeft();
 	void addDirRight();
@@ -20,8 +19,11 @@ public:
 	void startSprinting();
 	void stopSprinting();
 
-	void test();
+	void toggleCombat();
 
+private:
+	CombatComponent* _combatComponent;
+	MovementComponent* _movementComponent;
 };
 
 #endif

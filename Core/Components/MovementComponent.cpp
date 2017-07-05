@@ -23,15 +23,54 @@ MovementComponent::MovementComponent(Entity* e, sol::table& mcTable) : Component
 	_owner->addUpdateFunction([this](const sf::Time&dTime) {update(dTime); });
 }
 
+void MovementComponent::setLockMovement(bool lock) {
+	_lockMovement = lock;
+}
+
+void MovementComponent::addDirection(int dir) {
+	_direction += dir;
+}
+
+void MovementComponent::setSprintSpeed(int mult) {
+	_speedMultiplier = mult;
+}
+
+void MovementComponent::moveToMidpoint() {
+	if (!_transform || !_map) {
+		_transform = _owner->get<TransformComponent>();
+		_map = MapManager::getCurrentMap();
+	}
+
+	if (_transform && _map) {
+		_moveToDestination = _map->getMidPointX(_transform->_position.x);
+		_savedDirection=  _transform->_flipX;
+		_movingToDestination = true;
+	}
+}
+
 void MovementComponent::update(const sf::Time& dTime) {
 	if (_transform && _graphics) {
 
         const float deltaT = dTime.asSeconds();
 
-		switch (_direction) {
+		int dirToUse = _direction;
+		if (_lockMovement) {
+			if (!_movingToDestination)
+				return;
+			else {
+				const int diff = _transform->_position.x - _moveToDestination;
+				if (diff != 0)
+					dirToUse = (-diff) / abs(diff);
+				else
+					dirToUse = 0;
+			}
+		}
+
+		// If the player is free to move
+		switch (dirToUse) {
 		case -1:
 		case 1:
-			_transform->_flipX = (_direction < 0);
+			_transform->_flipX = (dirToUse < 0);
 
 			if (_speedMultiplier <= 1)
 				_graphics->changeAnimation("walk");
@@ -42,10 +81,10 @@ void MovementComponent::update(const sf::Time& dTime) {
 			// If there's no acceleration, go at max speed
 			// If there's no max speed, accelerate with no cap
 			if (_acceleration > 0)
-                _currentSpeed += _direction * _acceleration * deltaT;
+				_currentSpeed += dirToUse * _acceleration * deltaT;
 
 			if ((_maxspeed > 0 && abs(_currentSpeed) > _maxspeed) || _acceleration <= 0)
-              _currentSpeed = _direction * _maxspeed;
+			  _currentSpeed = dirToUse * _maxspeed;
 
 			break;
 		case 0:
@@ -66,10 +105,24 @@ void MovementComponent::update(const sf::Time& dTime) {
 			break;
 		default:
 			// If _direction is not between -1 and 1, its not valid
-			printf("Direction %d is not valid!", _direction);
+			printf("Direction %d is not valid!", dirToUse);
 		}
 
-		_transform->_position.x += _currentSpeed * _speedMultiplier * deltaT;
+		if (!_movingToDestination)
+			_transform->_position.x += _currentSpeed * _speedMultiplier * deltaT;
+		else {
+			// If moving to a destination, check to see if it is in range
+			if (abs(_moveToDestination - _transform->_position.x) > abs(_currentSpeed * _speedMultiplier * deltaT)) {
+				_transform->_position.x += _currentSpeed * _speedMultiplier * deltaT;
+			}
+			else {
+				_transform->_position.x = _moveToDestination;
+				_transform->_flipX = _savedDirection;
+				_movingToDestination = false;
+				_currentSpeed = 0;
+			}
+
+		}
 
 		if (_map)
 			_map->snapToMap(_transform->_position);
@@ -83,5 +136,5 @@ void MovementComponent::update(const sf::Time& dTime) {
 	_transform = _owner->get<TransformComponent>();
 	_graphics = _owner->get<SpineComponent>();
 	if (!_graphics)
-		_graphics = _owner->get<SpriteComponent>();;
+		_graphics = _owner->get<SpriteComponent>();
 }

@@ -72,6 +72,10 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& pat
 			sol::table scTable = value.as<sol::table>();
 			addComponent(e, scTable, _lua);
 		}
+		else if (componentName == "CombatComponent") {
+			sol::table cbTable = value.as<sol::table>();
+			addComponent<CombatComponent>(e, cbTable);
+		}
         else {
             successful = false;
         }

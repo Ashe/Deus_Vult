@@ -45,7 +45,8 @@ local entity = {
         MovementComponent = {
             maxSpeed = 2500,
             acceleration = 5000
-        }
+        },
+		CombatComponent = {}
     }
 }
 
