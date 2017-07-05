@@ -6,8 +6,8 @@ ScriptComponent::ScriptComponent(Entity* e, sol::table& ComponentTable, sol::sta
 	auto scriptRef = ComponentTable["script"];
 	if (scriptRef.valid()) {
 		_scriptPath = scriptRef;
-		//luah::loadScript(lua, scriptRef);
 		sol::table table = lua.do_file("Data/" + _scriptPath);
+		//sol::table table = ResourceManager::getTable(_scriptPath);
 
 		// if there's an init function, prepare to call it after initialisation
 		if (table["init"]) {
@@ -30,7 +30,6 @@ ScriptComponent::ScriptComponent(Entity* e, sol::table& ComponentTable, sol::sta
 		// if there's a function for the player entering range, register
 		if (table["inRange"]) {
 			_inRange = table["inRange"];
-            _inRange(_owner);
 		}
 
 		// if there's a function for leaving range, register

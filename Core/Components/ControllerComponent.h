@@ -18,11 +18,7 @@ public:
 
 	void startSprinting();
 	void stopSprinting();
-
-	void toggleCombat();
-
 private:
-	CombatComponent* _combatComponent;
 	MovementComponent* _movementComponent;
 };
 

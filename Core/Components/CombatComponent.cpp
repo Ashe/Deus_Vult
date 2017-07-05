@@ -42,7 +42,6 @@ CombatComponent::CombatComponent(Entity* e, sol::table& componentTable) : Compon
 			//_stats.insert(std::make_pair(statName, Stat(statName, type, statValue, drawStyle)));
 			_stats.insert(std::make_pair(statName, Stat(statName, type, str, flo, drawStyle)));
 		}
-
 	}
 
 	_movement = _owner->get<MovementComponent>();
@@ -52,24 +51,6 @@ bool CombatComponent::isInCombat() {
 	return _inCombat;
 }
 
-void CombatComponent::toggleCombat() {
-
-	if (!_movement)
-		_movement = _owner->get<MovementComponent>();
-
-	if (!_inCombat) {
-		_inCombat = true;
-
-		if (_movement) {
-			_movement->setLockMovement(true);
-			_movement->moveToMidpoint();
-		}
-	}
-	else { // not in combat
-		_inCombat = false;
-		if (_movement) {
-			_movement->setLockMovement(false);
-		}
-	}
-
+void CombatComponent::setInCombat(bool inCombat) {
+	_inCombat = inCombat;
 }

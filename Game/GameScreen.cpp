@@ -12,7 +12,7 @@ void GameScreen::init() {
 
 	lfs::loadFunctions(_lua);
 
-	_controller.initialise(&_input);
+	_controller.initialise(&_input, _lua);
 
 	_playerPos = &EntityList::getPlayer()->get<TransformComponent>()->_position;
 }

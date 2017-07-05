@@ -8,40 +8,44 @@ void lfs::loadFunctions(sol::state& lua) {
 	// FUNCTIONS
 	// ~~~~~~~~~~~~~~~~
 
+	// Load entity
+	lua.set_function("loadEntity", &EntityList::loadEntity);
+
+	// Load map
+	lua.set_function("loadMap", &MapManager::changeMap);
+
 	// NPC Component
-	lua.set_function("printPhrase", &lfs::printPhrase);
-	lua.set_function("setShowMessage", &lfs::setShowMessage);
-	lua.set_function("setMessage", &lfs::setMessage);
-	lua.set_function("sayMessage", &lfs::sayMessage);
+	lua.set_function("printPhrase", &lfs::npcc_printPhrase);
+	lua.set_function("npcc_setShowMessage", &lfs::npcc_setShowMessage);
+	lua.set_function("npcc_setMessage", &lfs::npcc_setMessage);
+	lua.set_function("npcc_sayMessage", &lfs::npcc_sayMessage);
 
 	// Interaction Component
-	lua.set_function("enableIntPrompt", &lfs::enableIntPrompt);
+	lua.set_function("ic_enableIntPrompt", &lfs::ic_enableIntPrompt);
 
-	// ~~~~~~~~~~~~~~~~
-	// ENTITIES
-	// ~~~~~~~~~~~~~~~~
+	// Movement Component
+	lua.set_function("mc_setLockMovement", &lfs::mc_setLockMovement);
+	lua.set_function("mc_moveToMidpoint", &lfs::mc_moveToMidpoint);
 
-	lua.set_function("loadEntity", &EntityList::loadEntity);
-	//luah::loadScript(lua, "player/player");
-	//luah::loadScript(lua, "npcs/bruh/bruh");
+	// Combat Component
+	lua.set_function("cc_isInCombat", &lfs::cc_isInCombat);
+	lua.set_function("cc_setInCombat", &lfs::cc_setInCombat);
 
 	// ~~~~~~~~~~~~~~~~
 	// EXECUTE NOW
 	// ~~~~~~~~~~~~~~~~
 
-	//luah::loadScript(lua, "common/scripts/makePlayer.lua");
-
-    lua.do_file("Data/common/scripts/makePlayer.lua");
+    lua.do_file("Data/common/scripts/executeNow.lua");
 }
 
-bool lfs::printPhrase(const sol::this_state& ts, Entity* e) {
+bool lfs::npcc_printPhrase(const sol::this_state& ts, Entity* e) {
 	auto temp = e->get<NpcComponent>();
 	temp->printText();
 
 	return true;
 }
 
-bool lfs::setShowMessage(const sol::this_state& ts, Entity* e, bool show) {
+bool lfs::npcc_setShowMessage(const sol::this_state& ts, Entity* e, bool show) {
 	auto npc = e->get<NpcComponent>();
 	if (npc) {
 		npc->setShowText(show);
@@ -50,7 +54,7 @@ bool lfs::setShowMessage(const sol::this_state& ts, Entity* e, bool show) {
 	return false;
 }
 
-bool lfs::setMessage(const sol::this_state& ts, Entity* e, const std::string& msg) {
+bool lfs::npcc_setMessage(const sol::this_state& ts, Entity* e, const std::string& msg) {
 	auto npc = e->get<NpcComponent>();
 	if (npc) {
 		npc->setTextString(msg);
@@ -59,7 +63,7 @@ bool lfs::setMessage(const sol::this_state& ts, Entity* e, const std::string& ms
 	return false;
 }
 
-bool lfs::sayMessage(const sol::this_state& ts, Entity* e, const std::string& msg) {
+bool lfs::npcc_sayMessage(const sol::this_state& ts, Entity* e, const std::string& msg) {
 	auto npc = e->get<NpcComponent>();
 	if (npc) {
 		npc->setTextString(msg);
@@ -69,11 +73,51 @@ bool lfs::sayMessage(const sol::this_state& ts, Entity* e, const std::string& ms
 	return false;
 }
 
-bool lfs::enableIntPrompt(const sol::this_state& ts, Entity* e, bool show) {
+bool lfs::ic_enableIntPrompt(const sol::this_state& ts, Entity* e, bool show) {
 	auto inter = e->get<InteractionComponent>();
 	if (inter) {
 		inter->setShowInteractPrompt(show);
 		return true;
 	}
+	return false;
+}
+
+bool lfs::mc_setLockMovement(const sol::this_state& ts, Entity* e, bool lock) {
+	auto mc = e->get<MovementComponent>();
+	if (mc) {
+		mc->setLockMovement(lock);
+		return true;
+	}
+
+	return false;
+}
+
+bool lfs::mc_moveToMidpoint(const sol::this_state& ts, Entity* e) {
+	auto mc = e->get<MovementComponent>();
+	if (mc) {
+		mc->moveToMidpoint();
+		return true;
+	}
+
+	return false;
+}
+
+bool lfs::cc_isInCombat(const sol::this_state & ts, Entity * e)
+{
+	auto cc = e->get<CombatComponent>();
+	if (cc) {
+		return cc->isInCombat();
+	}
+
+	return false;;
+}
+
+bool lfs::cc_setInCombat(const sol::this_state& ts, Entity* e, bool inCombat) {
+	auto cc = e->get<CombatComponent>();
+	if (cc) {
+		cc->setInCombat(inCombat);
+		return true;
+	}
+
 	return false;
 }

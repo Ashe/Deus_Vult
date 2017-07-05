@@ -4,7 +4,6 @@
 
 ControllerComponent::ControllerComponent(Entity* e, sol::table & componentTable) : Component(e) {
 	_movementComponent = _owner->get<MovementComponent>();
-	_combatComponent = _owner->get<CombatComponent>();
 }
 
 void ControllerComponent::addDirLeft() {
@@ -63,15 +62,4 @@ void ControllerComponent::stopSprinting() {
 	_movementComponent = _owner->get<MovementComponent>();
 	_movementComponent->setSprintSpeed(1);
 	//printf("No MovementComponent found on stopSprinting. Trying again..\n");
-}
-
-void ControllerComponent::toggleCombat() {
-	if (_combatComponent) {
-		_combatComponent->toggleCombat();
-		return;
-	}
-
-	// If there's no combatComponent, try again
-	_combatComponent = _owner->get<CombatComponent>();
-	_combatComponent->toggleCombat();
 }

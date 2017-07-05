@@ -19,13 +19,13 @@ end
 local interact = function (e)
 	-- The prompt will be shown due to bruh.lua allowing it
 	if convNo < 5 then
-		setMessage(e, convos[convNo])
+		npcc_setMessage(e, convos[convNo])
 	end
 
-	enableIntPrompt(e, false)
+	ic_enableIntPrompt(e, false)
 	if convNo < 4 then
 		convNo = convNo + 1
-		enableIntPrompt(e, true)
+		ic_enableIntPrompt(e, true)
 	end
 end
 
@@ -33,21 +33,21 @@ local inRange = function (e)
 	print("Player is in range: Reset Conversations")
 	if convNo < 4 then
 		convNo = 0
-		sayMessage(e, "Pssst! Over here!")
-		enableIntPrompt(e, true)
+		npcc_sayMessage(e, "Pssst! Over here!")
+		ic_enableIntPrompt(e, true)
 	elseif convNo == 4 then
-		sayMessage(e, "Fuck off.")
+		npcc_sayMessage(e, "Fuck off.")
 		convNo = 5
 	else
-		sayMessage(e, "Eh, I'm sorry.")
+		npcc_sayMessage(e, "Eh, I'm sorry.")
 		convNo = 0
-		enableIntPrompt(e, true)
+		ic_enableIntPrompt(e, true)
 	end
 end
 
 local outRange = function (e)
 	print("Player is out of range: End conversation")
-	setShowMessage(e, false)
+	npcc_setShowMessage(e, false)
 end
 
 local functionsTable = {

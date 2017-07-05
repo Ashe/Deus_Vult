@@ -9,10 +9,14 @@ class InputManager;
 
 class Controller {
 public:
-	void initialise(InputManager* const);
+	void initialise(InputManager* const, sol::state& lua);
+
 
 private:
 	Entity* _player;
+	sol::function _combat;
+
+	void doCombat();
 };
 
 #endif

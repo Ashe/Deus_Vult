@@ -14,7 +14,7 @@ public:
 	CombatComponent(Entity* e, sol::table& componentTable);
 
 	bool isInCombat();
-	void toggleCombat();
+	void setInCombat(bool);
 
 private:
 	MovementComponent* _movement;
