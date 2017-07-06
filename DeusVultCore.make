@@ -66,17 +66,21 @@ endif
 OBJECTS := \
 	$(OBJDIR)/InputManager.o \
 	$(OBJDIR)/ResourceManager.o \
+	$(OBJDIR)/MapManager.o \
 	$(OBJDIR)/EntityList.o \
 	$(OBJDIR)/AnimatedSprite.o \
 	$(OBJDIR)/SPRAnimation.o \
 	$(OBJDIR)/Game.o \
 	$(OBJDIR)/Entity.o \
+	$(OBJDIR)/GameMap.o \
 	$(OBJDIR)/main.o \
 	$(OBJDIR)/Scripts.o \
+	$(OBJDIR)/HUD.o \
 	$(OBJDIR)/MovementComponent.o \
 	$(OBJDIR)/NpcComponent.o \
 	$(OBJDIR)/SensoryComponent.o \
 	$(OBJDIR)/ControllerComponent.o \
+	$(OBJDIR)/CombatComponent.o \
 	$(OBJDIR)/SpineComponent.o \
 	$(OBJDIR)/OutlineComponent.o \
 	$(OBJDIR)/ScriptComponent.o \
@@ -188,6 +192,9 @@ $(OBJDIR)/InputManager.o: Core/ResourceManagers/InputManager.cpp
 $(OBJDIR)/ResourceManager.o: Core/ResourceManagers/ResourceManager.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/MapManager.o: Core/ResourceManagers/MapManager.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/EntityList.o: Core/ResourceManagers/EntityList.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
@@ -203,10 +210,16 @@ $(OBJDIR)/Game.o: Core/Common/Game.cpp
 $(OBJDIR)/Entity.o: Core/Common/Entity.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/GameMap.o: Core/Common/GameMap.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/main.o: Core/Common/main.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/Scripts.o: Core/Common/Scripts.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/HUD.o: Core/HUD/HUD.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/MovementComponent.o: Core/Components/MovementComponent.cpp
@@ -219,6 +232,9 @@ $(OBJDIR)/SensoryComponent.o: Core/Components/SensoryComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/ControllerComponent.o: Core/Components/ControllerComponent.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/CombatComponent.o: Core/Components/CombatComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/SpineComponent.o: Core/Components/SpineComponent.cpp
