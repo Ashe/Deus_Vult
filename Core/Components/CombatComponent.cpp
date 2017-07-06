@@ -15,11 +15,6 @@ CombatComponent::CombatComponent(Entity* e, sol::table& componentTable) : Compon
 		std::string type;
 		bool success = false;
 
-		std::string drawStyle;
-		auto drawRef = statTable["drawStyle"];
-		if (drawRef.valid())
-			drawStyle = drawRef;
-
 		// TEMP
 		float flo;
 		std::string str;
@@ -40,7 +35,7 @@ CombatComponent::CombatComponent(Entity* e, sol::table& componentTable) : Compon
 
 		if (success) {
 			//_stats.insert(std::make_pair(statName, Stat(statName, type, statValue, drawStyle)));
-			_stats.insert(std::make_pair(statName, Stat(statName, type, str, flo, drawStyle)));
+			_stats.insert(std::make_pair(statName, Stat(statName, type, str, flo)));
 		}
 	}
 

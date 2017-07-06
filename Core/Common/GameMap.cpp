@@ -12,7 +12,6 @@ void GameMap::loadMap(const std::string& path) {
     if (ResourceManager::getTable(path)) {
         sol::table resultTable = ResourceManager::getTable(path);
         for (auto key_value_pair : resultTable) {
-            printf("Okay\n");
             _name = key_value_pair.first.as<std::string>();
             sol::object& value = key_value_pair.second;
 
@@ -27,7 +26,7 @@ void GameMap::loadMap(const std::string& path) {
 
     printf("|- Found %s data.\n", _name.c_str());
 
-	printf("-----------------------------\nLoading map %s.\n-----------------------------\n", _name.c_str());
+	printf("-----------------------------\nLoading map %s..\n-----------------------------\n", _name.c_str());
 
     sol::table geometry = mapTable["Geometry"];
     if (geometry)
@@ -36,6 +35,9 @@ void GameMap::loadMap(const std::string& path) {
         printf("|- Error: No Geometry found.\n");
         _valid = false;
     }
+
+	printf("-----------------------------\nMap loaded.\n-----------------------------\n");
+
 
 }
 

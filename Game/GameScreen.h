@@ -21,6 +21,7 @@ public:
 	void init();
 	void update(const sf::Time&);
 	void render(const sf::Time&);
+	virtual void updateWindowSize(const sf::Vector2u&);
 	void handleEvent(const sf::Event&);
 	void quit();
 

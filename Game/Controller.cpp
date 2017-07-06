@@ -2,12 +2,19 @@
 
 #include "../Core/ResourceManagers/ResourceManager.h"
 
-void Controller::initialise(InputManager* input, sol::state& lua) {
+void Controller::initialise(InputManager* input, HUD* hud, sol::state& lua) {
 	_player = EntityList::getPlayer();
+	_hud = hud;
 
 	// Prepare some c++ for later injection
+	printf("-----------------------------\nLoading Combat System...\n-----------------------------\n");
+
 	sol::table cbFuncs = ResourceManager::getTable("combat/system.lua");
-	if (cbFuncs["combatButtonPressed"]) _combat = cbFuncs["combatButtonPressed"];
+	if (cbFuncs["combatFunc"]) _combat = cbFuncs["combatFunc"];
+	if (cbFuncs["validStats"]) _validStats = cbFuncs["validStats"];
+
+	if (_hud) _hud->loadStatsToShow(_validStats);
+	printf("-----------------------------\n Combat System Loaded.\n-----------------------------\n");
 
 	// Bind keys to actions
 	input->bindKeyToAction(sf::Keyboard::A, "moveLeft");

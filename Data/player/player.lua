@@ -48,7 +48,6 @@ local entity = {
 		CombatComponent = {
 			health = {
 				value = 100,
-				drawStyle = "bar"
 			}
 		}
     }

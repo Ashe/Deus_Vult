@@ -1,4 +1,29 @@
-local combatButtonPressed = function (e)
+local validStats = {
+	health = {
+		defaultValue = 100,
+		display = {
+			style = "bar",
+			colours = {
+				fill = {255, 0, 0, 255},
+				border = {0, 0, 0, 255}
+			}
+		}
+	},
+	actionPoints = {
+		defaultValue = 100,
+		display = {
+			style = "slots",
+			colours = {
+				activeFill = {255, 255, 255, 255},
+				inactiveFill = {0, 0, 0, 0},
+				posessBorder = {255, 255, 255, 255},
+				maxAmountBorder = {255, 255, 255, 100}
+			}
+		}
+	}
+}
+
+local combatFunc = function (e)
 	if cc_isInCombat(e) == false then
 		print("Activate Combat!")
 		mc_setLockMovement(e, true)
@@ -11,8 +36,9 @@ local combatButtonPressed = function (e)
 	end
 end
 
-local functionsTable = {
-	combatButtonPressed = combatButtonPressed
+local combatTable = {
+	validStats = validStats,
+	combatFunc = combatFunc
 }
 
-return functionsTable
+return combatTable

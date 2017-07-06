@@ -10,9 +10,8 @@ void GameScreen::init() {
 
     _map = MapManager::changeMap("maps/testmap.lua");
 
+	_controller.initialise(&_input, &_hud, _lua);
 	lfs::loadFunctions(_lua);
-
-	_controller.initialise(&_input, _lua);
 
 	_playerPos = &EntityList::getPlayer()->get<TransformComponent>()->_position;
 }
@@ -31,6 +30,10 @@ void GameScreen::render(const sf::Time& dTime) {
 	// Render the HUD
 	_window->setView(sf::View(sf::FloatRect(sf::Vector2f(), sf::Vector2f(_window->getSize()))));
 	_hud.render(_window, dTime);
+}
+
+void GameScreen::updateWindowSize(const sf::Vector2u& size) {
+	_hud.setSizes(size);
 }
 
 void GameScreen::handleEvent(const sf::Event& e) {

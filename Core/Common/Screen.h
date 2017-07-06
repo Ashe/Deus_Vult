@@ -10,6 +10,7 @@ public:
 	virtual void render(const sf::Time&) = 0;
 	virtual void quit() = 0;
 	virtual void handleEvent(const sf::Event&) = 0;
+	virtual void updateWindowSize(const sf::Vector2u&) = 0;
 };
 
 #endif

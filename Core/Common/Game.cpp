@@ -22,7 +22,9 @@ void Game::windowResized() {
 	//tempY = (tempY % 2 == 0) ? tempY : tempY + 1;
 
 	//_window->setSize(sf::Vector2u(tempX, tempY));
-	_window->setView(sf::View(sf::FloatRect(0, 0, _window->getSize().x, _window->getSize().y)));
+	const auto size = _window->getSize();
+	_window->setView(sf::View(sf::FloatRect(0, 0, size.x, size.y)));
+	_game.updateWindowSize(size);
 }
 
 bool Game::update(const sf::Time& dTime) {
