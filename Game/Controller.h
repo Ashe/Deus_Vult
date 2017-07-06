@@ -10,7 +10,7 @@ class InputManager;
 
 class Controller {
 public:
-	void initialise(InputManager* const, HUD* hud, sol::state& lua);
+	void initialise(InputManager* const, HUD* hud);
 
 private:
 	Entity* _player;

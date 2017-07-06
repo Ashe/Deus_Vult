@@ -12,7 +12,8 @@ void lfs::loadFunctions(sol::state& lua) {
 	lua.set_function("loadEntity", &EntityList::loadEntity);
 
 	// Load map
-	lua.set_function("loadMap", &MapManager::changeMap);
+	lua.set_function("loadMap", &MapManager::loadMap);
+	lua.set_function("changeMap", &MapManager::changeMap);
 
 	// Multi-purpose ping function on script component
 	lua.set_function("ping", &lfs::ping);
@@ -34,12 +35,6 @@ void lfs::loadFunctions(sol::state& lua) {
 	// Combat Component
 	lua.set_function("cc_isInCombat", &lfs::cc_isInCombat);
 	lua.set_function("cc_setInCombat", &lfs::cc_setInCombat);
-
-	// ~~~~~~~~~~~~~~~~
-	// EXECUTE NOW
-	// ~~~~~~~~~~~~~~~~
-
-    lua.do_file("Data/common/scripts/executeNow.lua");
 }
 
 bool lfs::ping(const sol::this_state& ts, const std::string& message, Entity* e) {

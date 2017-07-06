@@ -63,7 +63,7 @@ void HUD::loadStatsToShow(const sol::table& table) {
 
 		if (success) {
 			_stats.push_back(statToAdd);
-			printf("Successfully registered stat %s.\n", statName.c_str());
+			printf("|- Successfully registered stat %s.\n", statName.c_str());
 		}
 	}
 
