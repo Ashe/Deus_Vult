@@ -1,5 +1,8 @@
 local entity = {
     bruh = {
+		Tags = {
+			"npc"
+		},
         SpineComponent = {
             dataIsJSON = false,
             atlas = "common/spine/goblins/export/goblins.atlas",

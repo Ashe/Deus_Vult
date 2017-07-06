@@ -1,6 +1,5 @@
 local entity = {
     player = {
-        ControllerComponent = {},
         SpineComponent = {
             dataIsJSON = false,
             atlas = "common/spine/hero/export/hero.atlas",

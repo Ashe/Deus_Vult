@@ -29,6 +29,10 @@ local interact = function (e)
 	end
 end
 
+local ping = function (message, receiver)
+	print("Ping: " .. message)
+end
+
 local inRange = function (e)
 	print("Player is in range: Reset Conversations")
 	if convNo < 4 then
@@ -54,6 +58,7 @@ local functionsTable = {
 	init = init,
 	update = update,
 	interact = interact,
+	ping = ping,
 	inRange = inRange,
 	outRange = outRange
 }

@@ -12,6 +12,8 @@ public:
 
 	void init();
 	void update(const sf::Time&);
+
+	void ping(const std::string&);
 	void interact();
 
 	void inRange();
@@ -24,6 +26,7 @@ private:
 	sol::function _init;
 	sol::function _update;
 	sol::function _interact;
+	sol::function _ping;
 	sol::function _inRange;
 	sol::function _outRange;
 };

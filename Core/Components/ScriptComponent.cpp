@@ -27,6 +27,10 @@ ScriptComponent::ScriptComponent(Entity* e, sol::table& ComponentTable, sol::sta
 			_owner->addInteractFunction([this]() {interact(); });
 		}
 
+		if (table["ping"]) {
+			_ping = table["ping"];
+		}
+
 		// if there's a function for the player entering range, register
 		if (table["inRange"]) {
 			_inRange = table["inRange"];
@@ -50,6 +54,11 @@ void ScriptComponent::init() {
 
 void ScriptComponent::update(const sf::Time& dTime) {
     _update(_owner, dTime);
+}
+
+void ScriptComponent::ping(const std::string& message) {
+	if (_ping)
+		_ping(message, _owner);
 }
 
 void ScriptComponent::interact() {

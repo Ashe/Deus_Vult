@@ -9,6 +9,14 @@ namespace lfs {
 	void loadFunctions(sol::state& lua);
 
 	// ~~~~~~~~~~~~~~~~
+	// Script Component
+	// ~~~~~~~~~~~~~~~~
+
+	// Send the entity (or tag) a message
+	bool ping(const sol::this_state&, const std::string& message, Entity* e);
+	bool pingTag(const sol::this_state&, const std::string& message, const std::string& tag);
+
+	// ~~~~~~~~~~~~~~~~
 	// NPC Component
 	// ~~~~~~~~~~~~~~~~
 

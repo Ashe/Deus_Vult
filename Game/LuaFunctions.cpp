@@ -14,6 +14,10 @@ void lfs::loadFunctions(sol::state& lua) {
 	// Load map
 	lua.set_function("loadMap", &MapManager::changeMap);
 
+	// Multi-purpose ping function on script component
+	lua.set_function("ping", &lfs::ping);
+	lua.set_function("pingTag", &lfs::pingTag);
+
 	// NPC Component
 	lua.set_function("printPhrase", &lfs::npcc_printPhrase);
 	lua.set_function("npcc_setShowMessage", &lfs::npcc_setShowMessage);
@@ -36,6 +40,32 @@ void lfs::loadFunctions(sol::state& lua) {
 	// ~~~~~~~~~~~~~~~~
 
     lua.do_file("Data/common/scripts/executeNow.lua");
+}
+
+bool lfs::ping(const sol::this_state& ts, const std::string& message, Entity* e) {
+	auto sc = e->get<ScriptComponent>();
+	if (sc) {
+		sc->ping(message);
+		return true;
+	}
+
+	return false;
+}
+
+bool lfs::pingTag(const sol::this_state& ts, const std::string& message, const std::string& tag) {
+
+	auto entList = EntityList::getEntitiesFromTag(tag);
+	bool success = false;
+
+	for (auto e : entList) {
+		auto sc = e->get<ScriptComponent>();
+		if (sc) {
+			sc->ping(message);
+			success = true;
+		}
+	}
+
+	return success;
 }
 
 bool lfs::npcc_printPhrase(const sol::this_state& ts, Entity* e) {

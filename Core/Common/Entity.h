@@ -7,6 +7,7 @@
 
 #include "../Common/Scripts.h"
 
+#include "../Components/TagComponent.h"
 #include "../Components/SpriteComponent.h"
 #include "../Components/SpineComponent.h"
 #include "../Components/OutlineComponent.h"
@@ -16,7 +17,6 @@
 #include "../Components/MovementComponent.h"
 #include "../Components/NpcComponent.h"
 #include "../Components/ScriptComponent.h"
-#include "../Components/ControllerComponent.h"
 #include "../Components/CombatComponent.h"
 
 // Forward declaration

@@ -11,10 +11,17 @@ class Controller {
 public:
 	void initialise(InputManager* const, sol::state& lua);
 
-
 private:
 	Entity* _player;
+	MovementComponent* _movementComponent;
+
 	sol::function _combat;
+
+	void addDirLeft();
+	void addDirRight();
+
+	void startSprinting();
+	void stopSprinting();
 
 	void doCombat();
 };

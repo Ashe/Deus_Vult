@@ -16,11 +16,16 @@ public:
 	static Entity* getPlayer() { return _playerRef; }
 	static Entity* getClosestInteractive();
 	static void interactWithClosest();
+
+	static void addEntityWithTag(Entity*, const std::string&);
+	static std::vector<Entity*> getEntitiesFromTag(const std::string& tag);
 private:
 	static Entity* _playerRef;
 	static std::vector<Entity*> _entities;
 
 	static std::vector<Entity*> _interactiveEntities;
+
+	static std::map<std::string, std::vector<Entity*>> _tags;
 	//sol::state _lua;
 	//std::vector<std::unique_ptr<Entity>> entities;
 };

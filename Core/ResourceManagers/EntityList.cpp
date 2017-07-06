@@ -3,6 +3,7 @@
 Entity* EntityList::_playerRef = NULL;
 std::vector<Entity*> EntityList::_entities;
 std::vector<Entity*> EntityList::_interactiveEntities;
+std::map<std::string, std::vector<Entity*>> EntityList::_tags;
 
 Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& path) {
 	sol::state_view _lua(ts);
@@ -31,7 +32,11 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& pat
 
         bool successful = true;
 
-		if (componentName == "SpriteComponent") {
+		if (componentName == "Tags") {
+			sol::table tagTable = value.as<sol::table>();
+			addComponent<TagComponent>(e, tagTable);
+		}
+		else if (componentName == "SpriteComponent") {
 			sol::table gcTable = value.as<sol::table>();
 			addComponent<SpriteComponent>(e, gcTable);
 		}
@@ -63,10 +68,6 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& pat
 		else if (componentName == "NpcComponent") {
 			sol::table npccTable = value.as<sol::table>();
 			addComponent<NpcComponent>(e, npccTable);
-		}
-		else if (componentName == "ControllerComponent") {
-			sol::table ccTable = value.as<sol::table>();
-			addComponent<ControllerComponent>(e, ccTable);
 		}
 		else if (componentName == "ScriptComponent") {
 			sol::table scTable = value.as<sol::table>();
@@ -143,4 +144,18 @@ void EntityList::interactWithClosest() {
 	Entity* entity = getClosestInteractive();
 	if (entity != nullptr)
 		entity->interact();
+}
+
+void EntityList::addEntityWithTag(Entity* e, const std::string& tag) {
+	if (_tags.count(tag))
+		_tags[tag].push_back(e);
+	else
+		_tags[tag] = std::vector<Entity*>{ e };
+}
+
+std::vector<Entity*> EntityList::getEntitiesFromTag(const std::string& tag) {
+	if (_tags.count(tag))
+		return _tags[tag];
+
+	return std::vector<Entity*>{};
 }

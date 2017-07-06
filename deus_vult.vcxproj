@@ -22,7 +22,6 @@
     <ClCompile Include="Core\Animation\AnimatedSprite.cpp" />
     <ClCompile Include="Core\Animation\SPRAnimation.cpp" />
     <ClCompile Include="Core\Components\CombatComponent.cpp" />
-    <ClCompile Include="Core\Components\ControllerComponent.cpp" />
     <ClCompile Include="Core\Components\SpineComponent.cpp" />
     <ClCompile Include="Core\Components\SpriteComponent.cpp" />
     <ClCompile Include="Core\Components\InteractionComponent.cpp" />
@@ -31,6 +30,7 @@
     <ClCompile Include="Core\Components\OutlineComponent.cpp" />
     <ClCompile Include="Core\Components\ScriptComponent.cpp" />
     <ClCompile Include="Core\Components\SensoryComponent.cpp" />
+    <ClCompile Include="Core\Components\TagComponent.cpp" />
     <ClCompile Include="Core\Components\TransformComponent.cpp" />
     <ClCompile Include="Core\Common\Entity.cpp" />
     <ClCompile Include="Core\HUD\HUD.cpp" />
@@ -90,7 +90,6 @@
     <ClInclude Include="Core\Animation\SPRAnimation.hpp" />
     <ClInclude Include="Core\Components\CombatComponent.h" />
     <ClInclude Include="Core\Components\Component.h" />
-    <ClInclude Include="Core\Components\ControllerComponent.h" />
     <ClInclude Include="Core\Components\GraphicsComponentBase.h" />
     <ClInclude Include="Core\Components\SpineComponent.h" />
     <ClInclude Include="Core\Components\SpriteComponent.h" />
@@ -100,6 +99,7 @@
     <ClInclude Include="Core\Components\OutlineComponent.h" />
     <ClInclude Include="Core\Components\ScriptComponent.h" />
     <ClInclude Include="Core\Components\SensoryComponent.h" />
+    <ClInclude Include="Core\Components\TagComponent.h" />
     <ClInclude Include="Core\Components\TransformComponent.h" />
     <ClInclude Include="Core\Common\Entity.h" />
     <ClInclude Include="Core\HUD\HUD.h" />

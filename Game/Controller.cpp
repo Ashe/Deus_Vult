@@ -18,11 +18,10 @@ void Controller::initialise(InputManager* input, sol::state& lua) {
 	input->bindKeyToAction(sf::Keyboard::Space, "combat");
 
 	// Create std::functions ready for binding
-	auto temp = _player->get<ControllerComponent>();
-	std::function<void()> moveLeft = std::bind(&ControllerComponent::addDirLeft, temp);
-	std::function<void()> moveRight = std::bind(&ControllerComponent::addDirRight, temp);
-	std::function<void()> startSprint = std::bind(&ControllerComponent::startSprinting, temp);
-	std::function<void()> stopSprint = std::bind(&ControllerComponent::stopSprinting, temp);
+	std::function<void()> moveLeft = std::bind(&Controller::addDirLeft, *this);
+	std::function<void()> moveRight = std::bind(&Controller::addDirRight, *this);
+	std::function<void()> startSprint = std::bind(&Controller::startSprinting, *this);
+	std::function<void()> stopSprint = std::bind(&Controller::stopSprinting, *this);
 
 	std::function<void()> interact = std::bind(&EntityList::interactWithClosest);
 	std::function<void()> combat = std::bind(&Controller::doCombat, *this);
@@ -34,6 +33,64 @@ void Controller::initialise(InputManager* input, sol::state& lua) {
 
 	input->bindActionToFunction("interact", interact, NULL);
 	input->bindActionToFunction("combat", combat, NULL);
+}
+
+void Controller::addDirLeft() {
+
+	if (_movementComponent) {
+		_movementComponent->addDirection(-1);
+		//printf("\tMove Left,  direction: %d\n", _movementComponent->_direction);
+		return;
+	}
+
+	// If there's no movementComponent, try again
+	_movementComponent = _player->get<MovementComponent>();
+	_movementComponent->addDirection(-1);
+
+	//printf("No MovementComponent found on moveLeft. Trying again..\n");
+	//addDirLeft();
+}
+
+void Controller::addDirRight() {
+
+	if (_movementComponent) {
+		_movementComponent->addDirection(1);
+
+		//printf("\tMove Right, direction: %d\n", _movementComponent->_direction);
+		return;
+	}
+
+	// If there's no movementComponent, try again
+	_movementComponent = _player->get<MovementComponent>();
+	_movementComponent->addDirection(1);
+	//printf("No MovementComponent found on moveRight. Trying again..\n");
+	//addDirRight();
+}
+
+void Controller::startSprinting() {
+	if (_movementComponent) {
+		_movementComponent->setSprintSpeed(2);
+		//printf("\tStart Sprint, multiplier: %d\n", _movementComponent->_speedMultiplier);
+		return;
+	}
+
+	// If there's no movementComponent, try again
+	_movementComponent = _player->get<MovementComponent>();
+	_movementComponent->setSprintSpeed(2);
+	//printf("No MovementComponent found on startSprinting. Trying again..\n");
+}
+
+void Controller::stopSprinting() {
+	if (_movementComponent) {
+		_movementComponent->setSprintSpeed(1);
+		//printf("\tStop Sprint, multiplier: %d\n", _movementComponent->_speedMultiplier);
+		return;
+	}
+
+	// If there's no movementComponent, try again
+	_movementComponent = _player->get<MovementComponent>();
+	_movementComponent->setSprintSpeed(1);
+	//printf("No MovementComponent found on stopSprinting. Trying again..\n");
 }
 
 void Controller::doCombat() {
