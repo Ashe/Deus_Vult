@@ -25,13 +25,13 @@ void Controller::initialise(InputManager* input, HUD* hud) {
 	input->bindKeyToAction(sf::Keyboard::Space, "combat");
 
 	// Create std::functions ready for binding
-	std::function<void()> moveLeft = std::bind(&Controller::addDirLeft, *this);
-	std::function<void()> moveRight = std::bind(&Controller::addDirRight, *this);
-	std::function<void()> startSprint = std::bind(&Controller::startSprinting, *this);
-	std::function<void()> stopSprint = std::bind(&Controller::stopSprinting, *this);
+	std::function<void()> moveLeft = [this]() { this->addDirLeft(); };
+	std::function<void()> moveRight = [this]() { this->addDirRight(); };
+	std::function<void()> startSprint = [this]() { this->startSprinting(); };
+	std::function<void()> stopSprint = [this]() {this->stopSprinting();};
 
 	std::function<void()> interact = std::bind(&EntityList::interactWithClosest);
-	std::function<void()> combat = std::bind(&Controller::doCombat, *this);
+    std::function<void()> combat = [this]() {this->doCombat();};
 
 	// Bind actions to functions
 	input->bindActionToFunction("moveLeft", moveLeft, moveRight);

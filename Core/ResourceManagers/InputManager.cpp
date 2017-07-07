@@ -22,7 +22,7 @@ void InputManager::handleEvent(const sf::Event& e) {
 			if (_actions[_keys[e.key.code]]._keyRelease != NULL)
 				_actions[_keys[e.key.code]]._keyRelease();
 		}
-	}
+    }
 }
 
 void InputManager::bindKeyToAction(const sf::Keyboard::Key& key, const std::string& action) {

@@ -14,7 +14,7 @@ TransformComponent::TransformComponent(Entity* e, sol::table& componentTable) : 
 
 	// If there's a map, snap to it for convenience
 	GameMap* map= MapManager::getCurrentMap();
-	if (map) 
+	if (map)
 		map->snapToMap(_position);
 
         _scale = sf::Vector2f(1, 1);

@@ -46,6 +46,7 @@ void GameMap::snapToMap(sf::Vector2f& pos) {
 	// on the coordinates in _points
 
 	// Start at the second point, if there is one
+
 	if (pos.x < _leftBound)
 		pos.x = _leftBound;
 

@@ -76,10 +76,10 @@ OBJECTS := \
 	$(OBJDIR)/main.o \
 	$(OBJDIR)/Scripts.o \
 	$(OBJDIR)/HUD.o \
+	$(OBJDIR)/TagComponent.o \
 	$(OBJDIR)/MovementComponent.o \
 	$(OBJDIR)/NpcComponent.o \
 	$(OBJDIR)/SensoryComponent.o \
-	$(OBJDIR)/ControllerComponent.o \
 	$(OBJDIR)/CombatComponent.o \
 	$(OBJDIR)/SpineComponent.o \
 	$(OBJDIR)/OutlineComponent.o \
@@ -222,6 +222,9 @@ $(OBJDIR)/Scripts.o: Core/Common/Scripts.cpp
 $(OBJDIR)/HUD.o: Core/HUD/HUD.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/TagComponent.o: Core/Components/TagComponent.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/MovementComponent.o: Core/Components/MovementComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
@@ -229,9 +232,6 @@ $(OBJDIR)/NpcComponent.o: Core/Components/NpcComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/SensoryComponent.o: Core/Components/SensoryComponent.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ControllerComponent.o: Core/Components/ControllerComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/CombatComponent.o: Core/Components/CombatComponent.cpp
