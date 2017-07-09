@@ -247,7 +247,7 @@ sf::Vector2i SpineComponent::getSize() const {
 }
 
 void SpineComponent::setAnimations(sol::table & animationTable) {
-	for (auto key_value_pair : animationTable) {
+	for (auto &key_value_pair : animationTable) {
 		// Get the name and table for every formal animation
 		std::string animationName = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;

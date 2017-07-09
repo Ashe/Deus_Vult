@@ -29,9 +29,13 @@ private:
 	sf::Vector2u _windowSize;
 	std::vector<StatCustom> _stats;
 
-	std::vector<Widget> loadStyle(const sol::table&);
-	std::map<std::string, std::vector<Widget>> _styles;
-	std::vector<std::vector<Widget>> _allStyles;
+	Widget loadStyle(const sol::table&);
+	//std::map<std::string, std::vector<Widget>> _styles;
+	//std::vector<std::vector<Widget>> _allStyles;
+
+	std::map<std::string, Widget> _styles;
+	std::vector<Widget> _allStyles;
+
 
 
 	void loadRect(const sol::table&, Widget&, bool&);

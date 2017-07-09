@@ -14,7 +14,7 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& pat
 	sol::table resultTable = ResourceManager::getTable(path);
     sol::table entityTable;
     std::string entityType;
-	for (auto key_value_pair : resultTable) {
+	for (auto &key_value_pair : resultTable) {
 		entityType = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;
 
@@ -24,7 +24,7 @@ Entity* EntityList::loadEntity(const sol::this_state& ts, const std::string& pat
 	e->setType(entityType);
 
 	printf("-----------------------------\nLoading entity %s.\n-----------------------------\n", entityType.c_str());
-	for (auto key_value_pair : entityTable) {
+	for (auto &key_value_pair : entityTable) {
 		std::string componentName = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;
 
@@ -122,7 +122,7 @@ Entity* EntityList::getClosestInteractive() {
 	Entity* closestEntity = nullptr;
 	float distance = 999999;
 
-	for (auto entity : _interactiveEntities) {
+	for (auto &entity : _interactiveEntities) {
 		auto transform = entity->get<TransformComponent>();
 		auto playerTransform = getPlayer()->get<TransformComponent>();
 		auto sensoryComponent = entity->get<SensoryComponent>();

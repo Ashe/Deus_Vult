@@ -5,7 +5,7 @@
 CombatComponent::CombatComponent(Entity* e, sol::table& componentTable) : Component(e) {
 	_inCombat = false;
 
-	for (auto key_value_pair : componentTable) {
+	for (auto &key_value_pair : componentTable) {
 		std::string statName = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;
 

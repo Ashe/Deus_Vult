@@ -52,7 +52,7 @@ bool lfs::pingTag(const sol::this_state& ts, const std::string& message, const s
 	auto entList = EntityList::getEntitiesFromTag(tag);
 	bool success = false;
 
-	for (auto e : entList) {
+	for (auto &e : entList) {
 		auto sc = e->get<ScriptComponent>();
 		if (sc) {
 			sc->ping(message);

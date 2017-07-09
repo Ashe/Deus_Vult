@@ -129,7 +129,7 @@ sf::Vector2i SpriteComponent::getSize() const {
 }
 
 void SpriteComponent::setAnimations(sol::table & animationTable) {
-	for (auto key_value_pair : animationTable) {
+	for (auto &key_value_pair : animationTable) {
 		std::string animationName = key_value_pair.first.as<std::string>();
 		sol::object& value = key_value_pair.second;
 		sol::table detailsTable = value.as<sol::table>();
@@ -145,7 +145,7 @@ void SpriteComponent::setAnimations(sol::table & animationTable) {
 		animation._name = animationName;
 		animation.setSpriteSheet(*_texture);
 
-		for (auto table : frameTable) {
+		for (auto &table : frameTable) {
 		/*for (int i = frameTable.size(); i > 0; i--) {
 			std::pair<sol::object, sol::object> table = frameTable[i];*/
 			sf::IntRect frame;

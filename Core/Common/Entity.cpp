@@ -16,24 +16,24 @@ void Entity::addComp(std::type_index type, Component* c) {
 }
 
 void Entity::init() {
-	for (auto function : _initFunctions)
+	for (auto &function : _initFunctions)
 		function();
 }
 
 void Entity::interact() {
-	for (auto function : _interactFunctions)
+	for (auto &function : _interactFunctions)
 		function();
 }
 
 void Entity::update(const sf::Time& dTime) {
-	for (auto function : _updateFunctions)
+	for (auto &function : _updateFunctions)
             function(dTime);
 }
 
 void Entity::render(sf::RenderWindow* window, const sf::Time& dTime) {
 	// TODO: THIS FUNCTION MUST BE FIXED FOR EFFICIENCY
 
-	for (auto function : _renderFunctions)
+	for (auto &function : _renderFunctions)
 		function(window, dTime);
 
 	auto interact = get<InteractionComponent>();

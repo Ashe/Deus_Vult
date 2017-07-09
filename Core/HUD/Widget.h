@@ -5,12 +5,13 @@
 
 // Enum Shape Type
 enum eST {
-	Rect, Circle
+	Nothing, Rect, Circle
 };
 
 class Widget {
 public:
-	void release() { if (_subWidget) delete _subWidget; delete _shape; printf("Hud widget deleted safely.\n"); }
+	Widget();
+	void release() { for (auto &w : _subWidget) w.release();  delete _shape; printf("Hud widget deleted safely.\n"); }
 
 	eST getType() const { return _type; } 
 	std::map<std::string, float> sizes;
@@ -20,12 +21,16 @@ public:
 	void setShape(sf::Drawable* s, const eST& t) { delete _shape; _type = t; _shape = s; }
 	sf::Shape* getShape() { return static_cast<sf::Shape*>(_shape); }
 
-	void setSubWidget(Widget*);
+	void initialiseDrawing();
+	void setSubWidget(Widget);
 
 private:
-	eST _type;
+	eST _type = eST::Nothing;
 	sf::Drawable* _shape;
-	Widget* _subWidget;
+	std::vector<Widget> _subWidget;
+
+	bool readyToDraw;
+	sf::Vector2f _start, _end;
 };
 
 #endif // !WIDGET_H

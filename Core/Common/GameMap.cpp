@@ -11,7 +11,7 @@ void GameMap::loadMap(const std::string& path) {
 
     if (ResourceManager::getTable(path)) {
         sol::table resultTable = ResourceManager::getTable(path);
-        for (auto key_value_pair : resultTable) {
+        for (auto &&key_value_pair : resultTable) {
             _name = key_value_pair.first.as<std::string>();
             sol::object& value = key_value_pair.second;
 
@@ -134,7 +134,7 @@ void GameMap::loadGeometry(const sol::table& table) {
     int previousX = NULL;
 
 	// For every coordinate in lua table, parse it
-    for (auto coordTable : table) {
+    for (auto &coordTable : table) {
         sol::table coord = coordTable.second.as<sol::table>();
         sf::Vector2i point = sf::Vector2i( coord[1], coord[2]);
 
