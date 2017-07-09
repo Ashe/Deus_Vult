@@ -10,10 +10,10 @@ void GameScreen::init() {
 
 	lfs::loadFunctions(_lua);
 	_controller.initialise(&_input, &_hud);
+	_hud.loadHUD("hud/styles.lua");
 
 	// Execute now
 	_lua.do_file("Data/common/scripts/executeNow.lua");
-
 
 	_playerPos = &EntityList::getPlayer()->get<TransformComponent>()->_position;
     _map = MapManager::getCurrentMap();

@@ -3,8 +3,10 @@ local validStats = {
 		defaultValue = 100,
 		display = {
 			style = "bar",
+			anchor = "topLeft",
 			colours = {
-				fill = {255, 0, 0, 255},
+				backFill = {255, 0, 0, 255},
+				foreFill = {0, 255, 0, 255},
 				border = {0, 0, 0, 255}
 			}
 		}
@@ -13,6 +15,7 @@ local validStats = {
 		defaultValue = 100,
 		display = {
 			style = "slots",
+			anchor = "topLeft",
 			colours = {
 				activeFill = {255, 255, 255, 255},
 				inactiveFill = {0, 0, 0, 0},

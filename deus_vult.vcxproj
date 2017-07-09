@@ -34,6 +34,7 @@
     <ClCompile Include="Core\Components\TransformComponent.cpp" />
     <ClCompile Include="Core\Common\Entity.cpp" />
     <ClCompile Include="Core\HUD\HUD.cpp" />
+    <ClCompile Include="Core\HUD\Widget.cpp" />
     <ClCompile Include="Core\ResourceManagers\EntityList.cpp" />
     <ClCompile Include="Core\ResourceManagers\InputManager.cpp" />
     <ClCompile Include="Core\Common\main.cpp" />
@@ -103,6 +104,7 @@
     <ClInclude Include="Core\Components\TransformComponent.h" />
     <ClInclude Include="Core\Common\Entity.h" />
     <ClInclude Include="Core\HUD\HUD.h" />
+    <ClInclude Include="Core\HUD\Widget.h" />
     <ClInclude Include="Core\ResourceManagers\EntityList.h" />
     <ClInclude Include="Core\Common\Game.h" />
     <ClInclude Include="Core\ResourceManagers\InputManager.h" />
@@ -166,6 +168,7 @@
     <None Include="Data\common\spine\char\Spine_data\2d_character_Atlas.asset" />
     <None Include="Data\common\spine\char\Spine_data\2d_character_Material.mat" />
     <None Include="Data\common\spine\char\Spine_data\2d_character_SkeletonData.asset" />
+    <None Include="Data\hud\styles.lua" />
     <None Include="Data\player.lua" />
     <None Include="Data\makePlayer.lua" />
     <None Include="Data\player\player.lua" />

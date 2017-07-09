@@ -124,11 +124,10 @@ void MovementComponent::update(const sf::Time& dTime) {
 
 		}
 
-		/*if (_map)
+		if (_map)
             _map->snapToMap(_transform->_position);
-        else*/
-        _map = MapManager::getCurrentMap();
-        _map->snapToMap(_transform->_position);
+        else
+			_map = MapManager::getCurrentMap();
 
 		return;
 	}

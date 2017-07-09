@@ -210,6 +210,9 @@
     <ClCompile Include="Core\Components\TagComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Core\HUD\Widget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameScreen.h">
@@ -422,6 +425,9 @@
     <ClInclude Include="Core\Components\TagComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Core\HUD\Widget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\makePlayer.lua" />
@@ -435,6 +441,7 @@
     <None Include="Data\common\spine\char\Spine_data\2d_character_SkeletonData.asset" />
     <None Include="Data\combat\system.lua" />
     <None Include="Data\common\scripts\executeNow.lua" />
+    <None Include="Data\hud\styles.lua" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Data\common\spine\char\Spine_data\2d_character.atlas.txt" />
