@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include "../ResourceManagers/ResourceManager.h"
 
+#include "Widget.h"
+
 struct StatCustom {
 	StatCustom(const std::string& n) : name(n) {}
 
@@ -25,6 +27,21 @@ public:
 
 private:
 	sf::Vector2u _windowSize;
+	std::vector<StatCustom> _stats;
+
+	Widget loadStyle(const sol::table&);
+	//std::map<std::string, std::vector<Widget>> _styles;
+	//std::vector<std::vector<Widget>> _allStyles;
+
+	std::map<std::string, Widget> _styles;
+	std::vector<Widget> _allStyles;
+
+
+
+	void loadRect(const sol::table&, Widget&, bool&);
+	void loadCircle(const sol::table&, Widget&, bool&);
+	void loadColours(const sol::table&, Widget&, bool&);
+
 };
 
 #endif // !define HUD_H

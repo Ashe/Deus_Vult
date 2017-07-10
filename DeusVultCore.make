@@ -64,67 +64,68 @@ ifeq ($(config),release)
 endif
 
 OBJECTS := \
-	$(OBJDIR)/InputManager.o \
-	$(OBJDIR)/ResourceManager.o \
-	$(OBJDIR)/MapManager.o \
-	$(OBJDIR)/EntityList.o \
 	$(OBJDIR)/AnimatedSprite.o \
 	$(OBJDIR)/SPRAnimation.o \
-	$(OBJDIR)/Game.o \
 	$(OBJDIR)/Entity.o \
+	$(OBJDIR)/Game.o \
 	$(OBJDIR)/GameMap.o \
 	$(OBJDIR)/main.o \
 	$(OBJDIR)/Scripts.o \
-	$(OBJDIR)/HUD.o \
-	$(OBJDIR)/TagComponent.o \
+	$(OBJDIR)/CombatComponent.o \
+	$(OBJDIR)/InteractionComponent.o \
 	$(OBJDIR)/MovementComponent.o \
 	$(OBJDIR)/NpcComponent.o \
-	$(OBJDIR)/SensoryComponent.o \
-	$(OBJDIR)/CombatComponent.o \
-	$(OBJDIR)/SpineComponent.o \
 	$(OBJDIR)/OutlineComponent.o \
 	$(OBJDIR)/ScriptComponent.o \
+	$(OBJDIR)/SensoryComponent.o \
+	$(OBJDIR)/SpineComponent.o \
 	$(OBJDIR)/SpriteComponent.o \
-	$(OBJDIR)/InteractionComponent.o \
+	$(OBJDIR)/TagComponent.o \
 	$(OBJDIR)/TransformComponent.o \
-	$(OBJDIR)/MeshAttachment.o \
+	$(OBJDIR)/HUD.o \
+	$(OBJDIR)/Widget.o \
+	$(OBJDIR)/EntityList.o \
+	$(OBJDIR)/InputManager.o \
+	$(OBJDIR)/MapManager.o \
+	$(OBJDIR)/ResourceManager.o \
 	$(OBJDIR)/Animation.o \
-	$(OBJDIR)/SkeletonJson.o \
-	$(OBJDIR)/PathConstraint.o \
-	$(OBJDIR)/Event.o \
-	$(OBJDIR)/ClippingAttachment.o \
-	$(OBJDIR)/Slot.o \
-	$(OBJDIR)/SkeletonBinary.o \
+	$(OBJDIR)/AnimationState.o \
 	$(OBJDIR)/AnimationStateData.o \
-	$(OBJDIR)/Json.o \
-	$(OBJDIR)/Triangulator.o \
-	$(OBJDIR)/Skin.o \
-	$(OBJDIR)/TransformConstraint.o \
-	$(OBJDIR)/TransformConstraintData.o \
-	$(OBJDIR)/EventData.o \
-	$(OBJDIR)/extension.o \
-	$(OBJDIR)/RegionAttachment.o \
-	$(OBJDIR)/PathConstraintData.o \
-	$(OBJDIR)/SkeletonData.o \
+	$(OBJDIR)/Array.o \
 	$(OBJDIR)/Atlas.o \
 	$(OBJDIR)/AtlasAttachmentLoader.o \
-	$(OBJDIR)/SkeletonClipping.o \
-	$(OBJDIR)/IkConstraint.o \
-	$(OBJDIR)/BoneData.o \
-	$(OBJDIR)/Array.o \
-	$(OBJDIR)/Bone.o \
-	$(OBJDIR)/IkConstraintData.o \
-	$(OBJDIR)/Color.o \
-	$(OBJDIR)/BoundingBoxAttachment.o \
-	$(OBJDIR)/SlotData.o \
-	$(OBJDIR)/PathAttachment.o \
-	$(OBJDIR)/VertexAttachment.o \
-	$(OBJDIR)/AnimationState.o \
-	$(OBJDIR)/AttachmentLoader.o \
-	$(OBJDIR)/PointAttachment.o \
 	$(OBJDIR)/Attachment.o \
-	$(OBJDIR)/SkeletonBounds.o \
+	$(OBJDIR)/AttachmentLoader.o \
+	$(OBJDIR)/Bone.o \
+	$(OBJDIR)/BoneData.o \
+	$(OBJDIR)/BoundingBoxAttachment.o \
+	$(OBJDIR)/ClippingAttachment.o \
+	$(OBJDIR)/Color.o \
+	$(OBJDIR)/Event.o \
+	$(OBJDIR)/EventData.o \
+	$(OBJDIR)/extension.o \
+	$(OBJDIR)/IkConstraint.o \
+	$(OBJDIR)/IkConstraintData.o \
+	$(OBJDIR)/Json.o \
+	$(OBJDIR)/MeshAttachment.o \
+	$(OBJDIR)/PathAttachment.o \
+	$(OBJDIR)/PathConstraint.o \
+	$(OBJDIR)/PathConstraintData.o \
+	$(OBJDIR)/PointAttachment.o \
+	$(OBJDIR)/RegionAttachment.o \
 	$(OBJDIR)/Skeleton.o \
+	$(OBJDIR)/SkeletonBinary.o \
+	$(OBJDIR)/SkeletonBounds.o \
+	$(OBJDIR)/SkeletonClipping.o \
+	$(OBJDIR)/SkeletonData.o \
+	$(OBJDIR)/SkeletonJson.o \
+	$(OBJDIR)/Skin.o \
+	$(OBJDIR)/Slot.o \
+	$(OBJDIR)/SlotData.o \
+	$(OBJDIR)/TransformConstraint.o \
+	$(OBJDIR)/TransformConstraintData.o \
+	$(OBJDIR)/Triangulator.o \
+	$(OBJDIR)/VertexAttachment.o \
 	$(OBJDIR)/spine-sfml.o \
 
 RESOURCES := \
@@ -186,28 +187,16 @@ $(GCH): $(PCH)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 endif
 
-$(OBJDIR)/InputManager.o: Core/ResourceManagers/InputManager.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ResourceManager.o: Core/ResourceManagers/ResourceManager.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/MapManager.o: Core/ResourceManagers/MapManager.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/EntityList.o: Core/ResourceManagers/EntityList.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/AnimatedSprite.o: Core/Animation/AnimatedSprite.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/SPRAnimation.o: Core/Animation/SPRAnimation.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Game.o: Core/Common/Game.cpp
+$(OBJDIR)/Entity.o: Core/Common/Entity.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Entity.o: Core/Common/Entity.cpp
+$(OBJDIR)/Game.o: Core/Common/Game.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/GameMap.o: Core/Common/GameMap.cpp
@@ -219,10 +208,10 @@ $(OBJDIR)/main.o: Core/Common/main.cpp
 $(OBJDIR)/Scripts.o: Core/Common/Scripts.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/HUD.o: Core/HUD/HUD.cpp
+$(OBJDIR)/CombatComponent.o: Core/Components/CombatComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/TagComponent.o: Core/Components/TagComponent.cpp
+$(OBJDIR)/InteractionComponent.o: Core/Components/InteractionComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/MovementComponent.o: Core/Components/MovementComponent.cpp
@@ -231,85 +220,55 @@ $(OBJDIR)/MovementComponent.o: Core/Components/MovementComponent.cpp
 $(OBJDIR)/NpcComponent.o: Core/Components/NpcComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/SensoryComponent.o: Core/Components/SensoryComponent.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/CombatComponent.o: Core/Components/CombatComponent.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/SpineComponent.o: Core/Components/SpineComponent.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/OutlineComponent.o: Core/Components/OutlineComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/ScriptComponent.o: Core/Components/ScriptComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/SensoryComponent.o: Core/Components/SensoryComponent.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/SpineComponent.o: Core/Components/SpineComponent.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/SpriteComponent.o: Core/Components/SpriteComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/InteractionComponent.o: Core/Components/InteractionComponent.cpp
+$(OBJDIR)/TagComponent.o: Core/Components/TagComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/TransformComponent.o: Core/Components/TransformComponent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/MeshAttachment.o: spine/spine-c/spine-c/src/spine/MeshAttachment.c
+$(OBJDIR)/HUD.o: Core/HUD/HUD.cpp
 	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Widget.o: Core/HUD/Widget.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/EntityList.o: Core/ResourceManagers/EntityList.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/InputManager.o: Core/ResourceManagers/InputManager.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/MapManager.o: Core/ResourceManagers/MapManager.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/ResourceManager.o: Core/ResourceManagers/ResourceManager.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/Animation.o: spine/spine-c/spine-c/src/spine/Animation.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/SkeletonJson.o: spine/spine-c/spine-c/src/spine/SkeletonJson.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/PathConstraint.o: spine/spine-c/spine-c/src/spine/PathConstraint.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Event.o: spine/spine-c/spine-c/src/spine/Event.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ClippingAttachment.o: spine/spine-c/spine-c/src/spine/ClippingAttachment.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Slot.o: spine/spine-c/spine-c/src/spine/Slot.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/SkeletonBinary.o: spine/spine-c/spine-c/src/spine/SkeletonBinary.c
+$(OBJDIR)/AnimationState.o: spine/spine-c/spine-c/src/spine/AnimationState.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/AnimationStateData.o: spine/spine-c/spine-c/src/spine/AnimationStateData.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Json.o: spine/spine-c/spine-c/src/spine/Json.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Triangulator.o: spine/spine-c/spine-c/src/spine/Triangulator.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Skin.o: spine/spine-c/spine-c/src/spine/Skin.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/TransformConstraint.o: spine/spine-c/spine-c/src/spine/TransformConstraint.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/TransformConstraintData.o: spine/spine-c/spine-c/src/spine/TransformConstraintData.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/EventData.o: spine/spine-c/spine-c/src/spine/EventData.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/extension.o: spine/spine-c/spine-c/src/spine/extension.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/RegionAttachment.o: spine/spine-c/spine-c/src/spine/RegionAttachment.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/PathConstraintData.o: spine/spine-c/spine-c/src/spine/PathConstraintData.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/SkeletonData.o: spine/spine-c/spine-c/src/spine/SkeletonData.c
+$(OBJDIR)/Array.o: spine/spine-c/spine-c/src/spine/Array.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/Atlas.o: spine/spine-c/spine-c/src/spine/Atlas.c
@@ -318,55 +277,100 @@ $(OBJDIR)/Atlas.o: spine/spine-c/spine-c/src/spine/Atlas.c
 $(OBJDIR)/AtlasAttachmentLoader.o: spine/spine-c/spine-c/src/spine/AtlasAttachmentLoader.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/SkeletonClipping.o: spine/spine-c/spine-c/src/spine/SkeletonClipping.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/IkConstraint.o: spine/spine-c/spine-c/src/spine/IkConstraint.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/BoneData.o: spine/spine-c/spine-c/src/spine/BoneData.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Array.o: spine/spine-c/spine-c/src/spine/Array.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Bone.o: spine/spine-c/spine-c/src/spine/Bone.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/IkConstraintData.o: spine/spine-c/spine-c/src/spine/IkConstraintData.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Color.o: spine/spine-c/spine-c/src/spine/Color.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/BoundingBoxAttachment.o: spine/spine-c/spine-c/src/spine/BoundingBoxAttachment.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/SlotData.o: spine/spine-c/spine-c/src/spine/SlotData.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/PathAttachment.o: spine/spine-c/spine-c/src/spine/PathAttachment.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/VertexAttachment.o: spine/spine-c/spine-c/src/spine/VertexAttachment.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/AnimationState.o: spine/spine-c/spine-c/src/spine/AnimationState.c
+$(OBJDIR)/Attachment.o: spine/spine-c/spine-c/src/spine/Attachment.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/AttachmentLoader.o: spine/spine-c/spine-c/src/spine/AttachmentLoader.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Bone.o: spine/spine-c/spine-c/src/spine/Bone.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/BoneData.o: spine/spine-c/spine-c/src/spine/BoneData.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/BoundingBoxAttachment.o: spine/spine-c/spine-c/src/spine/BoundingBoxAttachment.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/ClippingAttachment.o: spine/spine-c/spine-c/src/spine/ClippingAttachment.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Color.o: spine/spine-c/spine-c/src/spine/Color.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Event.o: spine/spine-c/spine-c/src/spine/Event.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/EventData.o: spine/spine-c/spine-c/src/spine/EventData.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/extension.o: spine/spine-c/spine-c/src/spine/extension.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/IkConstraint.o: spine/spine-c/spine-c/src/spine/IkConstraint.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/IkConstraintData.o: spine/spine-c/spine-c/src/spine/IkConstraintData.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Json.o: spine/spine-c/spine-c/src/spine/Json.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/MeshAttachment.o: spine/spine-c/spine-c/src/spine/MeshAttachment.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/PathAttachment.o: spine/spine-c/spine-c/src/spine/PathAttachment.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/PathConstraint.o: spine/spine-c/spine-c/src/spine/PathConstraint.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/PathConstraintData.o: spine/spine-c/spine-c/src/spine/PathConstraintData.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/PointAttachment.o: spine/spine-c/spine-c/src/spine/PointAttachment.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Attachment.o: spine/spine-c/spine-c/src/spine/Attachment.c
+$(OBJDIR)/RegionAttachment.o: spine/spine-c/spine-c/src/spine/RegionAttachment.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Skeleton.o: spine/spine-c/spine-c/src/spine/Skeleton.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/SkeletonBinary.o: spine/spine-c/spine-c/src/spine/SkeletonBinary.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/SkeletonBounds.o: spine/spine-c/spine-c/src/spine/SkeletonBounds.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Skeleton.o: spine/spine-c/spine-c/src/spine/Skeleton.c
+$(OBJDIR)/SkeletonClipping.o: spine/spine-c/spine-c/src/spine/SkeletonClipping.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/SkeletonData.o: spine/spine-c/spine-c/src/spine/SkeletonData.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/SkeletonJson.o: spine/spine-c/spine-c/src/spine/SkeletonJson.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Skin.o: spine/spine-c/spine-c/src/spine/Skin.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Slot.o: spine/spine-c/spine-c/src/spine/Slot.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/SlotData.o: spine/spine-c/spine-c/src/spine/SlotData.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/TransformConstraint.o: spine/spine-c/spine-c/src/spine/TransformConstraint.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/TransformConstraintData.o: spine/spine-c/spine-c/src/spine/TransformConstraintData.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Triangulator.o: spine/spine-c/spine-c/src/spine/Triangulator.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/VertexAttachment.o: spine/spine-c/spine-c/src/spine/VertexAttachment.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/spine-sfml.o: spine/spine-sfml/src/spine/spine-sfml.cpp

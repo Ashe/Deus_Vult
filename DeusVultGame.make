@@ -64,8 +64,8 @@ ifeq ($(config),release)
 endif
 
 OBJECTS := \
-	$(OBJDIR)/GameScreen.o \
 	$(OBJDIR)/Controller.o \
+	$(OBJDIR)/GameScreen.o \
 	$(OBJDIR)/LuaFunctions.o \
 	$(OBJDIR)/spine-sfml.o \
 
@@ -128,10 +128,10 @@ $(GCH): $(PCH)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 endif
 
-$(OBJDIR)/GameScreen.o: Game/GameScreen.cpp
+$(OBJDIR)/Controller.o: Game/Controller.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Controller.o: Game/Controller.cpp
+$(OBJDIR)/GameScreen.o: Game/GameScreen.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/LuaFunctions.o: Game/LuaFunctions.cpp
