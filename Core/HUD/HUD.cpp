@@ -1,5 +1,7 @@
 #include "HUD.h"
 
+#include "../ResourceManagers/EntityList.h"
+
 HUD::~HUD() {
 
 }
@@ -11,12 +13,49 @@ void HUD::setSizes(const sf::Vector2u& size) {
 
 void HUD::render(sf::RenderWindow* window, const sf::Time& dTime) {
 
+	if (_playerStats) {
+
+		int indent = 0;
+
+		for (const auto& stat : _stats) {
+			if (_playerStats->count(stat.name)) {
+				const auto& s = _playerStats->at(stat.name);
+				_text.setPosition(20, 5 + indent);
+
+				switch (s._type) {
+				case statType::eFloat:
+					_text.setString(std::to_string(s._flo));
+				break;
+				case statType::eString:
+					_text.setString(s._str);
+				break;
+				}
+
+				window->draw(_text);
+				indent += _text.getLocalBounds().height + 2;
+			}
+		}
+
+		return;
+	}
+
+	const auto p = EntityList::getPlayer();
+	if (p) {
+		const auto c = p->get<CombatComponent>();
+		if (c) {
+			if (c->getStats())
+				_playerStats = c->getStats();
+		}
+	}
 }
 
 void HUD::loadHUD(const std::string& path) {
 
 	printf("-----------------------------\nLoading HUD..\n-----------------------------\n");
 
+	_font = *ResourceManager::getFont("common/fonts/belgrano/regular.ttf");
+	_text.setFont(_font);
+	_text.setFillColor(sf::Color::White);
 
 	printf("-----------------------------\nHUD loaded.\n-----------------------------\n");
 
@@ -69,9 +108,9 @@ void HUD::loadStatsToShow(const sol::table& table) {
 			}
 		}
 
-		//if (success) {
-		//	_stats.push_back(statToAdd);
-		//	printf("|- Successfully registered stat %s.\n", statName.c_str());
-		//}
+		if (success) {
+			_stats.push_back(statToAdd);
+			printf("|- Successfully registered stat %s.\n", statName.c_str());
+		}
 	}
 }

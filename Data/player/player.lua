@@ -47,7 +47,10 @@ local entity = {
         },
 		CombatComponent = {
 			health = {
-				value = 100,
+				value = 100
+			},
+			actionPoints = {
+				value = "ur gey"
 			}
 		}
     }

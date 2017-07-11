@@ -17,15 +17,19 @@
 //	float _flo;
 //};
 
+enum statType {
+	eFloat, eString
+};
+
 struct Stat {
 	/*Stat(const std::string& name, const std::string& type, const Value& val, const std::string& drawStyle)
 		: _name(name), _type(type), _val(val), _drawStyle(drawStyle) {}*/
 
-	Stat(const std::string& name, const std::string& type, const std::string& str, float flo)
+	Stat(const std::string& name, const statType& type, const std::string& str, float flo)
 		: _name(name), _type(type), _str(str), _flo(flo) {}
 
 	const std::string _name;
-	const std::string _type;
+	const statType _type;
 	//Value _val;
 
 	const float _flo;

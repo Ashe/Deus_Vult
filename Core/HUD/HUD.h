@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include "../ResourceManagers/ResourceManager.h"
 
+#include "../../Game/Stats.h"
+
 struct StatCustom {
 	StatCustom(const std::string& n) : name(n) {}
 
@@ -25,6 +27,13 @@ public:
 
 private:
 	sf::Vector2u _windowSize;
+
+	std::vector<StatCustom> _stats;
+	std::map<std::string, Stat>* _playerStats;
+
+	sf::Font _font;
+	sf::Text _text;
+
 };
 
 #endif // !define HUD_H

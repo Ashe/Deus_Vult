@@ -90,7 +90,7 @@ void NpcComponent::enableSpeech() {
 	if (!_speechEnabled) {
 		_speechEnabled = true;
 
-		_text.setFont(*ResourceManager::getFont("Data/common/fonts/belgrano/regular.ttf"));
+		_text.setFont(*ResourceManager::getFont("common/fonts/belgrano/regular.ttf"));
 		_text.setOrigin(_text.getCharacterSize() / 3, _text.getCharacterSize() / 2);
 
 		// Add render function to functionlist

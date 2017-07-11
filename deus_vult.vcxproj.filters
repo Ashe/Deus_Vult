@@ -210,9 +210,6 @@
     <ClCompile Include="Core\Components\TagComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\HUD\Widget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameScreen.h">
@@ -423,9 +420,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Core\Components\TagComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\HUD\Widget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

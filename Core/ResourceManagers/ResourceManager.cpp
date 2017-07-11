@@ -19,7 +19,7 @@ sol::table ResourceManager::getTable(const std::string& path) {
 sf::Image* ResourceManager::getImage(const std::string& path) {
 	if (!_images.count(path)) {
 		sf::Image img;
-		if (img.loadFromFile(path)) {
+		if (img.loadFromFile("Data/" + path)) {
 			_images[path] = img;
 			printf("|- Loaded image from %s.\n", path.c_str());
 		}
@@ -48,7 +48,7 @@ sf::Texture* ResourceManager::getTexture(const std::string& path) {
 sf::Font* ResourceManager::getFont(const std::string& path) {
 	if (!_fonts.count(path)) {
 		sf::Font font;
-		if (font.loadFromFile(path)) {
+		if (font.loadFromFile("Data/" + path)) {
 			_fonts[path] = font;
 			printf("|- Loaded font from %s.\n", path.c_str());
 		}

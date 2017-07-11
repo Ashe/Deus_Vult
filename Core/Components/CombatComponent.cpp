@@ -12,24 +12,24 @@ CombatComponent::CombatComponent(Entity* e, sol::table& componentTable) : Compon
 		//Value statValue;
 		sol::table statTable = value.as<sol::table>();
 		sol::object obj = statTable.get<sol::object>("value");
-		std::string type;
+		statType type;
 		bool success = false;
 
 		// TEMP
-		float flo;
-		std::string str;
+		float flo = 0;
+		std::string str = "";
 		// END TEMP
 
 		if (obj.get_type() == sol::type::string) {
 			//statValue._str = obj.as<std::string>();
 			str = obj.as<std::string>();
-			type = typeid(std::string).name();
+			type = statType::eString;
 			success = true;
 		}
 		else if ((obj.get_type() == sol::type::number)) {
 			//statValue._flo = obj.as<float>();
 			flo = obj.as<float>();
-			type = typeid(float).name();
+			type = statType::eFloat;
 			success = true;
 		}
 
@@ -48,4 +48,8 @@ bool CombatComponent::isInCombat() {
 
 void CombatComponent::setInCombat(bool inCombat) {
 	_inCombat = inCombat;
+}
+
+std::map<std::string, Stat>* CombatComponent::getStats() {
+	return &_stats;
 }

@@ -16,6 +16,8 @@ public:
 	bool isInCombat();
 	void setInCombat(bool);
 
+	std::map<std::string, Stat>* getStats();
+
 private:
 	MovementComponent* _movement;
 	bool _inCombat;

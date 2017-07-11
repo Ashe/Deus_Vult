@@ -34,7 +34,6 @@
     <ClCompile Include="Core\Components\TransformComponent.cpp" />
     <ClCompile Include="Core\Common\Entity.cpp" />
     <ClCompile Include="Core\HUD\HUD.cpp" />
-    <ClCompile Include="Core\HUD\Widget.cpp" />
     <ClCompile Include="Core\ResourceManagers\EntityList.cpp" />
     <ClCompile Include="Core\ResourceManagers\InputManager.cpp" />
     <ClCompile Include="Core\Common\main.cpp" />
@@ -104,7 +103,6 @@
     <ClInclude Include="Core\Components\TransformComponent.h" />
     <ClInclude Include="Core\Common\Entity.h" />
     <ClInclude Include="Core\HUD\HUD.h" />
-    <ClInclude Include="Core\HUD\Widget.h" />
     <ClInclude Include="Core\ResourceManagers\EntityList.h" />
     <ClInclude Include="Core\Common\Game.h" />
     <ClInclude Include="Core\ResourceManagers\InputManager.h" />
