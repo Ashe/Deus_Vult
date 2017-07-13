@@ -42,9 +42,7 @@ local entity = {
                 500, 300
             },
             flipX = true,
-            scale = {
-                5, 5
-            },
+            scale = {5, 5},
             rotation = 0
         },
         SensoryComponent = {

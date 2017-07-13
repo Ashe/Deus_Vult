@@ -34,7 +34,7 @@ local entity = {
         },
         TransformComponent = {
             position = {
-                100, 390
+                -9000, 300
             },
             scale = {
                 0.5, 0.5
@@ -50,7 +50,7 @@ local entity = {
 				value = 100
 			},
 			actionPoints = {
-				value = "ur gey"
+				value = "sample text"
 			}
 		}
     }

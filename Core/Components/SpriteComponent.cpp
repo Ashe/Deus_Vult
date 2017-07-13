@@ -17,7 +17,6 @@ SpriteComponent::SpriteComponent(Entity* e, sol::table& componentTable) : Graphi
 	auto filenameRef = componentTable["filename"];
 	if (filenameRef.valid()) {
 		_filename = filenameRef;
-		_filename = "Data/" + _filename;
 
 		// Set sizes
 		if (componentTable["size"][1])
@@ -61,6 +60,7 @@ SpriteComponent::SpriteComponent(Entity* e, sol::table& componentTable) : Graphi
 		else {
 			_frameTime = 0;
 			SPRAnimation animation;
+			animation._name = "default";
 			animation.setSpriteSheet(*_texture);
 			animation.addFrame(sf::IntRect(0, 0, _spriteWidth, _spriteHeight));
 			_animationList["default"] = animation;
