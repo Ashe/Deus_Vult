@@ -19,15 +19,8 @@ private:
 	MovementComponent* _movementComponent;
 	sol::table _validStats;
 
-	sol::function _combat;
-
-	void addDirLeft();
-	void addDirRight();
-
-	void startSprinting();
-	void stopSprinting();
-
-	void doCombat();
+	void handleInput(int, bool);
+	sol::function _handleInput;
 };
 
 #endif

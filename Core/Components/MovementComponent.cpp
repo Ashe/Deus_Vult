@@ -105,7 +105,7 @@ void MovementComponent::update(const sf::Time& dTime) {
 			break;
 		default:
 			// If _direction is not between -1 and 1, its not valid
-			printf("Direction %d is not valid!", dirToUse);
+			printf("Direction %d is not valid!\n", dirToUse);
 		}
 
 		if (!_movingToDestination)

@@ -7,95 +7,34 @@ void Controller::initialise(InputManager* input, HUD* hud) {
 	_hud = hud;
 
 	// Prepare some c++ for later injection
+
+	printf("-----------------------------\nLoading Input System...\n-----------------------------\n");
+
+	sol::table inputT = ResourceManager::getTable("systems/main.lua");
+	if (inputT["handleInput"]) {
+		printf("|- Attempting to register input handler...\n");
+		_handleInput = inputT["handleInput"];
+		input->registerHandle([this](int i, bool b) { this->handleInput(i, b); });
+		printf("|- Loading successful.\n");
+	}
+	else printf("|- Error: No input handler found.\n");
+
+	printf("-----------------------------\n Main Input Loaded.\n-----------------------------\n");
+
+
 	printf("-----------------------------\nLoading Combat System...\n-----------------------------\n");
 
-	sol::table cbFuncs = ResourceManager::getTable("combat/system.lua");
-	if (cbFuncs["combatFunc"]) _combat = cbFuncs["combatFunc"];
+	sol::table cbFuncs = ResourceManager::getTable("systems/combatSystem.lua");
+	//if (cbFuncs["combatFunc"]) _combat = cbFuncs["combatFunc"];
 	if (cbFuncs["validStats"]) _validStats = cbFuncs["validStats"];
 
 	if (_hud) _hud->loadStatsToShow(_validStats);
 	printf("-----------------------------\n Combat System Loaded.\n-----------------------------\n");
-
-	// Bind keys to actions
-	input->bindKeyToAction(sf::Keyboard::A, "moveLeft");
-	input->bindKeyToAction(sf::Keyboard::D, "moveRight");
-	input->bindKeyToAction(sf::Keyboard::LShift, "sprint");
-
-	input->bindKeyToAction(sf::Keyboard::E, "interact");
-	input->bindKeyToAction(sf::Keyboard::Space, "combat");
-
-	// Create std::functions ready for binding
-	std::function<void()> moveLeft = [this]() { this->addDirLeft(); };
-	std::function<void()> moveRight = [this]() { this->addDirRight(); };
-	std::function<void()> startSprint = [this]() { this->startSprinting(); };
-	std::function<void()> stopSprint = [this]() {this->stopSprinting();};
-
-	std::function<void()> interact = std::bind(&EntityList::interactWithClosest);
-    std::function<void()> combat = [this]() {this->doCombat();};
-
-	// Bind actions to functions
-	input->bindActionToFunction("moveLeft", moveLeft, moveRight);
-	input->bindActionToFunction("moveRight", moveRight, moveLeft);
-	input->bindActionToFunction("sprint", startSprint, stopSprint);
-
-	input->bindActionToFunction("interact", interact, NULL);
-	input->bindActionToFunction("combat", combat, NULL);
 }
 
-void Controller::addDirLeft() {
-
-	if (_movementComponent && _player) {
-		_movementComponent->addDirection(-1);
-		return;
-	}
-
-	// If there's no movementComponent, try again
-	_player = EntityList::getPlayer();
-	_movementComponent = _player->get<MovementComponent>();
-	_movementComponent->addDirection(-1);
-}
-
-void Controller::addDirRight() {
-
-	if (_movementComponent && _player) {
-		_movementComponent->addDirection(1);
-		return;
-	}
-
-	// If there's no movementComponent, try again
-	_player = EntityList::getPlayer();
-	_movementComponent = _player->get<MovementComponent>();
-	_movementComponent->addDirection(1);
-}
-
-void Controller::startSprinting() {
-	if (_movementComponent && _player) {
-		_movementComponent->setSprintSpeed(2);
-		return;
-	}
-
-	// If there's no movementComponent, try again
-	_player = EntityList::getPlayer();
-	_movementComponent = _player->get<MovementComponent>();
-	_movementComponent->setSprintSpeed(2);
-}
-
-void Controller::stopSprinting() {
-	if (_movementComponent && _player) {
-		_movementComponent->setSprintSpeed(1);
-		return;
-	}
-
-	// If there's no movementComponent, try again
-	_player = EntityList::getPlayer();
-	_movementComponent = _player->get<MovementComponent>();
-	_movementComponent->setSprintSpeed(1);
-}
-
-void Controller::doCombat() {
+void Controller::handleInput(int i, bool b) {
 	if (!_player)
 		_player = EntityList::getPlayer();
 
-	if (_combat && _player)
-		_combat(_player);
+	_handleInput(_player, i, b);
 }

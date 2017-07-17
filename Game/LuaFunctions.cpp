@@ -26,9 +26,12 @@ void lfs::loadFunctions(sol::state& lua) {
 	lua.set_function("npcc_sayMessage", &lfs::npcc_sayMessage);
 
 	// Interaction Component
+	lua.set_function("ic_interact", &EntityList::interactWithClosest);
 	lua.set_function("ic_enableIntPrompt", &lfs::ic_enableIntPrompt);
 
 	// Movement Component
+	lua.set_function("mc_move", &lfs::mc_move);
+	lua.set_function("mc_setSpeed", &lfs::mc_setSpeed);
 	lua.set_function("mc_setLockMovement", &lfs::mc_setLockMovement);
 	lua.set_function("mc_moveToMidpoint", &lfs::mc_moveToMidpoint);
 
@@ -107,6 +110,26 @@ bool lfs::ic_enableIntPrompt(const sol::this_state& ts, Entity* e, bool show) {
 	return false;
 }
 
+bool lfs::mc_move(const sol::this_state& ts, Entity* e, bool right) {
+	auto mc = e->get<MovementComponent>();
+	if (mc) {
+		mc->addDirection(right * 2 - 1);
+		return true;
+	}
+
+	return false;;
+}
+
+bool lfs::mc_setSpeed(const sol::this_state& ts, Entity* e, int speed) {
+	auto mc = e->get<MovementComponent>();
+	if (mc) {
+		mc->setSprintSpeed(speed);
+		return true;
+	}
+
+	return false;;
+}
+
 bool lfs::mc_setLockMovement(const sol::this_state& ts, Entity* e, bool lock) {
 	auto mc = e->get<MovementComponent>();
 	if (mc) {
@@ -134,7 +157,7 @@ bool lfs::cc_isInCombat(const sol::this_state & ts, Entity * e)
 		return cc->isInCombat();
 	}
 
-	return false;;
+	return false;
 }
 
 bool lfs::cc_setInCombat(const sol::this_state& ts, Entity* e, bool inCombat) {

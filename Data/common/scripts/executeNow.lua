@@ -6,6 +6,7 @@ loadEntity("player/player.lua")
 
 print("Now creating an NPC..")
 loadEntity("npcs/bruh/bruh.lua")
+loadEntity("npcs/bruh/bruh(sprite).lua")
 
 print("Now creating a training dummy..")
 loadEntity("enemies/dummy/dummy.lua")

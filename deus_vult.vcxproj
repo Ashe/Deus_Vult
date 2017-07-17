@@ -161,7 +161,7 @@
     <None Include="Data\bruh.lua" />
     <None Include="Data\bruh\bruh.lua" />
     <None Include="Data\bruh\script.lua" />
-    <None Include="Data\combat\system.lua" />
+    <None Include="Data\systems\combatSystem.lua" />
     <None Include="Data\common\scripts\executeNow.lua" />
     <None Include="Data\common\spine\char\Spine_data\2d_character_Atlas.asset" />
     <None Include="Data\common\spine\char\Spine_data\2d_character_Material.mat" />
@@ -170,6 +170,7 @@
     <None Include="Data\player.lua" />
     <None Include="Data\makePlayer.lua" />
     <None Include="Data\player\player.lua" />
+    <None Include="Data\systems\main.lua" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Data\common\spine\char\Spine_data\2d_character.atlas.txt" />

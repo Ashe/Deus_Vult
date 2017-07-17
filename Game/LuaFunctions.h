@@ -43,6 +43,12 @@ namespace lfs {
 	// Movement Component
 	// ~~~~~~~~~~~~~~~~
 
+	// Adds direction right (or left if false) of the entity
+	bool mc_move(const sol::this_state& ts, Entity* e, bool right);
+	
+	// Sets the speed of the entity. If coded properly, running animations are automatic
+	bool mc_setSpeed(const sol::this_state& ts, Entity* e, int speed);
+
 	// Enable or disable player-controlled movement
 	bool mc_setLockMovement(const sol::this_state& ts, Entity* e, bool lock);
 

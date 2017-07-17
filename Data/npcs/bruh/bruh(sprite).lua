@@ -39,7 +39,7 @@ local entity = {
         },
         TransformComponent = {
             position = {
-                500, 300
+                600, 300
             },
             flipX = true,
             scale = {5, 5},
