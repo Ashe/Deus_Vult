@@ -20,14 +20,12 @@ InteractionComponent::InteractionComponent(Entity* e, sol::table& componentTable
 }
 
 void InteractionComponent::render(sf::RenderWindow* window, const sf::Time& dTime) {
-	if (EntityList::getClosestInteractive() == _owner) {
-		if (_showPrompt && _transform && _sensor) {
-			if (_sensor->playerInRange()) {
-				_text.setPosition(_transform->_position);
-				_text.move(0, -_owner->getSize().y / 2);
-				window->draw(_text);
-				return;
-			}
+	if (_showPrompt && _transform && _sensor && EntityList::getClosestInteractive() == _owner) {
+		if (_sensor->playerInRange()) {
+			_text.setPosition(_transform->_position);
+			_text.move(0, -_owner->getSize().y / 2);
+			window->draw(_text);
+			return;
 		}
 
 		_transform = _owner->get<TransformComponent>();

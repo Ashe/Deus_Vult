@@ -9,7 +9,14 @@ std::map<std::string, sf::Font> ResourceManager::_fonts;
 sol::table ResourceManager::getTable(const std::string& path) {
 
     if (!_tables.count(path)) {
-        _tables[path] = _lua->do_file("Data/" + path);
+		sol::protected_function_result result = _lua->do_file("Data/" + path);
+		if (!result.valid()) {
+			sol::error err = result;
+			sol::call_status status = result.status();
+			printf("|- Error: %s, details: .%s\n", sol::to_string(status).c_str(), err.what());
+			return sol::table();
+		}
+		_tables[path] = result;
         printf("|- Loaded table from %s.\n", path.c_str());
     }
 

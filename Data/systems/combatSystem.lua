@@ -26,22 +26,31 @@ local validStats = {
 	}
 }
 
-local combatFunc = function (e)
+local toggleCombat = function (e)
+	pInCombat = cc_isInCombat(e)
+	boolToReturn = false
 	if cc_isInCombat(e) == false then
 		print("Activate Combat!")
 		mc_setLockMovement(e, true)
 		mc_moveToMidpoint(e)
 		cc_setInCombat(e, true)
+		boolToReturn = true
 	else
 		print("Combat Deactivated.")
 		mc_setLockMovement(e, false)
 		cc_setInCombat(e, false)
+		boolToReturn = false
 	end
+	return boolToReturn
+end
+
+local handleInput = function (e)
 end
 
 local combatTable = {
 	validStats = validStats,
-	combatFunc = combatFunc
+	toggleCombat = toggleCombat,
+	handleInput = handleInput
 }
 
 return combatTable
