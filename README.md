@@ -8,3 +8,5 @@ This project uses [SFML](https://www.sfml-dev.org/) for the main game using the 
 The [Core folder](https://github.com/Crysikrend/Deus_Vult/tree/master/Core) is where I placed resources that I felt could be shared between multiple projects, whereas the [Game folder](https://github.com/Crysikrend/Deus_Vult/tree/master/Game) was for stuff I felt was pretty specific to the current game. the [Data folder](https://github.com/Crysikrend/Deus_Vult/tree/master/Data) is where you'll find the scripts. The most interesting scripts are located in the NPCs folder - I called him 'bruh'. There are two definitions for him, one which uses a spritesheet and one that uses the [Spine Animation Runtimes](http://esotericsoftware.com/), both which point to a script which is also in the same folder. The script details how the NPC will interact with the player when interacted with, or simply walked up to.
 
 Learning Lua for this project was pretty fun and it was interesting to learn how to bind languages together.
+
+![Gif of the game](https://aas.sh//images/projects/deusvult.gif)
