@@ -1,5 +1,7 @@
 # Deus Vult
 
+> Please note that I was still learning git with this project and so it's a bit of a mess!
+
 ## What is this?
 I have a keen interest in making games without using mainstream game enignes, so I have been exploring SDL and SFML recently. This project was my first attempt to implement scripting into a game - I wanted to make an engine which could have its data serialised and manipulated with scripts rather than hard code.
 
@@ -9,4 +11,4 @@ The [Core folder](https://github.com/Crysikrend/Deus_Vult/tree/master/Core) is w
 
 Learning Lua for this project was pretty fun and it was interesting to learn how to bind languages together.
 
-![Gif of the game](https://aas.sh//images/projects/deusvult.gif)
+![Gif of the game](img/preview.gif)
